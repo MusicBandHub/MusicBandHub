@@ -273,9 +273,12 @@ private fun HomeScreen(token: String, store: SessionStore) {
                             Column(Modifier.padding(14.dp)) {
                                 Text(song.title, fontWeight = FontWeight.Bold)
                                 Text(
-                                    "\${song.status}\${song.bpm?.let { " • $it BPM" } ?: ""}\${song.musicalKey?.let { " • $it" } ?: ""}",
+                                    buildString {
+                                        append(song.status)
+                                        song.bpm?.let { append(" • $it BPM") }
+                                        song.musicalKey?.let { append(" • $it") }
+                                    },
                                     color = MaterialTheme.colorScheme.primary
-                                )
                                 if (song.notes.isNotBlank()) {
                                     Text(song.notes, color = Color.Gray)
                                 }

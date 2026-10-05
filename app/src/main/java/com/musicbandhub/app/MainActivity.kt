@@ -29,7 +29,8 @@ class MainActivity : ComponentActivity() {
         val context = androidx.compose.ui.platform.LocalContext.current
         val store = remember { SessionStore(context) }
         val token by store.accessToken.collectAsState(initial = null)
-        if (token.isNullOrBlank()) AuthScreen { t -> LaunchedEffect(t) { store.saveToken(t) } }
+        val scope = rememberCoroutineScope()
+        if (token.isNullOrBlank()) AuthScreen { t -> scope.launch { store.saveToken(t) } }
         else HomeScreen(store)
     }
 }

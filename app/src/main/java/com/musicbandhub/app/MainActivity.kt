@@ -3,6 +3,7 @@ package com.musicbandhub.app
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -34,7 +35,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MusicBandHubApp() {
-    MaterialTheme(colorScheme = darkColorScheme(primary = Accent, background = Bg)) {
+    MaterialTheme(colorScheme = darkColorScheme(primary = Accent)) {
         val context = androidx.compose.ui.platform.LocalContext.current
         val store = remember { SessionStore(context) }
         val token by store.accessToken.collectAsState(initial = null)
@@ -212,14 +213,13 @@ private fun HomeScreen(token: String, store: SessionStore) {
             ) {
                 items(bands, key = { it.id }) { band ->
                     Card(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth().clickable { selectedBandId = band.id },
                         colors = CardDefaults.cardColors(
                             containerColor = if (band.id == selectedBandId)
                                 MaterialTheme.colorScheme.primaryContainer
                             else
                                 MaterialTheme.colorScheme.surfaceVariant
-                        ),
-                        onClick = { selectedBandId = band.id }
+                        )
                     ) {
                         Column(Modifier.padding(14.dp)) {
                             Text(band.name, fontWeight = FontWeight.Bold)

@@ -83,14 +83,9 @@ class SongRepository(private val api: SupabaseClient = SupabaseClient()) {
             .put("band_id", bandId)
             .put("title", title)
             .put("status", status)
-            .put("created_by", JSONObject.NULL)
 
         val a = api.parseArray(
-            api.post(
-                "/rest/v1/songs",
-                token,
-                body
-            )
+            api.post("/rest/v1/songs", token, body)
         )
         val x = a.getJSONObject(0)
         return Song(

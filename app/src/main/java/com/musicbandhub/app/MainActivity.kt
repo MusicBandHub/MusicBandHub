@@ -279,6 +279,7 @@ private fun HomeScreen(token: String, store: SessionStore) {
                                         song.musicalKey?.let { append(" • $it") }
                                     },
                                     color = MaterialTheme.colorScheme.primary
+                                )
                                 if (song.notes.isNotBlank()) {
                                     Text(song.notes, color = Color.Gray)
                                 }

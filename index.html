@@ -174,7 +174,7 @@ const A={
  async accept(d){const{data,error}=await sb.rpc('accept_invitation',{inv:d.id});if(error)return toast(err(error));S.bid=data;localStorage.mbh_band=data;S.tab='home';toast('Вы в группе!');await loadBands()},
  async decline(d){await ok(sb.rpc('decline_invitation',{inv:d.id}),loadInv)},
  async signout(){unsub();unsubInv();localStorage.removeItem('mbh_band');await sb.auth.signOut()},
- async mkband(){if(!v('gn').trim())return;await ok(t(sb.from('bands').insert({name:v('gn').trim(),description:v('gd').trim(),owner_id:S.user.id}).select().single()).then(b=>{S.created=b;S.bid=b.id;localStorage.mbh_band=b.id;draw(true)}))},
+ async mkband(){const name=v('gn').trim(),description=v('gd').trim();if(!name)return toast('Введите название группы');S.msg='';S.busy=true;draw(true);try{const{error}=await sb.from('bands').insert({name,description,owner_id:S.user.id});if(error)throw error;await loadBands();toast('Группа создана')}catch(e){S.msg=err(e);toast(S.msg);draw(true)}finally{S.busy=false}},
  async opened(){S.created=null;await loadBands()},
  copy(d,el){navigator.clipboard?.writeText(el.dataset.c).then(()=>toast('Скопировано'),()=>toast('Не удалось скопировать'))},
  share(d,el){const x='Вступай в «'+el.dataset.n+'» в MusicBandHub: '+el.dataset.c;navigator.share?navigator.share({text:x}).catch(()=>{}):navigator.clipboard?.writeText(x).then(()=>toast('Скопировано'))},

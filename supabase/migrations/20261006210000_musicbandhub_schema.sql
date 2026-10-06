@@ -32,7 +32,7 @@ create table if not exists public.bands (
   name text not null,
   description text not null default '',
   owner_id uuid not null references public.profiles(id) on delete restrict,
-  invite_code text not null unique default upper(substr(encode(gen_random_bytes(6),'hex'),1,8)),
+  invite_code text not null unique default upper(substr(md5(random()::text || clock_timestamp()::text),1,8)),
   created_at timestamptz not null default now()
 );
 
@@ -209,13 +209,13 @@ language plpgsql
 security definer
 set search_path = public
 as $$
-declare ok boolean;
+declare deleted_count integer;
 begin
   delete from public.invitations
   where id=inv
     and lower(email)=(select lower(email) from auth.users where id=auth.uid());
-  get diagnostics ok = row_count > 0;
-  return ok;
+  get diagnostics deleted_count = row_count;
+  return deleted_count > 0;
 end;
 $$;
 

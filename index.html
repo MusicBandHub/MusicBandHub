@@ -161,7 +161,7 @@ const A={
  async signup(){const email=v('ae').trim(),password=v('ap'),name=v('an').trim();
   if(!name||!email||password.length<6){S.msg='Введите имя, email и пароль от 6 символов';return draw(true)}
   S.f={n:name,e:email};S.busy=true;S.msg='';
-  let{data,error}=await sb.auth.signUp({email,password,options:{data:{display_name:name}}});
+  const redirectTo=location.origin+location.pathname; let{data,error}=await sb.auth.signUp({email,password,options:{data:{display_name:name},emailRedirectTo:redirectTo}});
   if((error&&/already/i.test(error.message))||(!error&&!data.session)){const r=await sb.auth.signInWithPassword({email,password});error=r.error;data=r.data}
   S.busy=false;
   if(error)S.msg=/Invalid login/i.test(error.message)?'Этот email уже занят, пароль не подходит':/not confirmed/i.test(error.message)?'Подтвердите email по письму и повторите':err(error);

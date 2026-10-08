@@ -329,6 +329,16 @@ nav a:active{transform:scale(.96)}
 <div id="toast"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
+window.addEventListener('error',function(e){
+  var a=document.getElementById('app');
+  var s=document.getElementById('splash');
+  if(s)s.remove();
+  if(a&&!a.innerHTML.trim()){
+    a.innerHTML='<div style="padding:28px;color:#fff;font-family:system-ui"><h2>MusicBandHub</h2><p style="color:#ff6b6b">Ошибка запуска приложения: '+String(e.message||'неизвестная ошибка')+'</p><p style="color:#9aa3ad;font-size:13px">Обновите страницу после исправления.</p></div>';
+  }
+});
+</script>
+<script>
 const v=id=>document.getElementById(id)?.value??'';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const PRESET={url:'https://jgzzdsittnzomedvsspj.supabase.co',key:'sb_publishable_z40zmd4oAy9jUr3Q4BgDYQ_-IpiIlJe'}; // можно вписать Project URL и anon key, чтобы экран настройки не показывался

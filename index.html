@@ -1037,6 +1037,161 @@ document.addEventListener('click',e=>{
   .mbh-player .mbh-p-controls>button:first-child{left:calc(50% - 78px)!important}
   .mbh-player .mbh-p-controls>button:last-child{right:calc(50% - 78px)!important}
 }
+</style><style id="mbh-clean-layout-v11">
+/* v11 — unified spacing, sizing and icon alignment. Overrides accumulated legacy styles. */
+:root{--ui-gap:12px;--ui-radius:14px;--ui-control:42px}
+*,*::before,*::after{box-sizing:border-box}
+button,.btn,input,select,textarea{font:inherit}
+button,.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;vertical-align:middle;white-space:nowrap;line-height:1}
+button svg,.btn svg{width:16px!important;height:16px!important;flex:0 0 16px}
+button img,.btn img{width:16px;height:16px;object-fit:contain;flex:0 0 16px}
+
+/* Main canvas */
+#app{width:min(1180px,100%);margin:0 auto;padding:18px 18px 132px}
+#screen{width:100%!important;max-width:1040px!important;margin:0 auto!important;padding:8px 0 150px!important}
+#screen>section,#screen>.v4-head,#screen>.songs-premium{margin-bottom:14px}
+
+/* Header */
+.v4-head{min-height:68px!important;padding:14px 0 18px!important;margin:0 0 14px!important;display:flex!important;align-items:center!important;gap:14px!important}
+.v4-head>div:first-child{min-width:0;flex:1}
+.v4-head h1{font-size:clamp(26px,5vw,34px)!important;line-height:1.05!important;margin:0!important}
+.v4-head p{font-size:11px!important;line-height:1.35!important;margin:5px 0 0!important}
+.v4-settings,.icon-btn{width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;padding:0!important;flex:0 0 40px}
+
+/* Cards and grids */
+.v4-grid,.v4-columns{gap:14px!important}
+.v4-main,.v4-next,.v4-list,.v4-recent,.v4-catalog,.v4-ai,.v4-today,.v4-quick,.v4-month,.card,.premium-song-card{overflow:hidden}
+.v4-main,.v4-next{min-height:0!important}
+.v4-stats{gap:8px!important}
+.v4-stat,.v3-stat{min-width:0!important;overflow:hidden}
+.v4-stat strong,.v3-stat strong{white-space:nowrap}
+.v4-section-head{min-height:34px!important;gap:10px!important}
+.v4-section-head h2{min-width:0}
+.v4-count{flex:0 0 auto}
+
+/* Song rows: stable columns, no collisions */
+.v4-song,.v4-task{min-height:58px!important;display:grid!important;grid-template-columns:36px minmax(0,1fr) auto!important;align-items:center!important;gap:11px!important;padding:10px 0!important}
+.v4-song-icon{width:36px!important;height:36px!important;min-width:36px!important}
+.v4-song div:nth-child(2),.v4-task div{min-width:0!important}
+.v4-song b,.v4-task b{display:block!important;min-width:0!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+.v4-song span,.v4-task span{display:block!important;min-width:0!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+.v4-song>strong,.v4-task>strong{width:28px!important;min-width:28px!important;text-align:center!important;margin:0!important}
+
+/* Premium songs page */
+.songs-premium{width:100%!important}
+.songs-head{align-items:center!important;gap:12px!important}
+.songs-head>div:first-child{min-width:0}
+.create-song{height:40px!important;min-width:40px!important}
+.song-tools{width:100%!important}
+.song-filters{gap:6px!important}
+.song-filter{flex:0 0 auto!important;height:34px!important}
+.premium-song-card{grid-template-columns:52px minmax(0,1fr) 38px!important;gap:11px!important;padding:10px!important;min-width:0}
+.premium-song-card .psc-cover{width:52px!important;height:52px!important}
+.premium-song-card .psc-main{min-width:0!important}
+.premium-song-card .psc-main *{min-width:0}
+.premium-song-card .psc-top{gap:6px!important}
+.premium-song-card .psc-top>*{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.premium-song-card .badge{margin-left:0!important}
+.premium-song-card>button{width:38px!important;height:38px!important;min-width:38px!important;padding:0!important}
+
+/* Chips: keep them compact and separated */
+.chip{height:32px!important;min-height:32px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:0 10px!important;margin:0!important;white-space:nowrap!important}
+.file-tabs,.song-filters{align-items:center!important}
+
+/* Bottom navigation — fixed equal cells */
+nav[aria-label="Основная навигация"]{
+ position:fixed!important;left:50%!important;right:auto!important;bottom:10px!important;
+ transform:translateX(-50%)!important;width:min(720px,calc(100% - 20px))!important;
+ height:66px!important;padding:5px!important;display:grid!important;
+ grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:4px!important;
+ border-radius:18px!important;z-index:120!important;
+}
+nav[aria-label="Основная навигация"] a{
+ width:auto!important;min-width:0!important;height:56px!important;min-height:56px!important;
+ padding:6px 3px!important;margin:0!important;display:flex!important;
+ flex-direction:column!important;align-items:center!important;justify-content:center!important;
+ gap:4px!important;line-height:1!important;overflow:hidden!important;
+}
+nav[aria-label="Основная навигация"] a svg{
+ width:19px!important;height:19px!important;min-width:19px!important;min-height:19px!important;
+ flex:0 0 19px!important;margin:0!important
+}
+nav[aria-label="Основная навигация"] a span{
+ display:block!important;width:100%!important;overflow:hidden!important;text-overflow:ellipsis!important;
+ white-space:nowrap!important;text-align:center!important;font-size:8px!important;line-height:1!important;margin:0!important
+}
+
+/* Player — isolated layout so its controls cannot affect the rest of the UI */
+.mbh-player{
+ width:min(680px,calc(100% - 20px))!important;
+ bottom:82px!important;padding:12px!important;border-radius:17px!important;
+}
+.mbh-p-top{display:grid!important;grid-template-columns:38px minmax(0,1fr) 32px!important;align-items:center!important;gap:10px!important}
+.mbh-p-disc{width:38px!important;height:38px!important}
+.mbh-p-info{min-width:0!important}
+.mbh-p-x{width:32px!important;height:32px!important;min-width:32px!important;min-height:32px!important}
+.mbh-p-wave{height:36px!important;margin:8px 0 5px!important}
+.mbh-p-seek{display:grid!important;grid-template-columns:34px minmax(0,1fr) 34px!important;align-items:center!important;gap:7px!important}
+.mbh-p-seek input{width:100%!important;min-width:0!important}
+.mbh-p-seek span{min-width:0!important}
+.mbh-p-controls{position:relative!important;height:54px!important;width:100%!important;display:flex!important;align-items:center!important;justify-content:center!important;margin:5px 0!important}
+.mbh-p-controls .mbh-p-play{
+ position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;
+ width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;
+ margin:0!important;padding:0!important;border-radius:50%!important
+}
+.mbh-p-controls>button:first-child,.mbh-p-controls>button:last-child{
+ position:absolute!important;top:50%!important;transform:translateY(-50%)!important;
+ width:58px!important;min-width:58px!important;height:34px!important;margin:0!important
+}
+.mbh-p-controls>button:first-child{left:calc(50% - 94px)!important}
+.mbh-p-controls>button:last-child{right:calc(50% - 94px)!important}
+.mbh-p-tools{display:grid!important;grid-template-columns:auto auto minmax(70px,1fr) auto!important;align-items:center!important;gap:6px!important}
+.mbh-p-tools>button{min-width:0!important;height:30px!important;padding:0 8px!important}
+.mbh-p-vol{min-width:0!important;display:flex!important;align-items:center!important;gap:4px!important}
+.mbh-p-vol input{width:100%!important;min-width:45px!important}
+
+/* Generic rows: stop inline elements from bunching */
+.row{display:flex!important;align-items:center!important;gap:10px!important;flex-wrap:wrap!important}
+.row>*{min-width:0}
+.card>input,.card>select,.card>textarea{display:block;width:100%;margin:0 0 9px}
+.card>button{margin:3px 5px 3px 0}
+
+/* Mobile */
+@media(max-width:700px){
+ #app{padding:12px 12px 118px}
+ #screen{padding:4px 0 138px!important}
+ .v4-grid,.v4-columns{grid-template-columns:1fr!important;gap:10px!important}
+ .v4-main,.v4-next{padding:15px!important}
+ .v4-columns{margin-top:20px!important}
+ .v4-stats{grid-template-columns:repeat(3,1fr)!important}
+ .v4-section-head{margin-bottom:8px!important}
+ .songs-head{align-items:flex-start!important}
+ .songs-head h2{font-size:25px!important}
+ .songs-head .mu{max-width:240px}
+ .premium-song-card{grid-template-columns:48px minmax(0,1fr) 36px!important}
+ .premium-song-card .psc-cover{width:48px!important;height:48px!important}
+ .premium-song-card>button{width:36px!important;height:36px!important;min-width:36px!important}
+ nav[aria-label="Основная навигация"]{width:calc(100% - 14px)!important;bottom:7px!important;height:62px!important}
+ nav[aria-label="Основная навигация"] a{height:52px!important;min-height:52px!important}
+ nav[aria-label="Основная навигация"] a svg{width:18px!important;height:18px!important;min-width:18px!important}
+ nav[aria-label="Основная навигация"] a span{font-size:7px!important}
+ .mbh-player{bottom:74px!important;width:calc(100% - 14px)!important;padding:10px!important}
+ .mbh-p-tools{grid-template-columns:auto auto minmax(55px,1fr) auto!important}
+}
+@media(max-width:430px){
+ .v4-stats{grid-template-columns:repeat(3,1fr)!important}
+ .v4-stat,.v3-stat{padding:8px 6px!important}
+ .v4-stat strong,.v3-stat strong{font-size:17px!important}
+ .v4-stat span,.v3-stat span{font-size:8px!important}
+ .v4-song,.v4-task{grid-template-columns:34px minmax(0,1fr) 26px!important;gap:9px!important}
+ .v4-song-icon{width:34px!important;height:34px!important;min-width:34px!important}
+ .mbh-p-controls>button:first-child{left:calc(50% - 78px)!important;width:52px!important;min-width:52px!important}
+ .mbh-p-controls>button:last-child{right:calc(50% - 78px)!important;width:52px!important;min-width:52px!important}
+ .mbh-p-tools>button[data-pact="loop"] span{display:none!important}
+ .mbh-p-tools>button[data-pact="next"]{font-size:0!important}
+ .mbh-p-tools>button[data-pact="next"]::after{content:"›";font-size:14px!important}
+}
 </style></body></html>
 
 <style id="v9-structure-style">#screen{min-height:calc(100vh - 130px)}nav[aria-label="Основная навигация"] a span{display:block}.file-tabs{display:flex;gap:8px;overflow:auto;padding:10px 0}.file-tabs .active{outline:1px solid var(--ac);box-shadow:0 0 0 1px var(--ac) inset}.files-screen{padding-bottom:24px}</style>

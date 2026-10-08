@@ -259,7 +259,7 @@ function draw(force){
  S.dirty=false;
  const el=document.getElementById('app');
  el.innerHTML=S.locked?lockV():!S.cfg?setupV():!S.user?authV():(!S.bands.length||S.gate)?gateV():shellV();
- syncPlay();document.getElementById('pl').style.bottom=S.user&&S.bands.length?'':'0';if(S.user&&S.bands.length)setTimeout(hydrateSongCovers,0)}
+ syncPlay();const player=document.getElementById('pl');if(player){if(S.tab==='home'){const audio=document.getElementById('au');if(audio){audio.pause();audio.currentTime=0}player.style.display='none';PLAY.id=null}else{player.style.bottom=S.user&&S.bands.length?'':'0'}}if(S.user&&S.bands.length)setTimeout(hydrateSongCovers,0)}
 document.addEventListener('focusout',()=>setTimeout(()=>{if(S.dirty)draw()},150));
 
 function setupV(){return`<h1>MusicBandHub</h1><p class=mu>Один раз укажите данные вашего Supabase-проекта (Project Settings → API). Они хранятся только в этом браузере. Используйте только anon/publishable ключ.</p>

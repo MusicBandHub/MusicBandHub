@@ -327,7 +327,7 @@ nav a:active{transform:scale(.96)}
 </div>
 <div id="mo" class="pan"></div><div id="ro" class="pan"></div>
 <div id="toast"></div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script async src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
 window.addEventListener('error',function(e){
   var a=document.getElementById('app');
@@ -1002,7 +1002,7 @@ if(S.cfg){try{
  sb.auth.onAuthStateChange((ev,ses)=>{
   if(ses?.user){if(S.user?.id!==ses.user.id){S.user=ses.user;S.msg='';setTimeout(loadBands,0)}else S.user=ses.user}
   else{const was=!!S.user;S.user=null;S.bands=[];S.invAll=[];unsub();unsubInv();S.msg=was&&ev!=='SIGNED_OUT'?'Сессия истекла, войдите снова':'';draw(true)}})
- }catch(e){console.error('MusicBandHub init:',e);sb=null;S.cfg=null}}
+ }catch(e){console.error('MusicBandHub init:',e);sb=null}}
 if(localStorage.mbh_bio)S.locked=true;
 const _sp=document.getElementById('splash');_sp.querySelector('.sp-b').textContent=(localStorage.mbh_bn||'LOADING YOUR BAND').toUpperCase();
 setTimeout(()=>{_sp.style.opacity=0;setTimeout(()=>_sp.remove(),500);if(S.locked)A.unlock()},2400);
@@ -1024,7 +1024,18 @@ setTimeout(function(){
   var s=document.getElementById('splash');
   if(s){s.style.opacity='0';s.style.pointerEvents='none';setTimeout(function(){if(s&&s.parentNode)s.parentNode.removeChild(s)},450)}
 },3000);
-</script><script src="ai3.js"></script><style id="mbh-final-ui-fix">
+</script><script>
+window.addEventListener('load',function(){
+  if(window.supabase && window.S && S.cfg && !window.sb){
+    try{
+      window.sb=supabase.createClient(S.cfg.url,S.cfg.key,{auth:{persistSession:true,autoRefreshToken:true,storageKey:'mbh-auth',detectSessionInUrl:false}});
+      if(typeof loadBands==='function') loadBands();
+    }catch(e){console.error('MusicBandHub Supabase init:',e);}
+  }
+  if(typeof draw==='function') draw(true);
+});
+</script>
+<script src="ai3.js"></script><style id="mbh-final-ui-fix">
 /* Final UI cleanup: player controls and responsive spacing. */
 .mbh-player .mbh-p-controls{
   position:relative!important;

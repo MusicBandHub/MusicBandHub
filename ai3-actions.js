@@ -1,0 +1,1 @@
+A.aiAsk=async function(d){var q=String(d&&d.q||'').trim();if(!q)return;S.aiChat=S.aiChat||[];S.aiChat.push({role:'user',content:q});var r=await sb.functions.invoke('musicband-ai',{body:{question:q,mode:S.ai3mode||'PRODUCER',context:MBH3.context(),history:S.aiChat.slice(-10)}});S.aiChat.push({role:'assistant',content:r.data&&r.data.answer||'Нет ответа'});draw(true)};

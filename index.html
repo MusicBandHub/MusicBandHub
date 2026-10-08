@@ -116,8 +116,26 @@ nav a{flex:1;display:flex!important;flex-direction:column;align-items:center;jus
  .v4-ai,.v4-today,.v4-quick,.v4-month{border-radius:14px}
  nav{bottom:12px!important;width:calc(100% - 20px)!important}
 }
+</style><style id="v7-final-layout">
+#splash{display:flex!important;opacity:1!important}
+#splash .sp-mark{position:relative;z-index:2;animation:spLogo 1.2s cubic-bezier(.2,.8,.2,1) both}
+#splash .sp-mark svg{width:86px;height:86px}
+#splash .sp-t,#splash .sp-d,#splash .sp-b{position:relative;z-index:2}
+.v4-columns{display:grid!important;grid-template-columns:minmax(0,1fr) 330px!important;align-items:start!important}
+.v4-columns main{display:block!important}
+.v4-columns aside{display:flex!important;flex-direction:column!important;gap:18px!important}
+.v4-section-head{display:flex!important;min-height:40px!important}
+.v4-list,.v4-recent,.v4-catalog,.v4-ai,.v4-today,.v4-quick,.v4-month{display:block!important;overflow:hidden!important}
+.v4-quick-grid,.v4-month-grid{display:grid!important}
+.v4-task,.v4-song,.v4-song-progress{display:flex!important}
+@media(max-width:820px){
+ .v4-columns{display:block!important}
+ .v4-columns aside{display:flex!important;flex-direction:column!important;gap:24px!important;margin-top:42px!important}
+ .v4-section-head{margin-top:0!important;margin-bottom:13px!important}
+ .v4-section-head:not(:first-child){margin-top:40px!important}
+}
 </style></head><body>
-<div id="splash"></div>
+<div id="splash"><div class="sp-mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="spg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c6ff1a"/><stop offset=".55" stop-color="#34e0a1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M6 46 L18 14 L32 40 L46 14 L58 46" fill="none" stroke="url(#spg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g stroke="url(#spg)" stroke-width="3" stroke-linecap="round"><path d="M2 32v6M10 26v16M54 26v16M62 32v6"/></g></svg></div><div class="sp-t">MUSICBAND<br>HUB</div><div class="sp-d">• • •</div><div class="sp-b">LOADING YOUR BAND</div></div>
 <div id="app"></div>
 <div id="pl" class="mbh-player">
  <div class="mbh-p-top"><div class="mbh-p-disc"><div class="mbh-p-disc-in">♪</div></div><div class="mbh-p-info"><div class="mbh-p-kicker">NOW PLAYING</div><div id="pt" class="mbh-p-title">MusicBandHub</div><div id="pf" class="mbh-p-file">—</div></div><button class="mbh-p-x" data-pact="close" aria-label="Закрыть">×</button></div>
@@ -796,8 +814,8 @@ if(S.cfg){sb=supabase.createClient(S.cfg.url,S.cfg.key,{auth:{persistSession:tru
   if(ses?.user){if(S.user?.id!==ses.user.id){S.user=ses.user;S.msg='';setTimeout(loadBands,0)}else S.user=ses.user}
   else{const was=!!S.user;S.user=null;S.bands=[];S.invAll=[];unsub();unsubInv();S.msg=was&&ev!=='SIGNED_OUT'?'Сессия истекла, войдите снова':'';draw(true)}})}
 if(localStorage.mbh_bio)S.locked=true;
-const _sp=document.getElementById('splash');_sp.innerHTML=LOGO+'<div class=sp-t>MUSICBAND<br>HUB</div><div class=sp-d>• • •</div><div class=sp-b>'+esc((localStorage.mbh_bn||'').toUpperCase())+'</div>';
-setTimeout(()=>{_sp.style.opacity=0;setTimeout(()=>_sp.remove(),400);if(S.locked)A.unlock()},1400);
+const _sp=document.getElementById('splash');_sp.querySelector('.sp-b').textContent=(localStorage.mbh_bn||'LOADING YOUR BAND').toUpperCase();
+setTimeout(()=>{_sp.style.opacity=0;setTimeout(()=>_sp.remove(),500);if(S.locked)A.unlock()},2400);
 draw(true);
 
 // Cyber Neon visualizer helper

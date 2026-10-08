@@ -298,10 +298,7 @@ nav a:active{transform:scale(.96)}
 .song-hero .song-player-icon{display:flex!important;align-items:center!important;justify-content:center!important;line-height:1!important;padding:0!important;position:relative!important}
 .song-hero .song-player-icon::first-letter{line-height:1!important}
 </style>
-<style id="mbh-splash-force">
-#splash{animation:mbhSplashExit .7s ease forwards;animation-delay:1.2s!important}
-@keyframes mbhSplashExit{to{opacity:0!important;visibility:hidden!important;pointer-events:none!important}}
-</style></head><body>
+</head><body>
 <div id="splash"><div class="sp-mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="spg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c6ff1a"/><stop offset=".55" stop-color="#34e0a1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M6 46 L18 14 L32 40 L46 14 L58 46" fill="none" stroke="url(#spg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g stroke="url(#spg)" stroke-width="3" stroke-linecap="round"><path d="M2 32v6M10 26v16M54 26v16M62 32v6"/></g></svg></div><div class="sp-t">MUSICBAND<br>HUB</div><div class="sp-d">• • •</div><div class="sp-b">LOADING YOUR BAND</div></div>
 <div id="app"></div>
 <script>
@@ -995,7 +992,7 @@ if(S.cfg){sb=supabase.createClient(S.cfg.url,S.cfg.key,{auth:{persistSession:tru
   else{const was=!!S.user;S.user=null;S.bands=[];S.invAll=[];unsub();unsubInv();S.msg=was&&ev!=='SIGNED_OUT'?'Сессия истекла, войдите снова':'';draw(true)}})}
 if(localStorage.mbh_bio)S.locked=true;
 const _sp=document.getElementById('splash');_sp.querySelector('.sp-b').textContent=(localStorage.mbh_bn||'LOADING YOUR BAND').toUpperCase();
-setTimeout(()=>{_sp.style.opacity=0;_sp.style.pointerEvents='none';setTimeout(()=>_sp.remove(),500)},1200);if(S.locked)setTimeout(()=>{try{A.unlock()}catch(e){}},1250);
+setTimeout(()=>{_sp.style.opacity=0;setTimeout(()=>_sp.remove(),500);if(S.locked)A.unlock()},2400);
 draw(true);
 
 // Cyber Neon visualizer helper

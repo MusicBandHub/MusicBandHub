@@ -119,6 +119,7 @@ function sub(){unsub();if(!S.bid)return;const b=S.bid,ch=sb.channel('band-'+b+'-
 addEventListener('online',()=>{S.net=true;sub();load();draw()});addEventListener('offline',()=>{S.net=false;draw()});
 
 /* ---------- views ---------- */
+async function hydrateSongCovers(){for(const el of document.querySelectorAll('[data-cover-id]')){const id=el.dataset.coverId;if(!id)continue;const f=S.D.files.find(x=>x.id===id);if(!f)continue;try{const r=await sb.storage.from('band-files').createSignedUrl(f.storage_path,3600);if(r.data?.signedUrl)el.innerHTML='<img src="'+r.data.signedUrl+'" alt="Обложка">'}catch(e){}}for(const el of document.querySelectorAll('[data-song-audio]')){const f=S.D.files.find(x=>x.id===el.dataset.songAudio);if(!f)continue;try{const r=await sb.storage.from('band-files').createSignedUrl(f.storage_path,3600);if(r.data?.signedUrl)el.src=r.data.signedUrl}catch(e){}}}
 function draw(force){
  const a=document.activeElement;
  if(!force&&S.ma&&S.ma.s===3){S.dirty=true;return}
@@ -126,7 +127,7 @@ function draw(force){
  S.dirty=false;
  const el=document.getElementById('app');
  el.innerHTML=S.locked?lockV():!S.cfg?setupV():!S.user?authV():(!S.bands.length||S.gate)?gateV():shellV();
- syncPlay();document.getElementById('pl').style.bottom=S.user&&S.bands.length?'':'0'}
+ syncPlay();document.getElementById('pl').style.bottom=S.user&&S.bands.length?'':'0';if(S.user&&S.bands.length)setTimeout(hydrateSongCovers,0)}
 document.addEventListener('focusout',()=>setTimeout(()=>{if(S.dirty)draw()},150));
 
 function setupV(){return`<h1>MusicBandHub</h1><p class=mu>Один раз укажите данные вашего Supabase-проекта (Project Settings → API). Они хранятся только в этом браузере. Используйте только anon/publishable ключ.</p>
@@ -639,7 +640,6 @@ Object.assign(A,{
     let r=await sb.from('song_files').insert(row);if(r.error&&/column|schema/i.test(r.error.message)){delete row.duration_sec;delete row.bpm;delete row.time_signature;r=await sb.from('song_files').insert(row)}if(r.error)throw r.error}
    await sb.from('drafts').update({song_id:s.id}).eq('id',dr.id);toast('Песня создана из черновика');S.dd=null;S.tab='songs';S.song=s.id;S.st=n?'audio':'main';await load()}catch(x){toast(em(x))}draw(true)},
 
-async function hydrateSongCovers(){for(const el of document.querySelectorAll('[data-cover-id]')){const id=el.dataset.coverId;if(!id)continue;const f=S.D.files.find(x=>x.id===id);if(!f)continue;try{const r=await sb.storage.from('band-files').createSignedUrl(f.storage_path,3600);if(r.data?.signedUrl)el.innerHTML='<img src="'+r.data.signedUrl+'" alt="Обложка">'}catch(e){}}for(const el of document.querySelectorAll('[data-song-audio]')){const f=S.D.files.find(x=>x.id===el.dataset.songAudio);if(!f)continue;try{const r=await sb.storage.from('band-files').createSignedUrl(f.storage_path,3600);if(r.data?.signedUrl)el.src=r.data.signedUrl}catch(e){}}}
  async ddel(d){if(!confirm('Удалить черновик?'))return;const paths=dFiles(d.id).map(f=>f.storage_path);await ok(sb.from('drafts').delete().eq('id',d.id),async()=>{if(paths.length)sb.storage.from('band-files').remove(paths);S.dd=null;await load();draw(true)})},
  async dfdel(d){if(!confirm('Удалить файл?'))return;const f=(S.D.dfiles||[]).find(x=>x.id===d.id);if(PLAY.id===d.id){document.getElementById('au').pause();PLAY.id=null;document.getElementById('pl').style.display='none'}
   await ok(sb.from('draft_files').delete().eq('id',d.id),async()=>{if(f)sb.storage.from('band-files').remove([f.storage_path]);await load();draw(true)})}

@@ -1008,3 +1008,12 @@ document.addEventListener('click',e=>{
 .mbh-player .mbh-p-play{width:52px!important;height:52px!important;min-width:52px!important;min-height:52px!important;padding:0!important;border-radius:50%!important;display:grid!important;place-items:center!important;line-height:1!important}
 @media(max-width:600px){.mbh-player .mbh-p-controls{grid-template-columns:1fr 56px 1fr!important}}
 </style>
+
+<style id="mbh-play-absolute-center">
+/* Final centering: Play is anchored to the exact horizontal midpoint of the player itself. */
+.mbh-player .mbh-p-controls{position:relative!important;display:flex!important;justify-content:center!important;align-items:center!important;width:100%!important;height:56px!important;margin:7px 0 5px!important;gap:8px!important}
+.mbh-player .mbh-p-controls .mbh-p-play{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;width:46px!important;height:46px!important;min-width:46px!important;max-width:46px!important;padding:0!important;margin:0!important;display:grid!important;place-items:center!important;border-radius:50%!important;z-index:2!important}
+.mbh-player .mbh-p-controls>button:first-child{margin-right:100px!important}
+.mbh-player .mbh-p-controls>button:last-child{margin-left:100px!important}
+@media(max-width:600px){.mbh-player .mbh-p-controls{height:52px!important}.mbh-player .mbh-p-controls .mbh-p-play{width:44px!important;height:44px!important;min-width:44px!important;max-width:44px!important}.mbh-player .mbh-p-controls>button:first-child{margin-right:82px!important}.mbh-player .mbh-p-controls>button:last-child{margin-left:82px!important}}
+</style>

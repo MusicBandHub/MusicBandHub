@@ -231,7 +231,7 @@ async function loadBands(){
   sub();await load()}catch(e){S.msg=err(e)}
  draw(true)}
 async function load(){const b=S.bid;if(!b)return;
- try{const[songs,drafts,rehs,att,log,mem,files,media,dfiles]=await Promise.all([
+ try{const[songs,drafts,rehs,att,log,mem,files,media,dfiles,reactions]=await Promise.all([
   t(sb.from('songs').select('*').eq('band_id',b).order('updated_at',{ascending:false})),
   t(sb.from('drafts').select('*').eq('band_id',b).order('created_at',{ascending:false})),
   t(sb.from('rehearsals').select('*').eq('band_id',b).order('date')),

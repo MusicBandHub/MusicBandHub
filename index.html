@@ -158,6 +158,15 @@ button:not(:disabled):active,.btn:not(:disabled):active{transform:scale(.96)!imp
 @keyframes mbhSpin{to{transform:rotate(360deg)}}@keyframes mbhBars{from{transform:scaleY(.35)}to{transform:scaleY(1)}}
 @media(max-width:520px){#pl.mbh-player{left:7px;right:7px;padding:12px;border-radius:20px}.mbh-p-top{gap:9px}.mbh-p-disc{width:44px;height:44px;flex-basis:44px}.mbh-p-controls{gap:10px}.mbh-p-tools{gap:6px}.mbh-p-vol input{width:52px}}
 
+/* SONG REACTIONS */
+.song-reactions{display:flex;align-items:center;gap:6px;margin:7px 0 0}
+.reaction-btn{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.035);color:var(--tx);border-radius:999px;padding:6px 10px;cursor:pointer;font-size:13px;transition:.2s}
+.reaction-btn:hover{transform:translateY(-1px);border-color:rgba(52,224,161,.4)}
+.reaction-btn.active.like{background:rgba(52,224,161,.14);border-color:rgba(52,224,161,.55);box-shadow:0 0 14px rgba(52,224,161,.12)}
+.reaction-btn.active.dislike{background:rgba(255,90,120,.12);border-color:rgba(255,90,120,.5)}
+.song-reactions.detail{display:block;margin:12px 0 14px;padding:10px 12px;border:1px solid rgba(124,58,237,.22);border-radius:14px;background:rgba(255,255,255,.025)}
+.reaction-who{font-size:12px;line-height:1.7;color:var(--mu);margin-top:7px}
+.reaction-who b{color:var(--tx)}
 /* AURORA AUDIO VISUALIZER */
 #pwave{position:relative;height:92px;margin:10px 0 6px;border-radius:18px;overflow:hidden;background:radial-gradient(ellipse at 50% 100%,rgba(52,224,161,.16),transparent 62%),linear-gradient(180deg,rgba(124,58,237,.06),rgba(5,5,9,.35));border:1px solid rgba(52,224,161,.18)}
 #pwave canvas{width:100%;height:100%;display:block}
@@ -231,12 +240,13 @@ async function load(){const b=S.bid;if(!b)return;
   t(sb.from('band_members').select('*,profiles(display_name)').eq('band_id',b)),
   t(sb.from('song_files').select('*').eq('band_id',b).order('created_at',{ascending:false})),
   t(sb.from('media').select('*').eq('band_id',b).order('created_at',{ascending:false})).catch(()=>[]),
-  t(sb.from('draft_files').select('*').eq('band_id',b).order('created_at',{ascending:true})).catch(()=>[])]);
-  if(b!==S.bid)return;S.D={songs,drafts,rehs,att,log,mem,files,media,dfiles};draw()}catch(e){toast(err(e))}}
+  t(sb.from('draft_files').select('*').eq('band_id',b).order('created_at',{ascending:true})).catch(()=>[]),
+  t(sb.from('song_reactions').select('*,profiles(display_name)').eq('band_id',b)).catch(()=>[])];
+  if(b!==S.bid)return;S.D={songs,drafts,rehs,att,log,mem,files,media,dfiles,reactions};draw()}catch(e){toast(err(e))}}
 function unsub(){if(S.ch){sb.removeChannel(S.ch);S.ch=null}}
 function sub(){unsub();if(!S.bid)return;const b=S.bid,ch=sb.channel('band-'+b+'-'+Date.now());
  const deb=()=>{clearTimeout(S.tm);S.tm=setTimeout(load,250)};
- ['songs','drafts','rehearsals','activity_log','band_members','song_files','media','draft_files'].forEach(table=>ch.on('postgres_changes',{event:'*',schema:'public',table,filter:'band_id=eq.'+b},deb));
+ ['songs','drafts','rehearsals','activity_log','band_members','song_files','media','draft_files','song_reactions'].forEach(table=>ch.on('postgres_changes',{event:'*',schema:'public',table,filter:'band_id=eq.'+b},deb));
  ch.on('postgres_changes',{event:'*',schema:'public',table:'rehearsal_attendees'},deb);
  ch.on('postgres_changes',{event:'UPDATE',schema:'public',table:'bands',filter:'id=eq.'+b},()=>{clearTimeout(S.tb);S.tb=setTimeout(loadBands,300)});
  ch.subscribe(s=>{S.sync=s==='SUBSCRIBED'?'ok':'bad';draw()});S.ch=ch}
@@ -432,6 +442,24 @@ async function addDraftFile(did,x){if(x.blob.size>50*1048576)throw new Error('Ф
  const u=await sb.storage.from('band-files').upload(path,x.blob,{contentType:(x.blob.type||'').split(';')[0]||undefined});if(u.error)throw u.error;
  const r=await sb.from('draft_files').insert({draft_id:did,band_id:S.bid,file_name:x.name,storage_path:path,file_type:x.ext,file_size:x.blob.size,duration_sec:x.dur??null,uploaded_by:S.user.id});if(r.error)throw r.error}
 const blankDrf=()=>({id:null,title:'',desc:'',body:'',link:'',bpm:'',key:'',sig:'',types:['IDEA'],song:''});
+function songReactions(songId){
+ const all=(S.D.reactions||[]).filter(x=>x.song_id===songId);
+ const likes=all.filter(x=>x.reaction==='LIKE'), dislikes=all.filter(x=>x.reaction==='DISLIKE');
+ const mine=all.find(x=>x.user_id===S.user.id)?.reaction||'';
+ const who=a=>a.map(x=>esc(x.profiles?.display_name||nm(x.user_id))).join(', ');
+ return {likes,dislikes,mine,likeNames:who(likes),dislikeNames:who(dislikes)};
+}
+function reactionBar(songId,detail=false){
+ const r=songReactions(songId);
+ return '<div class="song-reactions'+(detail?' detail':'')+'" onclick="event.stopPropagation()">'+
+  '<button class="reaction-btn like '+(r.mine==='LIKE'?'active':'')+'" data-a="react" data-song="'+songId+'" data-kind="LIKE" title="Лайк">👍 <b>'+r.likes.length+'</b></button>'+
+  '<button class="reaction-btn dislike '+(r.mine==='DISLIKE'?'active':'')+'" data-a="react" data-song="'+songId+'" data-kind="DISLIKE" title="Дизлайк">👎 <b>'+r.dislikes.length+'</b></button>'+
+  (detail?'<div class="reaction-who">'+
+    '<div><b>👍 Лайкнули:</b> '+(r.likeNames||'пока никто')+'</div>'+
+    '<div><b>👎 Дизлайкнули:</b> '+(r.dislikeNames||'пока никто')+'</div>'+
+   '</div>':'')+
+ '</div>';
+}
 function songsV(){
  const q=S.q.toLowerCase(),F=[['','Все'],['IDEA','Идеи'],['DRAFT','Черновики'],['ARRANGEMENT','Аранжировка'],['READY','Готовые'],['ARCHIVED','Архив']];
  const cn=k=>k?S.D.songs.filter(s=>s.status===k).length:S.D.songs.length;
@@ -456,6 +484,7 @@ function songsV(){
      <div class="psc-meta"><span>${s.bpm?s.bpm+' BPM':'BPM —'}</span><i>•</i><span>${esc(s.key_signature||'Key —')}</span><i>•</i><span>${esc(s.time_signature||'4/4')}</span></div>
      ${d?`<div class="psc-audio"><span class="mini-eq">${mbhEq()}</span><span>${esc(d.file_name||'Демо')}</span><span class="mu">${d.duration_sec?fmtT(d.duration_sec):''}</span></div>`:''}
     </div>
+    ${reactionBar(s.id)}
     <button class="psc-play" data-a="${d?'cardplay':'open'}" data-id="${d?d.id:s.id}">${d?'▶':'›'}</button>
    </article>`
   }).join('')||'<div class="empty-premium">Пока нет песен<br><span>Создайте первую композицию</span></div>'}
@@ -482,7 +511,7 @@ function songV(){const s=S.D.songs.find(x=>x.id===S.song);if(!s){S.song=null;ret
  <label class=l>Аккорды</label><textarea id=chr style="min-height:120px">${esc(s.chords)}</textarea><label class=l>Заметки</label><textarea id=nts>${esc(s.notes)}</textarea><button data-a=savetext>Сохранить текст</button>`;
  if(tab==='files'){const ic2={gp:'🎸',gp5:'🎸',pdf:'📄',txt:'📄',png:'🖼',jpg:'🖼',jpeg:'🖼',mp4:'🎬'};
   body=`<label class=btn>${S.busy?'Загрузка…':'⬆ Добавить файл (GP5, PDF, фото, текст)'}<input type=file id=fi hidden ${S.busy?'disabled':''}></label>${oth.map(f=>`<div class=card><b>${ic2[f.file_type]||'📎'} ${esc(f.file_name)}</b> · v${f.version}<div class=mu>${Math.round(f.file_size/1024)} КБ · ${esc(nm(f.uploaded_by))} · ${dt(f.created_at)}</div><button class="s g" data-a=dl data-id=${f.id}>Скачать</button><button class="s g" data-a=delfile2 data-id=${f.id}>🗑 Удалить</button></div>`).join('')||'<p class=mu>Файлов пока нет.</p>'}`}
- return`<button class="g s" data-a=back>← Песни</button><h2 style="margin:6px 0">🎵 ${esc(s.title)}</h2><div><span class="badge b-${s.status}" data-a=statmenu data-id=${s.id}>${SB[s.status]} ▾</span> <span class=mu>${s.bpm||'—'} BPM · ${esc(s.time_signature||'4/4')} · ${esc(s.key_signature||'—')}</span></div>
+ return`<button class="g s" data-a=back>← Песни</button><h2 style="margin:6px 0">🎵 ${esc(s.title)}</h2><div><span class="badge b-${s.status}" data-a=statmenu data-id=${s.id}>${SB[s.status]} ▾</span> <span class=mu>${s.bpm||'—'} BPM · ${esc(s.time_signature||'4/4')} · ${esc(s.key_signature||'—')}</span></div>${reactionBar(s.id,true)}
  ${d0?`<div class="card hero" style="display:flex;gap:12px;align-items:center"><div class=playb data-a=cardplay data-id=${d0.id}>▶</div><div><div class=mu style="color:#d8c8ff">ДЕМО</div><b>${esc(d0.file_name)}</b> ${d0.duration_sec?'· '+fmtT(d0.duration_sec):''}</div></div>`:''}
  <div class=row><button class=g data-a=rec data-id=${s.id}>🎙 Записать</button><button class=g data-a=metro data-id=${s.id}>🥁 Метроном</button></div>
  <button class=g data-a=songdraft data-id=${s.id}>＋ Черновик из песни</button>
@@ -715,6 +744,16 @@ Object.assign(A,{
   await ok(sb.from('songs').update({title:v('t').trim(),bpm,key_signature:v('key')||null,time_signature:v('ts').trim()||null,description:v('dsc')}).eq('id',S.song),async()=>{toast('Сохранено');await load();draw(true)})},
  async savetext(){await ok(sb.from('songs').update({structure:v('str'),lyrics:v('lyr'),chords:v('chr'),notes:v('nts')}).eq('id',S.song),async()=>{toast('Текст сохранён');await load();draw(true)})},
  cardplay(d){playFile(d.id)},rowplay(d){playFile(d.id)},
+ async react(d){
+  const songId=d.song, kind=d.kind;
+  if(!songId||!kind||!S.user||!S.bid)return;
+  const cur=(S.D.reactions||[]).find(x=>x.song_id===songId&&x.user_id===S.user.id);
+  try{
+   if(cur&&cur.reaction===kind){const r=await sb.from('song_reactions').delete().eq('id',cur.id);if(r.error)throw r.error}
+   else{const r=await sb.from('song_reactions').upsert({song_id:songId,band_id:S.bid,user_id:S.user.id,reaction:kind},{onConflict:'song_id,user_id'});if(r.error)throw r.error}
+   await load();
+  }catch(e){toast(err(e))}
+ },
  async ren(d){const f=S.D.files.find(x=>x.id===d.id),n=prompt('Новое название',f.file_name);if(!n||!n.trim())return;await ok(sb.from('song_files').update({file_name:n.trim()}).eq('id',d.id),async()=>{await load();draw(true)})},
  async delfile2(d){if(!confirm('Удалить файл?'))return;const f=S.D.files.find(x=>x.id===d.id);if(PLAY.id===d.id){const a=document.getElementById('au');a.pause();PLAY.id=null;document.getElementById('pl').style.display='none'}
   await ok(sb.from('song_files').delete().eq('id',d.id),async()=>{if(f)sb.storage.from('band-files').remove([f.storage_path]);await load();draw(true)})},

@@ -189,6 +189,45 @@ nav a:active{transform:scale(.96)}
 .screen-home .v4-song-progress>div>b{min-width:24px;text-align:right;display:block}
 @media(max-width:430px){.screen-home .v4-song-progress>div{column-gap:18px}}
 </style>
+<style id="mbh-songs-block-fix">
+.songs-premium{max-width:980px;margin:0 auto;padding-bottom:24px}
+.songs-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+.songs-head h2{margin:4px 0 3px;font-size:28px}
+.songs-head .mu{font-size:12px}
+.create-song{white-space:nowrap}
+.song-tools{margin-bottom:12px}
+.song-tools input{width:100%;box-sizing:border-box}
+.song-filters{display:flex;gap:7px;overflow-x:auto;padding-bottom:5px;scrollbar-width:none}
+.song-filters::-webkit-scrollbar{display:none}
+.song-filter{display:flex;align-items:center;gap:7px;white-space:nowrap;padding:8px 11px}
+.song-filter b{font-size:10px;opacity:.65}
+.song-list{display:grid;gap:10px;margin-top:12px}
+.premium-song-card{display:grid;grid-template-columns:58px minmax(0,1fr) 38px;align-items:center;gap:13px;padding:11px;border-radius:16px;background:#11151a;border:1px solid #252b34}
+.premium-song-card .psc-cover{width:58px;height:58px;border-radius:12px;overflow:hidden}
+.premium-song-card .psc-main{min-width:0}
+.premium-song-card .psc-top{display:flex;align-items:center;gap:9px;min-width:0}
+.premium-song-card .psc-top h3{margin:0;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:15px}
+.premium-song-card .psc-top .badge{flex:0 0 auto}
+.premium-song-card .psc-meta{display:flex;align-items:center;gap:7px;margin-top:7px;min-width:0;overflow:hidden;white-space:nowrap;font-size:10px}
+.premium-song-card .psc-audio{display:flex;align-items:center;gap:7px;margin-top:7px;min-width:0;font-size:10px}
+.premium-song-card .psc-audio>span:nth-child(2){overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.premium-song-card .psc-play{width:36px;height:36px;border-radius:50%;flex:0 0 36px;display:grid;place-items:center}
+@media(max-width:520px){
+ .songs-premium{padding-bottom:18px}
+ .songs-head{align-items:flex-start}
+ .songs-head h2{font-size:24px}
+ .songs-head .mu{font-size:10px;line-height:1.4}
+ .create-song{padding:8px 10px}
+ .create-song span{display:none}
+ .song-filter{padding:7px 9px;font-size:10px}
+ .premium-song-card{grid-template-columns:50px minmax(0,1fr) 34px;gap:10px;padding:9px}
+ .premium-song-card .psc-cover{width:50px;height:50px}
+ .premium-song-card .psc-top{gap:6px}
+ .premium-song-card .psc-top h3{font-size:14px}
+ .premium-song-card .psc-meta{gap:5px;font-size:9px}
+ .premium-song-card .psc-play{width:32px;height:32px;flex-basis:32px}
+}
+</style>
 </head><body>
 <div id="splash"><div class="sp-mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="spg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c6ff1a"/><stop offset=".55" stop-color="#34e0a1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M6 46 L18 14 L32 40 L46 14 L58 46" fill="none" stroke="url(#spg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g stroke="url(#spg)" stroke-width="3" stroke-linecap="round"><path d="M2 32v6M10 26v16M54 26v16M62 32v6"/></g></svg></div><div class="sp-t">MUSICBAND<br>HUB</div><div class="sp-d">• • •</div><div class="sp-b">LOADING YOUR BAND</div></div>
 <div id="app"></div>

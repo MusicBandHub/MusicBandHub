@@ -973,10 +973,12 @@ document.addEventListener('change',async e=>{const el=e.target;if(!['dfa','dfv',
  draw(true)});
 document.getElementById('au').addEventListener('timeupdate',function(){if(!PLAY.id)return;const r=document.querySelector('.sk[data-id="'+PLAY.id+'"]');if(r&&this.duration)r.value=Math.round(this.currentTime/this.duration*1000)});['play','pause','ended'].forEach(ev=>document.getElementById('au').addEventListener(ev,syncPlay));
 const _au=document.getElementById('au'),_eq=document.getElementById('eq');['play','playing'].forEach(e=>_au.addEventListener(e,()=>_eq.classList.add('on')));['pause','ended'].forEach(e=>_au.addEventListener(e,()=>_eq.classList.remove('on')));
-if(S.cfg){sb=supabase.createClient(S.cfg.url,S.cfg.key,{auth:{persistSession:true,autoRefreshToken:true,storageKey:'mbh-auth',detectSessionInUrl:false}});
+if(S.cfg){try{
+ sb=supabase.createClient(S.cfg.url,S.cfg.key,{auth:{persistSession:true,autoRefreshToken:true,storageKey:'mbh-auth',detectSessionInUrl:false}});
  sb.auth.onAuthStateChange((ev,ses)=>{
   if(ses?.user){if(S.user?.id!==ses.user.id){S.user=ses.user;S.msg='';setTimeout(loadBands,0)}else S.user=ses.user}
-  else{const was=!!S.user;S.user=null;S.bands=[];S.invAll=[];unsub();unsubInv();S.msg=was&&ev!=='SIGNED_OUT'?'Сессия истекла, войдите снова':'';draw(true)}})}
+  else{const was=!!S.user;S.user=null;S.bands=[];S.invAll=[];unsub();unsubInv();S.msg=was&&ev!=='SIGNED_OUT'?'Сессия истекла, войдите снова':'';draw(true)}})
+ }catch(e){console.error('MusicBandHub init:',e);sb=null;S.cfg=null}}
 if(localStorage.mbh_bio)S.locked=true;
 const _sp=document.getElementById('splash');_sp.querySelector('.sp-b').textContent=(localStorage.mbh_bn||'LOADING YOUR BAND').toUpperCase();
 setTimeout(()=>{_sp.style.opacity=0;setTimeout(()=>_sp.remove(),500);if(S.locked)A.unlock()},2400);

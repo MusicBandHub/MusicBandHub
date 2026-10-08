@@ -241,7 +241,7 @@ async function load(){const b=S.bid;if(!b)return;
   t(sb.from('song_files').select('*').eq('band_id',b).order('created_at',{ascending:false})),
   t(sb.from('media').select('*').eq('band_id',b).order('created_at',{ascending:false})).catch(()=>[]),
   t(sb.from('draft_files').select('*').eq('band_id',b).order('created_at',{ascending:true})).catch(()=>[]),
-  t(sb.from('song_reactions').select('*,profiles(display_name)').eq('band_id',b)).catch(()=>[])];
+  t(sb.from('song_reactions').select('*,profiles(display_name)').eq('band_id',b)).catch(()=>[])]);
   if(b!==S.bid)return;S.D={songs,drafts,rehs,att,log,mem,files,media,dfiles,reactions};draw()}catch(e){toast(err(e))}}
 function unsub(){if(S.ch){sb.removeChannel(S.ch);S.ch=null}}
 function sub(){unsub();if(!S.bid)return;const b=S.bid,ch=sb.channel('band-'+b+'-'+Date.now());

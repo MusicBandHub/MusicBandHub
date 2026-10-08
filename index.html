@@ -686,7 +686,7 @@ const A={async aiAsk(d){const q=(d.q||document.getElementById('aiq')?.value||'')
  async save(){const bpm=v('bpm')?+v('bpm'):null;if(bpm!==null&&!(Number.isInteger(bpm)&&bpm>=20&&bpm<=300))return toast('BPM должен быть от 20 до 300');
   await ok(sb.from('songs').update({title:v('t').trim(),status:v('st'),bpm,key_signature:v('key')||null,time_signature:v('ts')||null,structure:v('str'),lyrics:v('lyr'),chords:v('chr'),notes:v('nts')}).eq('id',S.song),async()=>{toast('Сохранено');await load()})},
  async delsong(){if(confirm('Удалить песню и её файлы из списка?'))await ok(sb.from('songs').delete().eq('id',S.song),()=>{S.song=null;return load()})},
- async play(d){const f=S.D.files.find(x=>x.id===d.id);await ok(sb.storage.from('band-files').createSignedUrl(f.storage_path,3600),r=>{const a=document.getElementById('au');a.src=r.data.signedUrl;document.getElementById('pt').textContent=f.file_name;document.getElementById('pl').style.display='block';a.play()})},
+ async play(d){return playFile(d.id)},
  async dl(d){const f=S.D.files.find(x=>x.id===d.id);await ok(sb.storage.from('band-files').createSignedUrl(f.storage_path,120,{download:f.file_name}),r=>{const a=document.createElement('a');a.href=r.data.signedUrl;a.click()})},
  async adddraft(){if(!v('dt').trim())return;await ok(sb.from('drafts').insert({band_id:S.bid,title:v('dt').trim(),description:v('dd'),type:v('dy'),song_id:v('ds')||null,created_by:S.user.id}),load)},
  async deldraft(d){await ok(sb.from('drafts').delete().eq('id',d.id),load)},

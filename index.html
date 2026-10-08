@@ -636,7 +636,7 @@ function songV(){const s=S.D.songs.find(x=>x.id===S.song);if(!s){S.song=null;ret
  ${d0?`<div class="card hero" style="display:flex;gap:12px;align-items:center"><div class=playb data-a=cardplay data-id=${d0.id}>▶</div><div><div class=mu style="color:#d8c8ff">ДЕМО</div><b>${esc(d0.file_name)}</b> ${d0.duration_sec?'· '+fmtT(d0.duration_sec):''}</div></div>`:''}
  <div class=row><button class=g data-a=rec data-id=${s.id}>🎙 Записать</button><button class=g data-a=metro data-id=${s.id}>🥁 Метроном</button></div>
  <button class=g data-a=songdraft data-id=${s.id}>＋ Черновик из песни</button>
- ${hero}<div class="song-tabs">${tabs.map(([k,n])=>`<button type="button" class="chip ${tab===k?"on":""}" data-a=stab data-k=${k}>${n}</button>`).join("")}</div><div class="song-detail-body">${body}</div></section>
+ ${hero}<div class="song-tabs">${tabs.map(([k,n])=>`<button type="button" class="chip ${tab===k?"on":""}" data-a=stab data-k=${k}>${n}</button>`).join("")}</div><div class="song-detail-body">${body}</div></section>`;
 
 /* ----- листы: создать / статус / меню / новая песня ----- */
 function sheet2V(){const o=S.sh2;if(!o)return'';let c='';

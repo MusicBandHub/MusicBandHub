@@ -117,7 +117,7 @@ nav a{flex:1;display:flex!important;flex-direction:column;align-items:center;jus
  nav{bottom:12px!important;width:calc(100% - 20px)!important}
 }
 </style><style id="v7-final-layout">
-#splash{display:flex!important;opacity:1!important}
+#splash{display:flex!important;opacity:1!important;pointer-events:none}
 #splash .sp-mark{position:relative;z-index:2;animation:spLogo 1.2s cubic-bezier(.2,.8,.2,1) both}
 #splash .sp-mark svg{width:86px;height:86px}
 #splash .sp-t,#splash .sp-d,#splash .sp-b{position:relative;z-index:2}
@@ -1009,6 +1009,11 @@ document.addEventListener('click',e=>{
  const b=e.target.closest('button,.btn');
  if(b&&!b.disabled){b.classList.remove('mbh-pop');void b.offsetWidth;b.classList.add('mbh-pop')}
 });
+</script><script>
+setTimeout(function(){
+  var s=document.getElementById('splash');
+  if(s){s.style.opacity='0';s.style.pointerEvents='none';setTimeout(function(){if(s&&s.parentNode)s.parentNode.removeChild(s)},450)}
+},3000);
 </script><script src="ai3.js"></script><style id="mbh-final-ui-fix">
 /* Final UI cleanup: player controls and responsive spacing. */
 .mbh-player .mbh-p-controls{

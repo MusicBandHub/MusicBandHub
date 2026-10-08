@@ -27,10 +27,29 @@ nav a{flex:1;text-align:center;padding:9px 0 8px;font-size:10.5px;color:var(--mu
 #eq i:nth-child(2){animation-delay:.15s}#eq i:nth-child(3){animation-delay:.3s}#eq i:nth-child(4){animation-delay:.45s}#eq i:nth-child(5){animation-delay:.6s}
 @keyframes eq{0%,100%{height:4px}50%{height:16px}}
 .mg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}.mt{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;background:#17171d;border:1px solid var(--bd);cursor:pointer}
-.mt img,.mt video{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}.pb{position:absolute;right:6px;bottom:6px;background:rgba(0,0,0,.65);color:var(--ac);border-radius:99px;padding:2px 8px;font-size:12px}
+.mt img,.mt video{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}.cal .wd{font-size:11px;color:var(--mu);padding:4px 0}.cd{position:relative;aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:12px;background:#15151a;border:1px solid var(--bd);font-size:14px;cursor:pointer}.cd.e{background:transparent;border:0;cursor:default}.cd.t{border-color:var(--ac)}.cd.s{background:var(--ac);color:#0b0b0d;font-weight:800}.cd i{position:absolute;bottom:4px;width:5px;height:5px;border-radius:50%;background:var(--ac)}.cd.s i{background:#0b0b0d}.cm{display:flex;align-items:center;justify-content:space-between;margin:8px 0}.cm b{letter-spacing:1.5px}.cm span{padding:6px 14px;font-size:20px;cursor:pointer}
+.mb{display:flex;align-items:center;gap:12px}.mb .pav{cursor:default}.mb .mi{flex:1;min-width:0}.mb .dd{font-size:22px;padding:6px 10px;cursor:pointer;color:var(--mu)}.rb{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:700;background:#1c1c24;border:1px solid var(--bd)}.rb.OWNER{color:#ffd166}.rb.ADMIN{color:#8bd3ff}.rb.MEMBER{color:var(--mu)}
+.mg2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.mg2 .mt{border-radius:16px}.mx{position:absolute;inset:0;background:rgba(0,0,0,.55);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px}.pk{display:flex;gap:10px}.pk>div{flex:1;background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:18px 6px;text-align:center;cursor:pointer;font-weight:700}.pk>div span{display:block;font-size:30px;margin-bottom:4px}.hn{background:#17171d;border:1px solid var(--bd);border-radius:14px;padding:10px 12px;margin:10px 0}
+.pb{position:absolute;right:6px;bottom:6px;background:rgba(0,0,0,.65);color:var(--ac);border-radius:99px;padding:2px 8px;font-size:12px}
+.qa{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.qt{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:12px 2px;text-align:center;font-size:12px;cursor:pointer}.qt span{display:block;font-size:24px;margin-bottom:2px}
+.st{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.sc{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:10px 2px;text-align:center}.sc b{display:block;font-size:24px;color:var(--ac)}.sc span{font-size:11px;color:var(--mu)}
+.lg44 svg{width:44px;height:44px;filter:none}.sec{font-size:12px;letter-spacing:1.5px;color:var(--mu);margin:20px 0 6px;font-weight:700}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:30;display:flex;align-items:flex-end}.sh{background:#121216;border-radius:24px 24px 0 0;width:100%;max-width:720px;margin:0 auto;padding:16px;padding-bottom:calc(16px + env(safe-area-inset-bottom));max-height:82vh;overflow:auto;border:1px solid var(--bd)}
+.gi{cursor:pointer}.pav{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#c6ff1a);color:#0b0b0d;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;cursor:pointer}
+#splash{position:fixed;inset:0;background:#07070a;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .35s;text-align:center}
+#splash svg{width:110px;height:110px;filter:drop-shadow(0 0 18px rgba(124,58,237,.8))}#splash svg path{stroke-dasharray:220;stroke-dashoffset:220;animation:dr .9s ease forwards}@keyframes dr{to{stroke-dashoffset:0}}
+.sp-t{font-weight:800;letter-spacing:6px;font-size:22px;margin-top:14px;line-height:1.15;opacity:0;animation:up .5s .35s forwards}.sp-d{color:var(--ac);letter-spacing:10px;margin:10px 0;opacity:0;animation:up .5s .6s forwards}.sp-b{font-weight:800;letter-spacing:3px;color:var(--mu);opacity:0;animation:up .5s .8s forwards}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.badge{display:inline-block;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:700;background:#1c1c24;border:1px solid var(--bd)}.b-IDEA{color:#ffd166}.b-DRAFT{color:#8bd3ff}.b-ARRANGEMENT{color:#c4a1ff}.b-READY{color:var(--ok)}.b-ARCHIVED{color:var(--mu)}
+.playb{width:48px;height:48px;border-radius:50%;background:var(--ac);color:#0b0b0d;display:flex;align-items:center;justify-content:center;font-size:20px;flex:none;cursor:pointer}.sk{width:100%;accent-color:#c6ff1a}input[type=range]{padding:0;border:0;background:transparent;accent-color:#c6ff1a}
+.pan{position:fixed;inset:0;z-index:40;background:#0b0b0f;overflow:auto;padding:calc(14px + env(safe-area-inset-top)) 16px 40px;display:none}
+.dots{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:16px 0}.dot{width:26px;height:26px;border-radius:50%;background:#222229;border:2px solid #333}.dot.s{border-color:var(--ac)}.dot.on{background:var(--ac);box-shadow:0 0 10px var(--ac)}.gap{width:12px}
+.tap{font-size:30px;font-weight:800;padding:26px;border:2px dashed var(--ac);border-radius:20px;color:var(--ac);cursor:pointer;user-select:none;-webkit-user-select:none}
 </style></head><body>
+<div id="splash"></div>
 <div id="app"></div>
 <div id="pl"><div style="display:flex;align-items:center;gap:8px"><div id="eq"><i></i><i></i><i></i><i></i><i></i></div><div class="mu" id="pt"></div></div><audio id="au" controls></audio></div>
+<div id="mo" class="pan"></div><div id="ro" class="pan"></div>
 <div id="toast"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
@@ -39,15 +58,16 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const PRESET={url:'https://jgzzdsittnzomedvsspj.supabase.co',key:'sb_publishable_z40zmd4oAy9jUr3Q4BgDYQ_-IpiIlJe'}; // можно вписать Project URL и anon key, чтобы экран настройки не показывался
 let sb=null,S={cfg:(PRESET.url&&PRESET.key)?PRESET:JSON.parse(localStorage.mbh_cfg||'null'),user:null,invAll:[],bands:[],bid:localStorage.mbh_band||null,tab:'home',song:null,reg:false,msg:'',net:navigator.onLine,sync:'',created:null,busy:false,q:'',fs:'',D:{songs:[],drafts:[],rehs:[],att:[],log:[],mem:[],files:[]}};
 const ST=['IDEA','DRAFT','ARRANGEMENT','READY','ARCHIVED'],AL={GOING:'Буду',MAYBE:'Возможно',NOT_GOING:'Не смогу'};
-const OK_EXT=['mp3','wav','m4a','gp','gp5','pdf','png','jpg','jpeg','mp4'];
+const OK_EXT=['mp3','wav','m4a','ogg','gp','gp5','pdf','txt','png','jpg','jpeg','mp4'];
 
 const LOGO=`<svg viewBox="0 0 64 64"><defs><linearGradient id="lg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c6ff1a"/><stop offset=".55" stop-color="#34e0a1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M6 46 L18 14 L32 40 L46 14 L58 46" fill="none" stroke="url(#lg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g stroke="url(#lg)" stroke-width="3" stroke-linecap="round"><path d="M2 32v6M10 26v16M54 26v16M62 32v6"/></g></svg>`;
-const IC={home:'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',songs:'<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',drafts:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>',rehs:'<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>',media:'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>',mem:'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'};
+const IC={home:'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',songs:'<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',drafts:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>',rehs:'<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>',files:'<path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>',media:'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>',more:'<circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/>',mem:'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'};
 const ic=k=>`<svg viewBox="0 0 24 24">${IC[k]}</svg>`;
 function toast(t){const e=document.getElementById('toast');e.textContent=t;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',3000)}
 function err(e){const m=(e&&e.message)||String(e);
  if(!navigator.onLine||/fetch|network/i.test(m))return'Нет соединения';
- if(/invalid_invite_code/.test(m))return'Неверный код приглашения';
+ if(/invalid_invite_code/.test(m))return'Неверный код группы';
+ if(/already_member/.test(m))return'Вы уже состоите в этой группе';
  if(/Invalid login/i.test(m))return'Неверный email или пароль';
  if(/already registered/i.test(m))return'Этот email уже зарегистрирован';
  if(/JWT|expired/i.test(m))return'Сессия истекла, войдите снова';
@@ -64,20 +84,20 @@ function desc(a){const w=nm(a.user_id),n=a.new_value||'';
 
 /* ---------- data ---------- */
 const t=q=>q.then(r=>{if(r.error)throw r.error;return r.data});
-async function loadInv(){try{S.invAll=await t(sb.from('invitations').select('*').order('created_at',{ascending:false}));draw()}catch(e){}}
-function subInv(){unsubInv();if(!S.user)return;S.ich=sb.channel('inv-'+S.user.id+'-'+Date.now()).on('postgres_changes',{event:'*',schema:'public',table:'invitations'},()=>{clearTimeout(S.ti);S.ti=setTimeout(loadInv,250)}).subscribe()}
+async function loadInv(){try{S.invAll=await t(sb.from('invitations').select('*').order('created_at',{ascending:false}));try{S.reqs=await t(sb.from('join_requests').select('*'))}catch(e){S.reqs=[]}draw()}catch(e){}}
+function subInv(){unsubInv();if(!S.user)return;S.ich=sb.channel('inv-'+S.user.id+'-'+Date.now()).on('postgres_changes',{event:'*',schema:'public',table:'invitations'},()=>{clearTimeout(S.ti);S.ti=setTimeout(loadInv,250)}).on('postgres_changes',{event:'*',schema:'public',table:'join_requests'},()=>{clearTimeout(S.tr);S.tr=setTimeout(loadBands,400)}).subscribe()}
 function unsubInv(){if(S.ich){sb.removeChannel(S.ich);S.ich=null}}
 const myEmail=()=>(S.user?.email||'').toLowerCase();
-function invBanner(){return S.invAll.filter(x=>x.email===myEmail()).map(i=>`<div class=card style="border:1px solid var(--ac)"><b>Приглашение в группу «${esc(i.band_name)}»</b><div class=mu>от ${esc(i.inviter_name)}</div><div class=row><button class=s data-a=accept data-id=${i.id}>Принять</button><button class="s g" data-a=decline data-id=${i.id}>Отклонить</button></div></div>`).join('')}
+function invBanner(){return S.invAll.filter(x=>x.email===myEmail()).map(i=>`<div class=card style="border:1px solid var(--ac)"><b>Приглашение в группу «${esc(i.band_name)}»</b><div class=mu>от ${esc(i.inviter_name)} · Роль: Участник</div><div class=row><button class=s data-a=accept data-id=${i.id}>Принять</button><button class="s g" data-a=decline data-id=${i.id}>Отклонить</button></div></div>`).join('')}
 async function loadBands(){
- try{subInv();await loadInv();const r=await t(sb.from('band_members').select('bands(*)').eq('user_id',S.user.id));
-  S.bands=r.map(x=>x.bands).filter(Boolean);
+ try{subInv();await loadInv();const r=await t(sb.from('band_members').select('role,bands(*)').eq('user_id',S.user.id));
+  S.bands=r.map(x=>x.bands).filter(Boolean);S.roles={};r.forEach(x=>{if(x.bands)S.roles[x.bands.id]=x.role});
   if(S.bands.length&&!band()){S.bid=S.bands[0].id;localStorage.mbh_band=S.bid}
-  if(!S.bands.length)S.bid=null;
+  if(!S.bands.length)S.bid=null;try{localStorage.mbh_bn=band()?.name||''}catch(e){}
   sub();await load()}catch(e){S.msg=err(e)}
  draw(true)}
 async function load(){const b=S.bid;if(!b)return;
- try{const[songs,drafts,rehs,att,log,mem,files,media]=await Promise.all([
+ try{const[songs,drafts,rehs,att,log,mem,files,media,dfiles]=await Promise.all([
   t(sb.from('songs').select('*').eq('band_id',b).order('updated_at',{ascending:false})),
   t(sb.from('drafts').select('*').eq('band_id',b).order('created_at',{ascending:false})),
   t(sb.from('rehearsals').select('*').eq('band_id',b).order('date')),
@@ -85,12 +105,13 @@ async function load(){const b=S.bid;if(!b)return;
   t(sb.from('activity_log').select('*').eq('band_id',b).order('created_at',{ascending:false}).limit(60)),
   t(sb.from('band_members').select('*,profiles(display_name)').eq('band_id',b)),
   t(sb.from('song_files').select('*').eq('band_id',b).order('created_at',{ascending:false})),
-  t(sb.from('media').select('*').eq('band_id',b).order('created_at',{ascending:false})).catch(()=>[])]);
-  if(b!==S.bid)return;S.D={songs,drafts,rehs,att,log,mem,files,media};draw()}catch(e){toast(err(e))}}
+  t(sb.from('media').select('*').eq('band_id',b).order('created_at',{ascending:false})).catch(()=>[]),
+  t(sb.from('draft_files').select('*').eq('band_id',b).order('created_at',{ascending:true})).catch(()=>[])]);
+  if(b!==S.bid)return;S.D={songs,drafts,rehs,att,log,mem,files,media,dfiles};draw()}catch(e){toast(err(e))}}
 function unsub(){if(S.ch){sb.removeChannel(S.ch);S.ch=null}}
 function sub(){unsub();if(!S.bid)return;const b=S.bid,ch=sb.channel('band-'+b+'-'+Date.now());
  const deb=()=>{clearTimeout(S.tm);S.tm=setTimeout(load,250)};
- ['songs','drafts','rehearsals','activity_log','band_members','song_files','media'].forEach(table=>ch.on('postgres_changes',{event:'*',schema:'public',table,filter:'band_id=eq.'+b},deb));
+ ['songs','drafts','rehearsals','activity_log','band_members','song_files','media','draft_files'].forEach(table=>ch.on('postgres_changes',{event:'*',schema:'public',table,filter:'band_id=eq.'+b},deb));
  ch.on('postgres_changes',{event:'*',schema:'public',table:'rehearsal_attendees'},deb);
  ch.on('postgres_changes',{event:'UPDATE',schema:'public',table:'bands',filter:'id=eq.'+b},()=>{clearTimeout(S.tb);S.tb=setTimeout(loadBands,300)});
  ch.subscribe(s=>{S.sync=s==='SUBSCRIBED'?'ok':'bad';draw()});S.ch=ch}
@@ -99,88 +120,361 @@ addEventListener('online',()=>{S.net=true;sub();load();draw()});addEventListener
 /* ---------- views ---------- */
 function draw(force){
  const a=document.activeElement;
+ if(!force&&S.ma&&S.ma.s===3){S.dirty=true;return}
  if(!force&&a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName)&&a.type!=='file'){S.dirty=true;return}
  S.dirty=false;
  const el=document.getElementById('app');
- el.innerHTML=!S.cfg?setupV():!S.user?authV():(!S.bands.length||S.gate)?gateV():shellV();
- document.getElementById('pl').style.bottom=S.user&&S.bands.length?'':'0'}
+ el.innerHTML=S.locked?lockV():!S.cfg?setupV():!S.user?authV():(!S.bands.length||S.gate)?gateV():shellV();
+ syncPlay();document.getElementById('pl').style.bottom=S.user&&S.bands.length?'':'0'}
 document.addEventListener('focusout',()=>setTimeout(()=>{if(S.dirty)draw()},150));
 
 function setupV(){return`<h1>MusicBandHub</h1><p class=mu>Один раз укажите данные вашего Supabase-проекта (Project Settings → API). Они хранятся только в этом браузере. Используйте только anon/publishable ключ.</p>
 <input id=cu placeholder="https://xxxx.supabase.co"><input id=ck placeholder="anon / publishable key"><button data-a=cfg>Сохранить</button>`}
 function authV(){return`<div class=logo>${LOGO}<h1>MusicBandHub</h1><p>Твоя музыкальная вселенная</p></div>
 <form id=af autocomplete=on><input id=an name=name autocomplete=name placeholder="Имя пользователя" value="${esc(S.f?.n)}"><input id=ae name=email type=email autocomplete=username placeholder="Email" value="${esc(S.f?.e)}"><input id=ap name=password type=password autocomplete=current-password placeholder="Пароль (от 6 символов)">
-<div class=er>${esc(S.msg)}</div><button type=submit ${S.busy?'disabled':''}>Зарегистрироваться</button></form>${S.noStore?'<p class=er>Браузер не сохраняет данные входа. Откройте приложение по ссылке в Safari или Chrome, а не внутри другого приложения.</p>':''}<p class=mu style="text-align:center;margin-top:24px">Продолжая, вы соглашаетесь с условиями использования</p>`}
-function gateV(){const c=S.created;
- if(c)return`<h2>Группа создана!</h2><div class=mu>Invite code:</div><div class=code>${esc(c.invite_code)}</div>
+<div class=er>${esc(S.msg)}</div><button type=submit ${S.busy?'disabled':''}>Создать аккаунт</button></form>${S.noStore?'<p class=er>Браузер не сохраняет данные входа. Откройте приложение по ссылке в Safari или Chrome, а не внутри другого приложения.</p>':''}<p class=mu style="text-align:center;margin-top:24px">Продолжая, вы соглашаетесь с условиями использования</p>`}
+function gateV(){const c=S.created,gm=S.bands.length?S.gm:'both';
+ if(c)return`<h2>Группа создана!</h2><div class=mu>Вы стали 👑 Owner. Код группы:</div><div class=code>${esc(c.invite_code)}</div>
  <button data-a=copy data-c="${esc(c.invite_code)}">Скопировать код</button><button class=g data-a=share data-c="${esc(c.invite_code)}" data-n="${esc(c.name)}">Поделиться кодом</button><button data-a=opened>Открыть группу</button>`;
- return`${invBanner()}${S.bands.length?'<button class="g s" data-a=gateback>← Назад</button>':''}<h2>${S.bands.length?'Новая группа':'Ваша группа'}</h2><input id=gn placeholder="Название группы"><input id=gd placeholder="Описание"><button data-a=mkband>Создать группу</button>
- <h3>Или вступить</h3><input id=gc placeholder="Введите код"><button class=g data-a=join>Вступить</button><div class=er>${esc(S.msg)}</div><button class="g s" data-a=signout>Выйти</button>`}
+ return`${invBanner()}${S.bands.length?'<button class="g s" data-a=gateback>← Назад</button>':''}
+ ${gm!=='join'?`<h2>${S.bands.length?'Новая группа':'Ваша группа'}</h2><input id=gn placeholder="Название группы"><input id=gd placeholder="Описание"><select id=gt>${['Рок-группа','Метал','Панк','Джаз','Кавер-группа','Другое'].map(x=>`<option>${x}</option>`).join('')}</select><div class=mu>Вы автоматически станете 👑 Owner</div><button data-a=mkband>Создать группу</button>`:''}
+ ${gm!=='create'?`<h3>🔑 Присоединиться к группе</h3><input id=gc placeholder="Введите код группы"><button class=g data-a=join>Отправить запрос</button>${S.info?`<div style="color:var(--ok)">${esc(S.info)}</div>`:''}<p class=mu>Админ группы получит запрос и должен его одобрить. Либо дождитесь приглашения на ваш email: оно появится вверху экрана.</p>`:''}
+ <div class=er>${esc(S.msg)}</div>${S.bands.length?'':'<button class="g s" data-a=signout>Выйти</button>'}`}
+const lockV=()=>`<div class=logo>${LOGO}<h1>Приложение заблокировано</h1><p>Подтвердите вход по Face ID / Touch ID</p></div><button data-a=unlock>Разблокировать</button><button class="g" data-a=signout>Выйти из аккаунта</button>`;
+const RL={OWNER:'👑 Owner',ADMIN:'Админ',MEMBER:'Участник'},E0=()=>({songs:[],drafts:[],rehs:[],att:[],log:[],mem:[],files:[],media:[],dfiles:[]});
+function sheetV(){if(!S.sheet)return'';return`<div class=ov data-a=sheetx><div class=sh data-a=noop><h3>Мои группы</h3>${S.bands.map(b=>`<div class="card gi" data-a=pick data-id=${b.id}><div>🎸 <b>${esc(b.name)}</b>${b.id===S.bid?' ✓':''}</div><div class=mu>${RL[S.roles[b.id]]||''}${b.type?' · '+esc(b.type):''}</div></div>`).join('')}<button class=g data-a=newband>＋ Создать группу</button><button class=g data-a=joinband>🔑 Присоединиться к группе</button></div></div>`}
+function profV(){if(!S.prof)return'';const name=nm(S.user.id)!=='—'?nm(S.user.id):(S.user.user_metadata?.display_name||'');
+ return`<div class=ov data-a=profx><div class=sh data-a=noop><h3>Профиль</h3><div class=card><input id=pn value="${esc(name)}" placeholder="Имя"><div class=mu>Email: ${esc(S.user.email)}</div><button data-a=savename>Сохранить имя</button></div>
+ <h3>Мои группы</h3>${S.bands.map(b=>`<div class="card gi" data-a=pick data-id=${b.id}>🎸 <b>${esc(b.name)}</b> — ${RL[S.roles[b.id]]||''}</div>`).join('')}
+ <h3>Безопасность</h3><div class=card><div class=mu>Блокировка приложения по Face ID / Touch ID при запуске. Включается на этом устройстве.</div><button class=g data-a=bio>${localStorage.mbh_bio?'Выключить блокировку':'Включить блокировку'}</button></div>
+ <button class=g data-a=signout>Выйти из аккаунта</button></div></div>`}
 function shellV(){
  const st=!S.net?'<span class=er>Нет соединения · Offline</span>':S.sync==='ok'?'<span style=color:var(--ok)>Синхронизировано</span>':'Синхронизация...';
- const T=[['home','Главная'],['songs','Песни'],['drafts','Черновики'],['media','Медиа'],['rehs','Репетиции'],['mem','Участники']];
- return`<header><select data-ch=band>${S.bands.map(b=>`<option value=${b.id} ${b.id===S.bid?'selected':''}>▼ ${esc(b.name)}</option>`).join('')}<option value=__new>＋ Новая группа</option></select><button class="g s" data-a=signout>Выйти</button></header>
- <div class=mu>${st}</div>${invBanner()}${S.tab==='home'?homeV():S.tab==='songs'?(S.song?songV():songsV()):S.tab==='drafts'?draftsV():S.tab==='media'?mediaV():S.tab==='rehs'?rehsV():memV()}
- <nav>${T.map(([k,l])=>`<a class="${S.tab===k?'on':''}" data-a=tab data-k=${k}>${ic(k)}${l}</a>`).join('')}</nav>${lbV()}`}
+ const T=[['home','Главная'],['songs','Песни'],['rehs','Репетиции'],['files','Файлы'],['mem','Группа'],['more','Ещё']];
+ return`<header><button class=g data-a=sheet style="flex:1;text-align:left;margin:0;padding:10px 14px;font-weight:700">🎸 ${esc(band()?.name||'')} ▾</button><div class=pav data-a=prof>${esc((nm(S.user.id)!=='—'?nm(S.user.id):(S.user.user_metadata?.display_name||'?')).slice(0,1).toUpperCase())}</div></header>
+ <div class=mu>${st}</div>${invBanner()}${S.tab==='home'?homeV():S.tab==='songs'?(S.song?songV():songsV()):S.tab==='files'?filesV():S.tab==='more'?moreV():S.tab==='help'?helpV():S.tab==='rehs'?rehsV():memV()}
+ <nav>${T.map(([k,l])=>`<a class="${(S.tab===k||(k==='more'&&S.tab==='help'))?'on':''}" data-a=tab data-k=${k}>${ic(k)}${l}</a>`).join('')}</nav>${lbV()}${maV()}${mmV()}${sheetV()}${profV()}${sheet2V()}${sheet3V()}`}
 const rehForm=r=>`<div class=card><input id=et value="${esc(r.title)}"><input id=ed type=date value="${r.date}"><div class=row><input id=es type=time value="${r.start_time.slice(0,5)}"><input id=ee type=time value="${(r.end_time||'').slice(0,5)}"></div><input id=el placeholder="Место" value="${esc(r.location)}"><textarea id=en placeholder="Заметки">${esc(r.notes)}</textarea><button data-a=savereh data-id=${r.id}>Сохранить</button><button class=g data-a=cancel>Отмена</button></div>`;
 const draftForm=d=>`<div class=card><input id=xt value="${esc(d.title)}"><textarea id=xd>${esc(d.description)}</textarea><select id=xy>${['IDEA','TEXT','RIFF','LINK','DEMO','VIDEO','IMAGE','FILE'].map(x=>`<option ${x===d.type?'selected':''}>${x}</option>`).join('')}</select><select id=xs><option value="">Без привязки к песне</option>${S.D.songs.map(s=>`<option value=${s.id} ${d.song_id===s.id?'selected':''}>${esc(s.title)}</option>`).join('')}</select><button data-a=savedraft data-id=${d.id}>Сохранить</button><button class=g data-a=cancel>Отмена</button></div>`;
 const IMGX=['jpg','jpeg','png','webp','heic','gif'],VIDX=['mp4','mov','m4v','webm'],CATS=[['concert_photo','Фото концертов','image'],['rehearsal_photo','Фото с репетиций','image'],['concert_video','Видео с концертов','video'],['rehearsal_video','Видео с репетиций','video'],['clips','Клипы группы','video']],CAT=()=>{const c=CATS.find(x=>x[0]===S.mc)||CATS[0];return{id:c[0],l:c[1],k:c[2]}};
 const MEXT=['jpg','jpeg','png','webp','heic','gif','mp4','mov','m4v','webm'],MMAX=50*1048576;
 async function fillUrls(list){const need=list.filter(m=>!(m.id in S.urls));if(!need.length||S.fu)return;S.fu=true;
  try{const r=await sb.storage.from('band-files').createSignedUrls(need.map(m=>m.storage_path),43200);if(r.error)throw r.error;r.data.forEach((x,i)=>{S.urls[need[i].id]=x.signedUrl||null})}catch(e){S.fu=false;return}
- S.fu=false;if(S.tab==='media')draw(true)}
-function mediaV(){const all=S.D.media||[],c=CAT(),l=all.filter(m=>m.category===c.id),vis=l.slice(0,S.mn);fillUrls(vis);
- return`<h2>Медиа</h2><div style="overflow-x:auto;white-space:nowrap;padding-bottom:4px">${CATS.map(x=>`<span class="chip ${x[0]===c.id?'on':''}" data-a=mf data-k=${x[0]}>${x[1]} (${all.filter(m=>m.category===x[0]).length})</span>`).join('')}</div>
- <label class="btn">${S.busy?'Загрузка…':'⬆ Добавить: '+c.l}<input type=file id=mu accept="${c.k==='image'?'image/*':'video/*'}" multiple hidden ${S.busy?'disabled':''}></label>
- <div class=mg>${vis.map(m=>{const u=S.urls[m.id];return`<div class=mt data-a=lb data-id=${m.id}>${u?(m.kind==='video'?`<video src="${u}#t=0.1" preload=metadata muted playsinline></video><span class=pb>▶</span>`:`<img src="${u}" loading=lazy alt="">`):''}</div>`}).join('')}</div>
- ${l.length>S.mn?'<button class=g data-a=more>Показать ещё</button>':''}${!l.length?`<p class=mu>В разделе «${c.l}» пока пусто.</p>`:''}<p class=mu>Файлы до 50 МБ. ${c.k==='image'?'JPG, PNG, WEBP, HEIC, GIF.':'MP4, MOV, WEBM.'}</p>`}
+ S.fu=false;if((S.tab==='media'||S.tab==='files')&&!(S.ma&&S.ma.s===3))draw(true)}
+const grp=id=>id==='clips'?'clip':String(id).split('_')[0],MT=[['all','Все'],['concert','Концерты'],['rehearsal','Репетиции'],['clip','Клипы']];
+function mediaV(){const all=S.D.media||[],T=S.mt||'all',K=T==='clip'?'video':(S.mk||'all');
+ const byT=all.filter(m=>T==='all'||grp(m.category)===T),nI=byT.filter(m=>m.kind==='image').length,nV=byT.length-nI;
+ const l=byT.filter(m=>K==='all'||m.kind===K),top=l.slice(0,4),rest=l.slice(4),vis=rest.slice(0,S.mn);fillUrls([...top,...vis]);
+ const tile=(m,x)=>{const u=S.urls[m.id];return`<div class=mt data-a=lb data-id=${m.id}>${u?(m.kind==='video'?`<video src="${u}#t=0.1" preload=metadata muted playsinline></video><span class=pb>▶</span>`:`<img src="${u}" loading=lazy alt="">`):''}${x||''}</div>`};
+ return`<h2>Медиа</h2><div class=mu>Все фото, видео и материалы группы в одном месте.</div>
+ <div style="overflow-x:auto;white-space:nowrap;padding:8px 0 2px">${MT.map(([k,t])=>`<span class="chip ${T===k?'on':''}" data-a=mt data-k=${k}>${t}</span>`).join('')}</div>
+ ${T==='clip'?'':`<div>${[['all','Фото и видео ('+byT.length+')'],['image','Фото ('+nI+')'],['video','Видео ('+nV+')']].map(([k,t])=>`<span class="chip ${K===k?'on':''}" data-a=mkf data-k=${k}>${t}</span>`).join('')}</div>`}
+ <button data-a=mopen ${S.busy?'disabled':''}>${S.busy?'Загрузка…':'＋ Добавить медиа'}</button>
+ ${l.length?`<div class=sec>ПОСЛЕДНИЕ МАТЕРИАЛЫ</div><div class=mg2>${top.map((m,i)=>tile(m,i===3&&rest.length?`<div class=mx>+ Ещё ${rest.length}</div>`:'')).join('')}</div>`:`<p class=mu>Здесь пока пусто. Нажмите «＋ Добавить медиа».</p>`}
+ ${rest.length?`<div class=sec>ЕЩЁ</div><div class=mg>${vis.map(m=>tile(m)).join('')}</div>${rest.length>vis.length?'<button class=g data-a=more>Показать ещё</button>':''}`:''}`}
+function maV(){const o=S.ma;if(!o)return'';let c='';
+ if(o.s===1)c=`<h3>Что добавить?</h3><div class=pk><div data-a=mk1 data-k=image><span>📷</span>Фото</div><div data-a=mk1 data-k=video><span>🎬</span>Видео</div></div>`;
+ else if(o.s===2){const L=CATS.filter(x=>x[2]===o.k).map(x=>[x[0],grp(x[0])==='concert'?['🎤','Концерт']:grp(x[0])==='rehearsal'?['🥁','Репетиция']:['🎬','Клипы']]);
+  c=`<h3>Куда добавить?</h3><div class=pk>${L.map(([id,[e,t]])=>`<div data-a=mk2 data-c=${id}><span>${e}</span>${t}</div>`).join('')}</div><button class=g data-a=mback>Назад</button>`}
+ else{const k=CAT().k;
+  c=`<h3>Добавить ${k==='image'?'фото':'видео'}</h3><div class=mu>${esc(CAT().l)}</div><div class=hn>Максимальный размер — 50 МБ.<br>${k==='image'?'Поддерживаются JPG, PNG, WEBP, HEIC, GIF.':'Поддерживаются MP4, MOV, M4V, WEBM.'}</div><label class="btn">Выбрать файлы<input type=file id=mu accept="${k==='image'?'image/*':'video/*'}" multiple hidden></label><button class=g data-a=mback>Назад</button>`}
+ return`<div class=ov data-a=mclose><div class=sh data-a=noop>${c}</div></div>`}
 function lbV(){const m=(S.D.media||[]).find(x=>x.id===S.lb);if(!m)return'';const u=S.urls[m.id];if(!u)return'';
  return`<div style="position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:20;display:flex;flex-direction:column;padding:calc(12px + env(safe-area-inset-top)) 12px calc(12px + env(safe-area-inset-bottom))"><div style="flex:1;display:flex;align-items:center;justify-content:center;min-height:0">${m.kind==='video'?`<video src="${u}" controls autoplay playsinline style="max-width:100%;max-height:100%"></video>`:`<img src="${u}" style="max-width:100%;max-height:100%" alt="">`}</div>
  <div class=mu style="margin:8px 0">${esc(m.file_name)} · ${esc(nm(m.uploaded_by))} · ${dt(m.created_at)}</div><div class=row><button class=s data-a=mediadl data-id=${m.id}>Скачать</button>${m.uploaded_by===S.user.id||isAdm()?`<button class="s g" data-a=mediadel data-id=${m.id}>Удалить</button>`:''}<button class="s g" data-a=lbx>Закрыть</button></div></div>`}
-function homeV(){const b=band(),today=new Date().toISOString().slice(0,10),n=S.D.rehs.find(r=>r.date>=today);
- return`<h2>Привет, ${esc(nm(S.user.id)!=='—'?nm(S.user.id):(S.user.user_metadata?.display_name||''))} 👋</h2><div class=mu>${esc(b.name)} · Код приглашения: ${esc(b.invite_code)}</div>
- <div class=row><button class=s data-a=tab data-k=songs>+ Песня</button><button class=s data-a=tab data-k=drafts>+ Черновик</button><button class=s data-a=tab data-k=rehs>+ Репетиция</button></div>
- <h3>Ближайшая репетиция</h3><div class="card hero">${n?`<b>${esc(n.title)}</b><br>${n.date} · ${n.start_time.slice(0,5)}${n.end_time?'–'+n.end_time.slice(0,5):''} · ${esc(n.location)}`:'Пока нет запланированных'}</div>
- <h3>Последние песни</h3>${S.D.songs.slice(0,3).map(s=>`<div class=card data-a=open data-id=${s.id}>${esc(s.title)}<div class=mu>${s.status} · ${s.bpm||'—'} BPM</div></div>`).join('')||'<p class=mu>Пока пусто</p>'}
- <h3>Последние файлы</h3>${S.D.files.slice(0,3).map(f=>`<div class=card>${esc(f.file_name)} v${f.version}<div class=mu>${esc(nm(f.uploaded_by))} · ${dt(f.created_at)}</div></div>`).join('')||'<p class=mu>Пока пусто</p>'}
- <h3>Последние изменения</h3>${S.D.log.slice(0,8).map(a=>`<div class=mu style="margin:4px 0">• ${esc(desc(a))}</div>`).join('')}`}
-function songsV(){const q=S.q.toLowerCase(),l=S.D.songs.filter(s=>(!S.fs||s.status===S.fs)&&s.title.toLowerCase().includes(q));
- return`<h2>Песни</h2><input id=sq placeholder="Поиск" value="${esc(S.q)}" data-in=q>
- <div>${ST.map(s=>`<span class="chip ${S.fs===s?'on':''}" data-a=fs data-s=${s}>${s}</span>`).join('')}</div>
- <details class=card><summary><b>+ Новая песня</b></summary><input id=nt placeholder="Название"><div class=row><input id=nb type=number placeholder="BPM 20–300"><input id=nk placeholder="Тональность"></div>
- <select id=ns>${ST.slice(0,4).map(s=>`<option>${s}</option>`).join('')}</select><button data-a=addsong>Создать</button></details>
- ${l.map(s=>`<div class=card data-a=open data-id=${s.id}><b>${esc(s.title)}</b><div class=mu>${s.status} · ${s.bpm||'—'} BPM · ${esc(s.key_signature||'—')}</div></div>`).join('')||'<p class=mu>Песен нет</p>'}`}
+function filesV(){return`<div>${[['drafts','📝 Черновики'],['media','📷 Фото и видео']].map(([k,l])=>`<span class="chip ${S.ft===k?'on':''}" data-a=ft data-k=${k}>${l}</span>`).join('')}</div>${S.ft==='media'?mediaV():draftsV()}`}
+const MON=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+const pl=(n,a,b,c)=>{const m=n%100,d=n%10;return m>10&&m<15?c:d===1?a:d>1&&d<5?b:c};
+const tdy=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const fdate=d=>{const x=new Date(d+'T00:00:00');return x.getDate()+' '+MON[x.getMonth()]};
+const dleft=d=>Math.round((new Date(d+'T00:00:00')-new Date(new Date().toDateString()))/864e5);
+const dword=n=>n<=0?'сегодня':n===1?'завтра':`через ${n} ${pl(n,'день','дня','дней')}`;
+const ago=t=>{const m=Math.max(0,Math.round((Date.now()-new Date(t))/6e4));if(m<2)return'только что';if(m<60)return m+' мин назад';const h=Math.round(m/60);if(h<24)return h+' ч назад';const d=Math.round(h/24);return d===1?'вчера':d+' '+pl(d,'день','дня','дней')+' назад'};
+const SL={IDEA:'Идея',DRAFT:'Черновик',ARRANGEMENT:'Аранжировка',READY:'Готово',ARCHIVED:'Архив'};
+const SG={drafts:['IDEA','DRAFT'],work:['ARRANGEMENT'],ready:['READY'],arch:['ARCHIVED']};
+function homeV(){
+ const b=band(),D=S.D,me=S.user.id,today=tdy(),mk=today.slice(0,7),name=nm(me)!=='—'?nm(me):(S.user.user_metadata?.display_name||'');
+ const next=D.rehs.filter(r=>r.date>=today).sort((x,y)=>(x.date+x.start_time).localeCompare(y.date+y.start_time))[0];
+ const att=next?D.att.filter(a=>a.rehearsal_id===next.id):[],going=att.filter(a=>a.status==='GOING').length,mine=att.find(a=>a.user_id===me);
+ const pool=D.songs.filter(s=>s.created_by===me||s.updated_by===me);
+ const cont=[...(pool.length?pool:D.songs).map(s=>({t:s.updated_at||'',i:'🎵',h:s.title,s:`${SL[s.status]} · изменено ${ago(s.updated_at)}`,a:'open',id:s.id})),
+  ...D.drafts.filter(d=>d.created_by===me).map(d=>({t:d.created_at||'',i:'🎙',h:d.title,s:`${d.type==='DEMO'?'Демо':'Черновик'} · ${ago(d.created_at)}`,a:'go',k:'files',ft:'drafts'}))].sort((x,y)=>y.t.localeCompare(x.t)).slice(0,2);
+ const T=[];
+ if(next&&!mine)T.push({i:'🥁',h:`Подтвердить репетицию ${fdate(next.date)}`,a:'go',k:'rehs'});
+ D.songs.forEach(s=>{if(s.status==='ARCHIVED')return;const adv=['ARRANGEMENT','READY'].includes(s.status);
+  if(!s.lyrics.trim()&&(adv||s.status==='DRAFT'))T.push({i:'📝',h:`Дописать текст «${s.title}»`,a:'open',id:s.id});
+  if(adv&&!D.files.some(f=>f.song_id===s.id))T.push({i:'📎',h:`Загрузить файлы для «${s.title}»`,a:'open',id:s.id});
+  if(adv&&!s.bpm)T.push({i:'⏱',h:`Указать BPM для «${s.title}»`,a:'open',id:s.id})});
+ const vis=S.allT?T:T.slice(0,4);
+ const live=D.songs.filter(s=>s.status!=='ARCHIVED'),tot=live.length||1,cnt=k=>live.filter(s=>SG[k].includes(s.status)).length;
+ const row=(l,k)=>{const n=cnt(k),f=Math.round(n/tot*5);return`<div data-a=go data-k=songs data-fs=${k} style="display:flex;justify-content:space-between;align-items:center;margin:10px 0;cursor:pointer"><span>${l} — <b>${n}</b></span><span style="letter-spacing:3px;color:var(--ac)">${'●'.repeat(f)}<span style="color:#3a3a46">${'●'.repeat(5-f)}</span></span></div>`};
+ const inM=t=>(t||'').slice(0,7)===mk,stat=(n,l)=>`<div class=sc><b>${n}</b><span>${l}</span></div>`;
+ const extra=S.more?`<div class=qt data-a=go data-k=files data-ft=media data-mc=concert_photo><span>📷</span>Фото</div><div class=qt data-a=go data-k=files data-ft=media data-mc=clips><span>🎬</span>Клип</div><div class=qt data-a=go data-k=mem><span>✉️</span>Пригласить</div>`:'';
+ return`<div style="display:flex;align-items:center;gap:10px"><div class=lg44>${LOGO}</div><div style="flex:1;font-weight:800;letter-spacing:1px;font-size:18px">🎸 ${esc(b.name.toUpperCase())}</div><span data-a=go data-k=mem style="font-size:24px;cursor:pointer">⚙️</span></div>
+ <h2>Привет, ${esc(name)}</h2><div class=mu>${next?'Следующее событие — репетиция '+dword(dleft(next.date)):'Ближайших событий нет'}</div>
+ <div class=sec>ЧТО СЕГОДНЯ?</div>
+ ${next?`<div class="card hero" style="padding:18px"><div class=mu style="letter-spacing:1.5px;color:#d8c8ff">БЛИЖАЙШАЯ РЕПЕТИЦИЯ</div><div style="font-size:26px;font-weight:800;margin:6px 0">📅 ${fdate(next.date)} · ${next.start_time.slice(0,5)}</div><div>📍 ${esc(next.location||'Место не указано')}</div><div>👥 Придут: ${going} из ${D.mem.length}</div><button data-a=go data-k=rehs>Открыть репетицию →</button></div>`
+ :`<div class="card hero" style="padding:18px"><b style="font-size:20px">Следующей репетиции нет</b>${isAdm()?'<button data-a=go data-k=rehs data-open=reh>+ Запланировать</button>':'<div class=mu style="margin-top:6px">Админ группы ещё не запланировал</div>'}</div>`}
+ <div class=sec>БЫСТРО СОЗДАТЬ</div>
+ <div class=qa><div class=qt data-a=go data-k=songs data-open=song><span>🎵</span>Песня</div><div class=qt data-a=go data-k=files data-ft=drafts><span>🎙</span>Демо</div><div class=qt data-a=go data-k=rehs data-open=reh><span>🥁</span>Репетиция</div><div class=qt data-a=moreq><span>${S.more?'✕':'⋯'}</span>Ещё</div>${extra}</div>
+ <div class=sec>⚡ НУЖНО СДЕЛАТЬ</div>
+ <div class=card>${vis.map(x=>`<div data-a=${x.a} data-id=${x.id||''} data-k=${x.k||''} style="padding:10px 0;border-bottom:1px solid var(--bd);cursor:pointer">○ ${x.i} ${esc(x.h)}</div>`).join('')||'<div class=mu>Всё в порядке ✓</div>'}${T.length>4?`<button class=g data-a=allt>${S.allT?'Свернуть':'Показать всё →'} (${T.length})</button>`:''}</div>
+ <div class=sec>▶ ПРОДОЛЖИТЬ</div>
+ ${cont.map(x=>`<div class=card data-a=${x.a} data-id=${x.id||''} data-k=${x.k||''} data-ft=${x.ft||''} style="cursor:pointer;display:flex;gap:12px;align-items:center"><span style="font-size:24px">${x.i}</span><div style="flex:1"><b>${esc(x.h)}</b><div class=mu>${esc(x.s)}</div></div><span style="color:var(--ac);font-weight:700">→</span></div>`).join('')||'<div class="card mu">Начните с первой песни — она появится здесь</div>'}
+ <div class=sec>📊 ЭТОТ МЕСЯЦ</div>
+ <div class=st>${stat(D.songs.filter(s=>inM(s.created_at)).length,'песен')}${stat(D.drafts.filter(d=>inM(d.created_at)).length,'демо и чернов.')}${stat(D.rehs.filter(r=>r.date.slice(0,7)===mk).length,'репетиций')}${stat(D.files.filter(f=>inM(f.created_at)).length+(D.media||[]).filter(m=>inM(m.created_at)).length,'файлов')}</div>
+ <div class=sec>🎵 НАШИ ПЕСНИ</div>
+ <div class=card>${row('Черновики','drafts')}${row('В работе','work')}${row('Готовы','ready')}<div data-a=go data-k=songs data-fs="" style="color:var(--ac);margin-top:12px;cursor:pointer;font-weight:700">Все песни →</div></div>`}
+/* ===== Каталог песен, аудио, запись, метроном, справка ===== */
+const AUD=['mp3','wav','m4a','ogg','webm','aac'],KEYS=['C','Cm','C#','C#m','D','Dm','D#','D#m','E','Em','F','Fm','F#','F#m','G','Gm','G#','G#m','A','Am','A#','A#m','B','Bm'],SIGL=['2/4','3/4','4/4','5/4','6/8','7/8','9/8','12/8'];
+const SB={IDEA:'💡 Идея',DRAFT:'✏️ Черновик',ARRANGEMENT:'🎛 Аранжировка',READY:'✅ Готово',ARCHIVED:'📦 Архив'},SBD={IDEA:'Идея / набросок',DRAFT:'Пишем песню',ARRANGEMENT:'Делаем аранжировку',READY:'Песня готова',ARCHIVED:'Архив'};
+const fmtT=s=>{s=Math.max(0,Math.round(s||0));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
+const chg=t=>(Date.now()-new Date(t))/6e4<1440?'сегодня':ago(t);
+const audOf=sid=>S.D.files.filter(f=>f.song_id===sid&&AUD.includes((f.file_type||'').toLowerCase())).sort((a,b)=>a.created_at.localeCompare(b.created_at));
+const em=x=>/^(Неподдерж|Файл слишком)/.test(x?.message||'')?x.message:err(x);
+const nowLabel=()=>new Date().toLocaleString('ru',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
+const PLAY={id:null};
+function syncPlay(){const a=document.getElementById('au');document.querySelectorAll('[data-a=cardplay],[data-a=rowplay]').forEach(e=>{e.textContent=(e.dataset.id===PLAY.id&&!a.paused)?'⏸':'▶'})}
+async function playFile(id){const a=document.getElementById('au');if(PLAY.id===id&&a.src){a.paused?a.play():a.pause();return}
+ const f=S.D.files.find(x=>x.id===id)||(S.D.dfiles||[]).find(x=>x.id===id);if(!f)return;const r=await sb.storage.from('band-files').createSignedUrl(f.storage_path,3600);if(r.error)return toast(err(r.error));
+ PLAY.id=id;a.src=r.data.signedUrl;const s=f.draft_id?S.D.drafts.find(x=>x.id===f.draft_id):S.D.songs.find(x=>x.id===f.song_id);document.getElementById('pt').textContent=(s?s.title+' · ':'')+f.file_name;document.getElementById('pl').style.display='block';
+ try{await a.play()}catch(e){toast('Не удалось воспроизвести')}syncPlay()}
+async function audioDur(f){return new Promise(r=>{try{const a=new Audio(),u=URL.createObjectURL(f);a.preload='metadata';a.onloadedmetadata=()=>{const d=isFinite(a.duration)?Math.round(a.duration):null;URL.revokeObjectURL(u);r(d)};a.onerror=()=>r(null);a.src=u}catch(e){r(null)}})}
+async function addAudio(blob,o){if(!AUD.includes(o.ext))throw new Error('Неподдерживаемый формат: '+o.name);if(blob.size>50*1048576)throw new Error('Файл слишком большой (максимум 50 МБ)');
+ const path=`bands/${S.bid}/songs/${o.song}/${Date.now()}-${Math.random().toString(36).slice(2,7)}.${o.ext}`;
+ const u=await sb.storage.from('band-files').upload(path,blob,{contentType:(blob.type||'').split(';')[0]||undefined});if(u.error)throw u.error;
+ const row={song_id:o.song,band_id:S.bid,file_name:o.name,storage_path:path,file_type:o.ext,file_size:blob.size,version:1+Math.max(0,...S.D.files.filter(x=>x.song_id===o.song).map(x=>x.version||0)),uploaded_by:S.user.id,duration_sec:o.dur??null,bpm:o.bpm??null,time_signature:o.sig??null};
+ let r=await sb.from('song_files').insert(row);if(r.error&&/column|schema/i.test(r.error.message)){delete row.duration_sec;delete row.bpm;delete row.time_signature;r=await sb.from('song_files').insert(row)}
+ if(r.error)throw r.error}
+
+/* ----- список песен ----- */
+/* ===== Черновики ===== */
+const DT=[['IDEA','💡','Идея'],['TEXT','📝','Текст'],['RIFF','🎸','Рифф'],['LINK','🔗','Ссылка'],['DEMO','🎙','Демо'],['VIDEO','🎬','Видео'],['FILM','🎞','Фильм'],['IMAGE','🖼','Изображение']];
+const DTI=Object.fromEntries(DT.map(x=>[x[0],x[1]])),DTN=Object.fromEntries(DT.map(x=>[x[0],x[2]]));
+const dTypes=d=>(d.types&&d.types.length?d.types:[d.type==='VOICE'?'DEMO':d.type]).filter(Boolean);
+const dFiles=id=>(S.D.dfiles||[]).filter(f=>f.draft_id===id);
+const safeUrl=u=>/^https?:\/\//i.test((u||'').trim())?u.trim():null;
+const dWhen=t=>{const d=new Date(t),hm=d.toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'});return d.toDateString()===new Date().toDateString()?'Сегодня, '+hm:d.toLocaleDateString('ru',{day:'2-digit',month:'2-digit'})+', '+hm};
+const colErr=e=>/column|schema cache|check constraint/i.test(e?.message||'');
+const coreRow=r=>({band_id:r.band_id,title:r.title,description:r.description,type:r.type==='FILM'?'VIDEO':r.type,song_id:r.song_id,...(r.created_by?{created_by:r.created_by}:{})});
+const dKinds={video:['mp4','mov','m4v','webm'],image:['png','jpg','jpeg','webp','heic','gif']};
+function draftCard(d){const ty=dTypes(d),fl=dFiles(d.id),au=fl.find(x=>AUD.includes(x.file_type)),sg=S.D.songs.find(x=>x.id===d.song_id),par=[d.bpm?d.bpm+' BPM':'',d.key_signature||'',d.time_signature||''].filter(Boolean).join(' · ');
+ return`<div class=card style="cursor:pointer" data-a=dopen data-id=${d.id}><div style="display:flex;gap:10px"><div style="flex:1;min-width:0"><b>${DTI[ty[0]]||'📝'} ${esc(d.title)}</b><div class=mu style="margin:4px 0">${ty.join(' · ')}</div>${sg?`<div class=mu>🎵 ${esc(sg.title)}</div>`:''}${au?`<div class=mu>🎧 ${au.duration_sec?fmtT(au.duration_sec):'аудио'}</div>`:''}${par?`<div class=mu>${esc(par)}</div>`:''}<div class=mu>${dWhen(d.created_at)} · ${esc(nm(d.created_by))}</div></div>${au?`<div class=playb data-a=rowplay data-id=${au.id}>▶</div>`:''}</div></div>`}
+function draftsV(){if(S.dd)return draftV();const q=(S.dq||'').toLowerCase(),f=S.df||'',F=[['','Все'],['IDEA','Идеи'],['TEXT','Тексты'],['RIFF','Риффы'],['DEMO','Демо'],['VIDEO','Видео'],['IMAGE','Изображения'],['LINK','Ссылки']];
+ const has=(d,k)=>!k||dTypes(d).some(t=>k==='VIDEO'?(t==='VIDEO'||t==='FILM'):t===k),l=S.D.drafts.filter(d=>has(d,f)&&(d.title+' '+(d.description||'')).toLowerCase().includes(q));
+ return`<h2>📝 Черновики</h2><div style="display:flex;gap:8px;align-items:center"><input id=dq placeholder="🔍 Найти черновик" value="${esc(S.dq||'')}" data-in=dq style="flex:1"><button class=s data-a=dnew style="flex:0 0 50px;font-size:22px;padding:8px">＋</button></div>
+ <div style="overflow-x:auto;white-space:nowrap;padding-bottom:4px">${F.map(([k,n])=>`<span class="chip ${f===k?'on':''}" data-a=dflt data-k="${k}">${n} · ${S.D.drafts.filter(d=>has(d,k)).length}</span>`).join('')}</div>
+ ${l.map(draftCard).join('')||'<p class=mu>Черновиков нет. Нажмите ＋, чтобы быстро сохранить идею: разберём потом.</p>'}`}
+function draftV(){const d=S.D.drafts.find(x=>x.id===S.dd);if(!d){S.dd=null;return draftsV()}
+ const ty=dTypes(d),fl=dFiles(d.id),au=fl.filter(f=>AUD.includes(f.file_type)),vi=fl.filter(f=>dKinds.video.includes(f.file_type)),im=fl.filter(f=>dKinds.image.includes(f.file_type)),oth=fl.filter(f=>!au.includes(f)&&!vi.includes(f)&&!im.includes(f)),sg=S.D.songs.find(x=>x.id===d.song_id),lk=safeUrl(d.link),par=[d.bpm?d.bpm+' BPM':'',d.key_signature||'',d.time_signature||''].filter(Boolean).join(' · ');
+ fillUrls([...vi,...im]);
+ return`<button class="g s" data-a=dback>← Черновики</button><h2 style="margin:6px 0">${DTI[ty[0]]||'📝'} ${esc(d.title)}</h2><div>${ty.map(x=>`<span class=badge>${DTI[x]||''} ${DTN[x]||x}</span>`).join(' ')}</div>
+ ${sg?`<div class=card data-a=open data-id=${sg.id} style="cursor:pointer;margin-top:10px">🎵 <b>${esc(sg.title)}</b> <span class=mu>· открыть песню →</span></div>`:'<div class=mu style="margin:8px 0">Без привязки к песне</div>'}
+ ${d.description?`<div class=card style="white-space:pre-wrap">${esc(d.description)}</div>`:''}${d.body?`<div class=card><b>📝 Текст</b><div style="white-space:pre-wrap;margin-top:6px">${esc(d.body)}</div></div>`:''}
+ ${lk?`<div class=card>🔗 <a href="${esc(lk)}" target=_blank rel="noopener noreferrer" style="color:var(--ac);word-break:break-all">${esc(lk)}</a></div>`:(d.link?`<div class=card>🔗 ${esc(d.link)}</div>`:'')}${par?`<div class=card>🎸 ${esc(par)}</div>`:''}
+ ${au.map(f=>`<div class=card><div style="display:flex;align-items:center;gap:10px"><div class=playb data-a=rowplay data-id=${f.id} style="width:40px;height:40px;font-size:16px">▶</div><div style="flex:1;min-width:0"><b>🎧 ${esc(f.file_name)}</b><div class=mu>${f.duration_sec?fmtT(f.duration_sec)+' · ':''}${Math.round(f.file_size/1024)} КБ</div></div><span data-a=dfdel data-id=${f.id} style="cursor:pointer">🗑</span></div><input type=range class=sk data-id=${f.id} min=0 max=1000 value=0 data-sk=1></div>`).join('')}
+ ${vi.map(f=>`<div class=card><b>🎬 ${esc(f.file_name)}</b> <span data-a=dfdel data-id=${f.id} style="cursor:pointer">🗑</span>${S.urls[f.id]?`<video src="${S.urls[f.id]}" controls playsinline preload=metadata style="width:100%;border-radius:12px;margin-top:8px"></video>`:''}</div>`).join('')}
+ ${im.map(f=>`<div class=card><b>🖼 ${esc(f.file_name)}</b> <span data-a=dfdel data-id=${f.id} style="cursor:pointer">🗑</span>${S.urls[f.id]?`<img src="${S.urls[f.id]}" style="width:100%;border-radius:12px;margin-top:8px" alt="">`:''}</div>`).join('')}
+ ${oth.map(f=>`<div class=card>📎 ${esc(f.file_name)} <span data-a=dfdel data-id=${f.id} style="cursor:pointer">🗑</span></div>`).join('')}
+ <div class=row><button class=g data-a=dedit data-id=${d.id}>✏️ Изменить</button><button class=g data-a=dlink data-id=${d.id}>🎵 Привязать к песне</button></div>
+ <button data-a=dtosong data-id=${d.id}>↗ Превратить в песню</button><button class=g data-a=ddel data-id=${d.id}>🗑 Удалить</button><div class=mu>${dWhen(d.created_at)} · ${esc(nm(d.created_by))}</div>`}
+function drfRead(){const f=S.drf;if(!f)return;const g=(i,k)=>{const e=document.getElementById(i);if(e)f[k]=e.value};g('dft','title');g('dfd','desc');g('dfb','body');g('dfl','link');g('dfbpm','bpm');g('dfsig','sig');g('dfkey','key');g('dfs','song')}
+function sheet3V(){if(!S.sh3||!S.drf)return'';const f=S.drf,h=t=>f.types.includes(t);
+ return`<div class=ov data-a=sh3x><div class=sh data-a=noop><h3>${f.id?'Изменить черновик':'Новый черновик'}</h3>
+ <label class=l>Название</label><input id=dft value="${esc(f.title)}" placeholder="Например: Рифф для новой песни">
+ <label class=l>Описание / заметка</label><textarea id=dfd placeholder="Что это? Что нужно сделать дальше?">${esc(f.desc)}</textarea>
+ <label class=l>Тип (можно выбрать несколько)</label><div>${DT.map(([k,i,n])=>`<span class="chip ${h(k)?'on':''}" data-a=dtype data-k=${k}>${i} ${n}</span>`).join('')}</div>
+ ${h('TEXT')?`<label class=l>Текст</label><textarea id=dfb style="min-height:160px" placeholder="Куплет: ... Припев: ...">${esc(f.body)}</textarea>`:''}
+ ${(h('RIFF')||h('DEMO'))?`<div class=row><div><label class=l>BPM</label><input id=dfbpm type=number min=20 max=300 value="${esc(f.bpm)}"></div><div><label class=l>Размер</label><input id=dfsig value="${esc(f.sig)}" placeholder="4/4" list=sigl></div><div><label class=l>Тональность</label><select id=dfkey><option value="">—</option>${KEYS.map(k=>`<option ${k===f.key?'selected':''}>${k}</option>`).join('')}</select></div></div><datalist id=sigl>${SIGL.map(x=>`<option value="${x}">`).join('')}</datalist>
+ <div class=row><label class="btn g" style="margin:5px 0">📁 Загрузить аудио<input type=file id=dfa accept=".mp3,.wav,.m4a,.ogg,audio/*" multiple hidden></label><button class=g data-a=drec>🎙 Записать</button></div>`:''}
+ ${(h('LINK')||h('VIDEO')||h('FILM'))?`<label class=l>Ссылка (YouTube / VK / облако)</label><input id=dfl value="${esc(f.link)}" placeholder="https://...">`:''}
+ ${(h('VIDEO')||h('FILM'))?`<label class="btn g">＋ Загрузить видео<input type=file id=dfv accept="video/*" multiple hidden></label>`:''}
+ ${h('IMAGE')?`<label class="btn g">＋ Добавить изображение<input type=file id=dfi accept="image/*" multiple hidden></label>`:''}
+ ${S.drfiles.map((x,i)=>`<div class=mu>📎 ${esc(x.name)}${x.dur?' · '+fmtT(x.dur):''} <span data-a=drmf data-i=${i} style="cursor:pointer;color:var(--er)">✕</span></div>`).join('')}
+ ${f.id?`<div class=mu>Уже прикреплено: ${dFiles(f.id).length} файл(ов). Удалить их можно в карточке черновика.</div>`:''}
+ <label class=l>🎵 Привязать к песне</label><select id=dfs><option value="">Без привязки</option>${S.D.songs.map(s=>`<option value=${s.id} ${f.song===s.id?'selected':''}>${esc(s.title)}</option>`).join('')}<option value=__new>＋ Создать новую песню</option></select>
+ <button data-a=dsave ${S.busy?'disabled':''}>${S.busy?'Сохранение…':(f.id?'Сохранить':'Добавить')}</button><button class=g data-a=sh3x>Отмена</button></div></div>`}
+async function addDraftFile(did,x){if(x.blob.size>50*1048576)throw new Error('Файл слишком большой (максимум 50 МБ)');
+ const path=`bands/${S.bid}/drafts/${did}/${Date.now()}-${Math.random().toString(36).slice(2,7)}.${x.ext}`;
+ const u=await sb.storage.from('band-files').upload(path,x.blob,{contentType:(x.blob.type||'').split(';')[0]||undefined});if(u.error)throw u.error;
+ const r=await sb.from('draft_files').insert({draft_id:did,band_id:S.bid,file_name:x.name,storage_path:path,file_type:x.ext,file_size:x.blob.size,duration_sec:x.dur??null,uploaded_by:S.user.id});if(r.error)throw r.error}
+const blankDrf=()=>({id:null,title:'',desc:'',body:'',link:'',bpm:'',key:'',sig:'',types:['IDEA'],song:''});
+function songsV(){const q=S.q.toLowerCase(),F=[['','Все'],['IDEA','Идеи'],['DRAFT','Черновики'],['ARRANGEMENT','Аранжировка'],['READY','Готовые'],['ARCHIVED','Архив']];
+ const cn=k=>k?S.D.songs.filter(s=>s.status===k).length:S.D.songs.length,mt=s=>!S.fs||(SG[S.fs]?SG[S.fs].includes(s.status):s.status===S.fs);
+ const l=S.D.songs.filter(s=>mt(s)&&s.title.toLowerCase().includes(q));
+ return`<h2>🎵 Песни</h2><div style="display:flex;gap:8px;align-items:center"><input id=sq placeholder="🔍 Поиск по названию..." value="${esc(S.q)}" data-in=q style="flex:1"><button class=s data-a=createmenu style="flex:0 0 50px;font-size:22px;padding:8px">＋</button></div>
+ <div style="overflow-x:auto;white-space:nowrap;padding-bottom:4px">${F.map(([k,n])=>`<span class="chip ${S.fs===k?'on':''}" data-a=fs data-s="${k}">${n} · ${cn(k)}</span>`).join('')}</div>
+ ${l.map(s=>{const au=audOf(s.id),d=au[0];return`<div class=card style="cursor:pointer" data-a=open data-id=${s.id}><div style="display:flex;gap:10px;align-items:flex-start"><div style="flex:1;min-width:0"><b>🎵 ${esc(s.title)}</b><div style="margin:6px 0"><span class="badge b-${s.status}" data-a=statmenu data-id=${s.id}>${SB[s.status]} ▾</span></div>
+ <div class=mu>BPM ${s.bpm||'—'} · ${esc(s.key_signature||'—')} · ${esc(s.time_signature||'4/4')}</div>${d?`<div class=mu>🎧 Демо${d.duration_sec?' · '+fmtT(d.duration_sec):''}${au.length>1?' (+'+(au.length-1)+')':''}</div>`:''}<div class=mu>Последнее изменение: ${chg(s.updated_at||s.created_at)}</div></div>
+ <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><span data-a=songmenu data-id=${s.id} style="font-size:22px;padding:0 6px">⋮</span>${d?`<div class=playb data-a=cardplay data-id=${d.id}>▶</div>`:''}</div></div></div>`}).join('')||'<p class=mu>Песен нет. Нажмите ＋, чтобы создать первую.</p>'}`}
+
+/* ----- экран песни ----- */
 function songV(){const s=S.D.songs.find(x=>x.id===S.song);if(!s){S.song=null;return songsV()}
- const fl=S.D.files.filter(f=>f.song_id===s.id),log=S.D.log.filter(a=>a.entity_id===s.id).slice(0,15),dr=S.D.drafts.filter(d=>d.song_id===s.id);
- return`<button class="g s" data-a=back>← Песни</button><input id=t value="${esc(s.title)}">
- <div class=row><div><label class=l>BPM</label><input id=bpm type=number value="${s.bpm??''}"></div><div><label class=l>Тональность</label><input id=key value="${esc(s.key_signature||'')}"></div><div><label class=l>Размер</label><input id=ts value="${esc(s.time_signature||'')}"></div></div>
- <select id=st>${ST.map(x=>`<option ${x===s.status?'selected':''}>${x}</option>`).join('')}</select>
- <label class=l>Структура (Intro, Verse, Chorus…)</label><input id=str value="${esc(s.structure)}">
- <label class=l>Текст</label><textarea id=lyr>${esc(s.lyrics)}</textarea><label class=l>Аккорды</label><textarea id=chr>${esc(s.chords)}</textarea><label class=l>Заметки</label><textarea id=nts>${esc(s.notes)}</textarea>
- <div class=mu>Добавил: ${esc(nm(s.created_by))}${s.updated_by?` · Изменил: ${esc(nm(s.updated_by))}, ${dt(s.updated_at)}`:''}</div>
- <button data-a=save>Сохранить</button><button class=g data-a=delsong ${isAdm()?'':'hidden'}>Удалить песню</button>
- <h3>Файлы</h3><label class="btn g">${S.busy?'Загрузка…':'Загрузить файл (MP3, GP5, PDF…)'}<input type=file id=fi hidden ${S.busy?'disabled':''}></label>
- ${fl.map(f=>`<div class=card><b>${esc(f.file_name)}</b> · v${f.version}<div class=mu>${Math.round(f.file_size/1024)} КБ · ${esc(nm(f.uploaded_by))} · ${dt(f.created_at)}</div>
- ${['mp3','wav','m4a'].includes(f.file_type)?`<button class=s data-a=play data-id=${f.id}>▶ Слушать</button>`:''}<button class="s g" data-a=dl data-id=${f.id}>Скачать</button></div>`).join('')}
- ${dr.length?'<h3>Черновики</h3>'+dr.map(d=>`<div class=mu>• ${d.type}: ${esc(d.title)}</div>`).join(''):''}
- <h3>История</h3>${log.map(a=>`<div class=mu style="margin:3px 0">• ${esc(desc(a))} (${dt(a.created_at)})</div>`).join('')||'<p class=mu>Пока нет</p>'}`}
-function draftsV(){return`<h2>Черновики</h2><div class=card><input id=dt placeholder="Название"><textarea id=dd placeholder="Описание / ссылка / идея"></textarea>
- <select id=dy>${['IDEA','TEXT','RIFF','LINK','DEMO','VIDEO','IMAGE','FILE'].map(x=>`<option>${x}</option>`).join('')}</select>
- <select id=ds><option value="">Без привязки к песне</option>${S.D.songs.map(s=>`<option value=${s.id}>${esc(s.title)}</option>`).join('')}</select><button data-a=adddraft>Добавить</button></div>
- ${S.D.drafts.map(d=>S.ed===d.id?draftForm(d):`<div class=card><b>${d.type} · ${esc(d.title)}</b><div>${esc(d.description)}</div><div class=mu>${esc(nm(d.created_by))} · ${dt(d.created_at)}</div>
- ${d.created_by===S.user.id||isAdm()?`<button class="s g" data-a=editdraft data-id=${d.id}>Изменить</button><button class="s g" data-a=deldraft data-id=${d.id}>Удалить</button>`:''}</div>`).join('')}`}
-function rehsV(){const me=S.user.id,d3=new Date(Date.now()+3*864e5).toISOString().slice(0,10);
- return`<h2>Репетиции</h2>${isAdm()?`<details class=card><summary><b>+ Новая репетиция</b></summary><input id=rt value="Репетиция"><input id=rd type=date value="${d3}"><div class=row><input id=rs type=time value="19:00"><input id=re type=time value="22:00"></div><input id=rl placeholder="Место"><button data-a=addreh>Создать</button></details>`:'<p class=mu>Создавать репетиции могут владелец и админы</p>'}
- ${S.D.rehs.map(r=>{const at=S.D.att.filter(a=>a.rehearsal_id===r.id),mine=at.find(a=>a.user_id===me)?.status,c=k=>at.filter(a=>a.status===k).length;
+ const au=audOf(s.id),oth=S.D.files.filter(f=>f.song_id===s.id&&!AUD.includes((f.file_type||'').toLowerCase())),tab=S.st||'main',d0=au[0];
+ const tabs=[['main','Основное'],['audio','Аудио ('+au.length+')'],['text','Тексты'],['files','Файлы ('+oth.length+')']];let body='';
+ if(tab==='main')body=`<label class=l>Название</label><input id=t value="${esc(s.title)}">
+ <label class=l>Статус</label><div class=card style="cursor:pointer;margin:4px 0" data-a=statmenu data-id=${s.id}>${SB[s.status]} ▾<div class=mu>${SBD[s.status]}</div></div>
+ <label class=l>BPM</label><div class=row style="align-items:center"><button class="g s" data-a=bpmd data-t=bpm style="flex:0 0 52px">−</button><input id=bpm type=number min=20 max=300 value="${s.bpm??''}" placeholder="120"><button class="g s" data-a=bpmu data-t=bpm style="flex:0 0 52px">＋</button></div>
+ <label class=l>Тональность</label><select id=key><option value="">—</option>${KEYS.map(k=>`<option ${k===s.key_signature?'selected':''}>${k}</option>`).join('')}</select>
+ <label class=l>Размер (можно свой: 7/8 3+2+2)</label><input id=ts value="${esc(s.time_signature||'')}" placeholder="4/4" list=sigl><datalist id=sigl>${SIGL.map(x=>`<option value="${x}">`).join('')}</datalist>
+ <label class=l>О песне</label><textarea id=dsc>${esc(s.description||'')}</textarea><button data-a=savemain>Сохранить</button>
+ <div class=card><b>📌 Связано с песней</b><div class=mu>🎧 ${au.length} демо · 📝 ${s.lyrics?'есть текст':'текста нет'} · 📎 ${oth.length} файлов · 👥 ${S.D.mem.length} участников</div></div>
+ <div class=mu>Добавил: ${esc(nm(s.created_by))}${s.updated_by?' · Изменил: '+esc(nm(s.updated_by))+', '+dt(s.updated_at):''}</div><button class=g data-a=delsong>Удалить песню</button>`;
+ if(tab==='audio')body=`<label class=btn>${S.busy?'Загрузка…':'⬆ Загрузить аудио (MP3, WAV, M4A, OGG)'}<input type=file id=au2 accept=".mp3,.wav,.m4a,.ogg,audio/*" multiple hidden ${S.busy?'disabled':''}></label>
+ <div class=row><button class=g data-a=rec data-id=${s.id}>🎙 Записать</button><button class=g data-a=rec data-id=${s.id} data-u=1>🎙 Под клик</button></div>
+ ${au.map(f=>`<div class=card><div style="display:flex;align-items:center;gap:10px"><div class=playb data-a=rowplay data-id=${f.id} style="width:40px;height:40px;font-size:16px">▶</div><div style="flex:1;min-width:0"><b>🎧 ${esc(f.file_name)}</b><div class=mu>${f.duration_sec?fmtT(f.duration_sec):'—'}${f.bpm?' · '+f.bpm+' BPM':''}${f.time_signature?' · '+esc(f.time_signature):''} · ${esc(nm(f.uploaded_by))} · ${dt(f.created_at)}</div></div></div>
+ <input type=range class=sk data-id=${f.id} min=0 max=1000 value=0 data-sk=1><div><button class="s g" data-a=ren data-id=${f.id}>✏️ Переименовать</button><button class="s g" data-a=dl data-id=${f.id}>Скачать</button><button class="s g" data-a=delfile2 data-id=${f.id}>🗑 Удалить</button></div></div>`).join('')||'<p class=mu>Демо пока нет. Загрузите аудио или запишите идею.</p>'}`;
+ if(tab==='text')body=`<label class=l>Структура (Intro, Verse, Chorus…)</label><input id=str value="${esc(s.structure)}"><label class=l>Текст (куплеты, припев)</label><textarea id=lyr style="min-height:220px">${esc(s.lyrics)}</textarea>
+ <label class=l>Аккорды</label><textarea id=chr style="min-height:120px">${esc(s.chords)}</textarea><label class=l>Заметки</label><textarea id=nts>${esc(s.notes)}</textarea><button data-a=savetext>Сохранить текст</button>`;
+ if(tab==='files'){const ic2={gp:'🎸',gp5:'🎸',pdf:'📄',txt:'📄',png:'🖼',jpg:'🖼',jpeg:'🖼',mp4:'🎬'};
+  body=`<label class=btn>${S.busy?'Загрузка…':'⬆ Добавить файл (GP5, PDF, фото, текст)'}<input type=file id=fi hidden ${S.busy?'disabled':''}></label>${oth.map(f=>`<div class=card><b>${ic2[f.file_type]||'📎'} ${esc(f.file_name)}</b> · v${f.version}<div class=mu>${Math.round(f.file_size/1024)} КБ · ${esc(nm(f.uploaded_by))} · ${dt(f.created_at)}</div><button class="s g" data-a=dl data-id=${f.id}>Скачать</button><button class="s g" data-a=delfile2 data-id=${f.id}>🗑 Удалить</button></div>`).join('')||'<p class=mu>Файлов пока нет.</p>'}`}
+ return`<button class="g s" data-a=back>← Песни</button><h2 style="margin:6px 0">🎵 ${esc(s.title)}</h2><div><span class="badge b-${s.status}" data-a=statmenu data-id=${s.id}>${SB[s.status]} ▾</span> <span class=mu>${s.bpm||'—'} BPM · ${esc(s.time_signature||'4/4')} · ${esc(s.key_signature||'—')}</span></div>
+ ${d0?`<div class="card hero" style="display:flex;gap:12px;align-items:center"><div class=playb data-a=cardplay data-id=${d0.id}>▶</div><div><div class=mu style="color:#d8c8ff">ДЕМО</div><b>${esc(d0.file_name)}</b> ${d0.duration_sec?'· '+fmtT(d0.duration_sec):''}</div></div>`:''}
+ <div class=row><button class=g data-a=rec data-id=${s.id}>🎙 Записать</button><button class=g data-a=metro data-id=${s.id}>🥁 Метроном</button></div>
+ <button class=g data-a=songdraft data-id=${s.id}>＋ Черновик из песни</button>
+ <div style="overflow-x:auto;white-space:nowrap;padding-bottom:4px">${tabs.map(([k,n])=>`<span class="chip ${tab===k?'on':''}" data-a=stab data-k=${k}>${n}</span>`).join('')}</div>${body}`}
+
+/* ----- листы: создать / статус / меню / новая песня ----- */
+function sheet2V(){const o=S.sh2;if(!o)return'';let c='';
+ if(o.t==='create')c=`<h3>Что создать?</h3><div class="card gi" data-a=newsong>🎵 <b>Новую песню</b></div><div class="card gi" data-a=recidea>🎙 <b>Записать идею</b></div><label class="card gi" style="display:block">📁 <b>Импортировать аудио</b><input type=file id=imp2 accept=".mp3,.wav,.m4a,.ogg,audio/*" multiple hidden></label><div class="card gi" data-a=addtext>📝 <b>Добавить текст</b></div>`;
+ if(o.t==='status')c=`<h3>Статус песни</h3>${Object.keys(SB).map(k=>`<div class="card gi" data-a=setstat data-id=${o.id} data-s=${k}>${SB[k]}${S.D.songs.find(x=>x.id===o.id)?.status===k?' ✓':''}<div class=mu>${SBD[k]}</div></div>`).join('')}`;
+ if(o.t==='menu')c=`<h3>Песня</h3><div class="card gi" data-a=open data-id=${o.id}>Открыть</div><div class="card gi" data-a=statmenu data-id=${o.id}>Сменить статус</div><div class="card gi" data-a=rec data-id=${o.id}>🎙 Записать демо</div><div class="card gi" data-a=metro data-id=${o.id}>🥁 Метроном</div><div class="card gi" data-a=delsong2 data-id=${o.id} style="color:var(--er)">Удалить</div>`;
+ if(o.t==='new')c=`<h3>Новая песня</h3><label class=l>Название</label><input id=nst placeholder="Введите название песни"><label class=l>Статус</label><select id=nss>${Object.keys(SB).map(k=>`<option value=${k}>${SB[k]}</option>`).join('')}</select>
+ <label class=l>BPM</label><div class=row style="align-items:center"><button class="g s" data-a=bpmd data-t=nsb style="flex:0 0 52px">−</button><input id=nsb type=number min=20 max=300 value=120><button class="g s" data-a=bpmu data-t=nsb style="flex:0 0 52px">＋</button></div>
+ <label class=l>Тональность</label><select id=nsk><option value="">—</option>${KEYS.map(k=>`<option ${k==='Am'?'selected':''}>${k}</option>`).join('')}</select><label class=l>Размер</label><input id=nsz value="4/4" list=sigl><datalist id=sigl>${SIGL.map(x=>`<option value="${x}">`).join('')}</datalist>
+ <button data-a=createsong>Создать песню</button><button class=g data-a=sheet2x>Отмена</button>`;
+ if(o.t==='dlink'){const dr=S.D.drafts.find(x=>x.id===o.id);c=`<h3>🎵 Выберите песню</h3><div class="card gi" data-a=dsetsong data-id=${o.id} data-s="">○ Без привязки${!dr?.song_id?' ✓':''}</div>${S.D.songs.map(x=>`<div class="card gi" data-a=dsetsong data-id=${o.id} data-s=${x.id}>${dr?.song_id===x.id?'●':'○'} ${esc(x.title)}</div>`).join('')}<div class="card gi" data-a=dsetsong data-id=${o.id} data-s=__new>＋ Создать новую песню</div>`}
+ return`<div class=ov data-a=sheet2x><div class=sh data-a=noop>${c}</div></div>`}
+
+/* ----- Метроном ----- */
+const SIGD={'2/4':[2],'3/4':[3],'4/4':[4],'5/4':[3,2],'6/8':[3,3],'7/8':[2,2,3],'9/8':[3,3,3],'12/8':[3,3,3,3]};
+function parseSig(s){const m=String(s||'4/4').trim().match(/^(\d+)\/(\d+)(?:\s*\(?([\d+]+)\)?)?$/);if(!m)return{n:4,groups:[4],label:'4/4'};const n=+m[1];let g=m[3]?m[3].split('+').map(Number).filter(x=>x>0):(SIGD[m[1]+'/'+m[2]]||[n]);if(g.reduce((a,b)=>a+b,0)!==n)g=[n];return{n,groups:g,label:m[1]+'/'+m[2]+(m[3]?' ('+g.join('+')+')':'')}}
+const MET={bpm:120,sig:'4/4',accent:'first',sound:'click',run:false,song:null,i:0,next:0,id:null,tap:null,taps:[]};let AC=null;
+function mClick(t,l){const o=AC.createOscillator(),g=AC.createGain(),d=MET.sound==='click'?.03:MET.sound==='wood'?.06:.09;o.frequency.value=[900,1250,1700][l];o.type=MET.sound==='click'?'square':MET.sound==='wood'?'triangle':'sine';g.gain.setValueAtTime(l?.9:.55,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+d+.02)}
+function mLevel(i,p){const m=MET.accent;if(m==='none')return 0;if(i===0)return 2;if(m==='first')return 0;if(m==='two')return(p.n>=4&&i===Math.floor(p.n/2))?1:0;if(m==='groups'){let s=0;for(const g of p.groups){if(i===s)return 1;s+=g}}return 0}
+function mBeat(i){document.querySelectorAll('#md .dot').forEach(d=>d.classList.toggle('on',+d.dataset.i===i))}
+function mTick(){const p=parseSig(MET.sig),spb=60/MET.bpm;while(MET.next<AC.currentTime+.12){const i=MET.i%p.n;mClick(MET.next,mLevel(i,p));setTimeout(()=>mBeat(i),Math.max(0,(MET.next-AC.currentTime)*1000));MET.next+=spb;MET.i++}}
+function mStart(){AC=AC||new(window.AudioContext||window.webkitAudioContext)();AC.resume();MET.i=0;MET.next=AC.currentTime+.08;clearInterval(MET.id);MET.id=setInterval(mTick,25);MET.run=true;const b=document.getElementById('mt');if(b)b.textContent='■ Стоп'}
+function mStop(){clearInterval(MET.id);MET.run=false;const b=document.getElementById('mt');if(b)b.textContent='▶ Запустить';mBeat(-1)}
+function mSetBpm(v){MET.bpm=Math.max(20,Math.min(300,Math.round(v)||120));['mb'].forEach(i=>{const e=document.getElementById(i);if(e)e.textContent=MET.bpm});const r=document.getElementById('mrg');if(r)r.value=MET.bpm;const n=document.getElementById('mbi');if(n)n.value=MET.bpm}
+function mLoad(song){MET.song=song||null;const s=song&&S.D.songs.find(x=>x.id===song);if(s){if(s.bpm)MET.bpm=s.bpm;if(s.time_signature)MET.sig=s.time_signature}}
+function dotsHtml(p){let h='',i=0;p.groups.forEach((g,gi)=>{if(gi)h+='<span class=gap></span>';for(let k=0;k<g;k++,i++)h+=`<span class="dot ${mLevel(i,p)?'s':''}" data-i=${i}></span>`});return h}
+function mOpen(song){mLoad(song);mRender();document.getElementById('mo').style.display='block'}
+function mClose(){mStop();document.getElementById('mo').style.display='none'}
+function mRender(){const p=parseSig(MET.sig),s=MET.song&&S.D.songs.find(x=>x.id===MET.song),std=SIGL.includes(MET.sig);
+ document.getElementById('mo').innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center"><h2>🥁 Метроном</h2><button class="g s" data-m=close>✕</button></div>
+ ${!localStorage.mbh_t_met?`<div class="card hero"><b>🥁 Метроном</b><div class=mu>Выберите темп и размер такта. Нажмите Tap, чтобы определить BPM вручную.</div><button class=s data-m=tip data-k=met>Понятно</button></div>`:''}
+ ${s?`<div class=mu>🎵 ${esc(s.title)} · ${esc(s.key_signature||'—')}</div>`:''}
+ <div style="text-align:center"><div id=mb style="font-size:72px;font-weight:800;color:var(--ac);line-height:1">${MET.bpm}</div><div class=mu>BPM · ${esc(p.label)}</div></div><div class=dots id=md>${dotsHtml(p)}</div>
+ <div class=row style="align-items:center"><button class="g s" data-m=bpm data-d=-5>−5</button><button class="g s" data-m=bpm data-d=-1>−1</button><input id=mbi type=number min=20 max=300 value=${MET.bpm} data-mc=bpmi style="text-align:center"><button class="g s" data-m=bpm data-d=1>＋1</button><button class="g s" data-m=bpm data-d=5>＋5</button></div>
+ <input type=range id=mrg min=20 max=300 value=${MET.bpm} data-mc=rng>
+ <button id=mt data-m=toggle>${MET.run?'■ Стоп':'▶ Запустить'}</button>
+ <label class=l>Размер</label><select data-mc=sig>${SIGL.map(x=>`<option ${x===MET.sig?'selected':''}>${x}</option>`).join('')}<option value=custom ${std?'':'selected'}>Свой…</option></select>
+ <div class=row><input id=mcs placeholder="Свой: 7/8 3+2+2" value="${std?'':esc(MET.sig)}"><button class="g s" data-m=applycustom style="flex:0 0 auto">Применить</button></div>
+ <label class=l>Акцент</label><select data-mc=acc>${[['first','Акцент на 1-ю долю'],['two','Акцент на 1 и 3'],['groups','По группам (напр. 7/8: 3+2+2)'],['none','Без акцента']].map(([k,l])=>`<option value=${k} ${MET.accent===k?'selected':''}>${l}</option>`).join('')}</select>
+ <label class=l>Звук</label><select data-mc=snd>${[['click','Click'],['wood','Wood'],['beep','Beep']].map(([k,l])=>`<option value=${k} ${MET.sound===k?'selected':''}>${l}</option>`).join('')}</select>
+ <div class=card style="text-align:center"><div class=tap data-m=tap>👆 TAP</div><div id=mtap class=mu>${MET.tap?'≈ '+MET.tap+' BPM':'Нажимайте в ритм'}</div><button class=g data-m=applytap>Применить к метроному</button></div>
+ ${s?`<button data-m=savesong>Сохранить ${MET.bpm} BPM · ${esc(p.label)} в песне</button>`:''}<div class=mu>Метроном звучит через динамик; для записи под клик лучше использовать наушники.</div>`}
+const MA={close(){mClose()},bpm(d){mSetBpm(MET.bpm+ +d.d)},toggle(){MET.run?mStop():mStart()},
+ tap(){const n=performance.now();if(MET.taps.length&&n-MET.taps[MET.taps.length-1]>2000)MET.taps=[];MET.taps.push(n);MET.taps=MET.taps.slice(-8);if(MET.taps.length>=2){MET.tap=Math.round(60000/((MET.taps[MET.taps.length-1]-MET.taps[0])/(MET.taps.length-1)));document.getElementById('mtap').textContent='≈ '+MET.tap+' BPM'}},
+ applytap(){if(MET.tap)mSetBpm(MET.tap)},applycustom(){const v=(document.getElementById('mcs').value||'').trim(),p=parseSig(v);if(!/^\d+\/\d+/.test(v))return toast('Формат: 7/8 3+2+2');MET.sig=v;mRender()},
+ tip(d){localStorage.setItem('mbh_t_'+d.k,'1');d.k==='met'?mRender():rRender()},
+ async savesong(){await ok(sb.from('songs').update({bpm:MET.bpm,time_signature:MET.sig}).eq('id',MET.song),async()=>{toast('Сохранено в песне');await load()})}};
+const MC={sig(el){if(el.value==='custom'){document.getElementById('mcs').focus();return}MET.sig=el.value;mRender()},acc(el){MET.accent=el.value;mRender()},snd(el){MET.sound=el.value},bpmi(el){mSetBpm(+el.value||120)},rng(el){mSetBpm(+el.value)}};
+
+/* ----- Запись ----- */
+const REC={state:'idle',mode:'mic',under:false,song:null};
+function rOpen(song,under){REC.target=null;REC.song=song||null;REC.under=!!under;REC.state='idle';REC.blob=null;REC.cancel=false;if(song)mLoad(song);rRender();document.getElementById('ro').style.display='block'}
+function rKill(){REC.cancel=true;clearInterval(REC.tm);try{if(REC.rec&&REC.rec.state!=='inactive'){REC.rec.onstop=null;REC.rec.stop()}}catch(e){}REC.stream?.getTracks().forEach(t=>t.stop());mStop()}
+function rClose(){rKill();REC.state='idle';document.getElementById('ro').style.display='none'}
+function rSec(){return REC.acc+(REC.state==='rec'?(Date.now()-REC.t)/1000:0)}
+function rTick(){const e=document.getElementById('rt');if(e)e.textContent='● '+fmtT(rSec())}
+function rRender(){const s=REC.song&&S.D.songs.find(x=>x.id===REC.song),title=REC.target==='draft'?'Запись для черновика':(s?s.title:'Новая идея'),p=parseSig(MET.sig);let c='';
+ if(REC.state==='idle')c=`${!localStorage.mbh_t_rec?`<div class="card hero"><b>🎙 Запись</b><div class=mu>Используйте микрофон, чтобы быстро сохранить рифф, мелодию или идею песни.</div><button class=s data-r=tip data-k=rec>Понятно</button></div>`:''}
+ <div><span class="chip ${REC.mode==='mic'?'on':''}" data-r=mode data-k=mic>🎙 Микрофон</span><span class="chip ${REC.mode==='line'?'on':''}" data-r=mode data-k=line>🎸 Линия / инструмент</span></div>
+ ${REC.under?`<div class=card><b>Запись под клик</b><div class=mu>${MET.bpm} BPM · ${esc(p.label)}. Отсчёт 3 → 2 → 1 → GO, затем метроном и запись стартуют вместе. Лучше в наушниках.</div><button class="s g" data-r=metro>Настроить метроном</button></div>`:''}
+ <button data-r=start>${REC.under?'▶ Записать под клик':'● Начать запись'}</button>`;
+ if(REC.state==='count')c=`<div style="text-align:center;font-size:96px;font-weight:800;color:var(--ac);margin:40px 0">${REC.cd||''}</div>`;
+ if(REC.state==='rec'||REC.state==='pause')c=`<div style="text-align:center;margin:30px 0"><div id=rt style="font-size:48px;font-weight:800">● ${fmtT(rSec())}</div><div style="font-size:48px">🎙</div><b>${REC.state==='rec'?'ИДЁТ ЗАПИСЬ':'ПАУЗА'}</b></div><div class=row><button class=g data-r=pause>${REC.state==='rec'?'⏸ Пауза':'▶ Продолжить'}</button><button data-r=stop>■ Стоп</button></div>`;
+ if(REC.state==='review'){const u=REC.url=URL.createObjectURL(REC.blob),n=REC.song?'Demo '+String(audOf(REC.song).length+1).padStart(2,'0'):'Идея '+nowLabel();
+  c=`<div class=card><b>Прослушайте запись · ${fmtT(REC.sec)}</b><audio controls src="${u}" style="width:100%;margin-top:8px"></audio></div><label class=l>Название</label><input id=rn value="${esc(n)}"><button data-r=save>Сохранить запись</button><button class=g data-r=again>Удалить и записать заново</button>`}
+ document.getElementById('ro').innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center"><h2>🎙 ${esc(title)}</h2><button class="g s" data-r=close>✕</button></div>${c}`}
+async function rStart(){if(!window.MediaRecorder||!navigator.mediaDevices)return toast('Этот браузер не поддерживает запись');
+ try{REC.stream=await navigator.mediaDevices.getUserMedia({audio:REC.mode==='line'?{echoCancellation:false,noiseSuppression:false,autoGainControl:false}:true})}catch(e){return toast('Нет доступа к микрофону. Разрешите его в настройках браузера.')}
+ const mt=['audio/mp4','audio/webm;codecs=opus','audio/webm','audio/ogg;codecs=opus'].find(x=>MediaRecorder.isTypeSupported(x));REC.mime=mt||'';REC.ext=/mp4/.test(mt||'')?'m4a':/ogg/.test(mt||'')?'ogg':'webm';REC.cancel=false;
+ if(REC.under){REC.state='count';rRender();AC=AC||new(window.AudioContext||window.webkitAudioContext)();await AC.resume();const spb=60/MET.bpm,t0=AC.currentTime+.15;
+  for(let k=3;k>=1;k--){mClick(t0+(3-k)*spb,1);setTimeout(()=>{if(!REC.cancel){REC.cd=k;rRender()}},(t0+(3-k)*spb-AC.currentTime)*1000)}
+  await new Promise(r=>setTimeout(r,(t0+3*spb-AC.currentTime)*1000));if(REC.cancel)return;REC.cd='GO';rRender();mStart()}
+ REC.rec=new MediaRecorder(REC.stream,mt?{mimeType:mt}:undefined);REC.chunks=[];REC.rec.ondataavailable=e=>{if(e.data.size)REC.chunks.push(e.data)};
+ REC.rec.onstop=()=>{REC.blob=new Blob(REC.chunks,{type:REC.mime||'audio/webm'});REC.state='review';rRender()};
+ REC.rec.start(1000);REC.state='rec';REC.acc=0;REC.t=Date.now();REC.tm=setInterval(rTick,250);rRender()}
+const RA={close(){rClose()},tip(d){localStorage.setItem('mbh_t_'+d.k,'1');rRender()},mode(d){REC.mode=d.k;rRender()},metro(){mOpen(REC.song)},start(){rStart()},
+ pause(){if(REC.state==='rec'){REC.acc=rSec();REC.rec.pause();REC.state='pause';if(REC.under)mStop()}else{REC.rec.resume();REC.t=Date.now();REC.state='rec';if(REC.under)mStart()}rRender()},
+ stop(){REC.sec=Math.round(rSec());clearInterval(REC.tm);if(REC.under)mStop();REC.rec.stop();REC.stream.getTracks().forEach(t=>t.stop())},
+ again(){REC.state='idle';REC.blob=null;rRender()},
+ async save(){if(REC.target==='draft'){const nm0=(document.getElementById('rn').value||'Запись').trim();S.drfiles.push({blob:REC.blob,name:nm0,ext:REC.ext,dur:REC.sec});REC.target=null;rClose();draw(true);return}const name=(document.getElementById('rn').value||'').trim()||'Demo';let sid=REC.song;
+  try{if(!sid){const s=await t(sb.from('songs').insert({band_id:S.bid,title:'Новая идея · '+nowLabel(),status:'IDEA',created_by:S.user.id}).select().single());sid=s.id}
+   await addAudio(REC.blob,{song:sid,name,ext:REC.ext,dur:REC.sec,bpm:REC.under?MET.bpm:null,sig:REC.under?MET.sig:null});toast('Запись сохранена');rClose();S.tab='songs';S.song=sid;S.st='audio';await load();draw(true)}catch(x){toast(em(x))}}};
+
+/* ----- Ещё и справка ----- */
+const moreV=()=>`<h2>Ещё</h2>${[['help','📖','Как пользоваться','Справка по всем функциям'],['rec','🎙','Запись','Записать идею голосом'],['met','🥁','Метроном','BPM, размеры, акценты, Tap Tempo'],['files','📁','Файлы','Аудио, фото, видео, файлы песен'],['mem','👥','Участники','Роли, приглашения, запросы'],['prof','⚙️','Настройки','Профиль и безопасность']].map(x=>`<div class="card gi" data-a=moreg data-k=${x[0]} style="display:flex;gap:12px;align-items:center"><span style="font-size:26px">${x[1]}</span><div><b>${x[2]}</b><div class=mu>${x[3]}</div></div></div>`).join('')}`;
+const HELP=[
+ {i:'🎵',t:'Песни',d:'Создание, статусы, демо, тексты и файлы',x:'Вкладка «Песни» — каталог песен группы. Нажмите ＋ → «Новую песню», введите название, статус, BPM, тональность и размер.\nСтатус меняется нажатием на плашку статуса: Идея → Черновик → Аранжировка → Готово → Архив. Карточка сразу переходит в нужный фильтр.\nВ песне четыре вкладки: «Основное» (название, BPM, тональность, размер, описание), «Аудио» (демо), «Тексты» (структура, текст, аккорды, заметки) и «Файлы» (GP5, PDF, фото). Кнопка ▶ на карточке проигрывает первое демо, внизу появляется плеер.'},
+ {i:'🎙',t:'Запись',d:'Как записывать идеи и демо',x:'В песне откройте «Аудио» → «🎙 Записать», либо «＋ → Записать идею» на экране «Песни» (создастся новая песня со статусом «Идея»).\nРежимы: «Микрофон» для голоса и «Линия / инструмент» для гитары или баса через интерфейс (без шумоподавления). Есть пауза и стоп; после остановки запись можно прослушать, назвать и сохранить.\n«Под клик»: отсчёт 3-2-1-GO, затем метроном и запись стартуют вместе. В демо сохраняются BPM и размер. При первом запуске браузер спросит доступ к микрофону.'},
+ {i:'🥁',t:'Метроном',d:'BPM, размеры, акценты, Tap Tempo',x:'Откройте через «Ещё → Метроном» или кнопку «🥁 Метроном» в песне (тогда подставятся BPM и размер песни).\nРазмеры: 2/4, 3/4, 4/4, 5/4, 6/8, 7/8, 9/8, 12/8 и свой — например «7/8 3+2+2». Акцент: на 1-ю долю, на 1 и 3, по группам или без акцента. Звук: Click, Wood, Beep.\nTap: нажимайте кнопку в ритм — приложение покажет ≈ BPM; «Применить» ставит его в метроном. «Сохранить в песне» записывает BPM и размер в песню.'},
+ {i:'🥁',t:'Репетиции',d:'Создание и планирование',x:'Вкладка «Репетиции». Создают и меняют репетиции владелец и админы: название, дата, время, место, заметки. Каждый участник отмечает «Буду / Возможно / Не смогу» — ответы и счётчики видят все. Ближайшая репетиция показана на главной.'},
+ {i:'📁',t:'Файлы',d:'Аудио, фото, видео и файлы песен',x:'Вкладка «Файлы» объединяет черновики и демо, фото и видео по разделам (фото и видео концертов и репетиций, клипы) и файлы песен. Файлы до 50 МБ. Скачать и просмотреть можно в любой момент; удалить — автор или админ.'},
+ {i:'👥',t:'Группа',d:'Участники, роли и доступ',x:'Вкладка «Группа»: код группы, участники и роли (Owner, Админ, Участник), приглашения по email, запросы на вступление по коду, правка названия. Админы назначают админов. Переключатель «🎸 Название ▾» вверху — смена группы, создание новой и вступление по коду. Данные каждой группы полностью отделены.'},
+ {i:'⚙️',t:'Профиль и безопасность',d:'Имя, выход, Face ID / Touch ID',x:'Кружок с буквой вверху справа — профиль: имя, email, ваши группы и роли. Вход сохраняется, пока вы не нажмёте «Выйти». В «Безопасность» можно включить блокировку по Face ID / Touch ID при запуске.'},
+ {i:'☁️',t:'Синхронизация и резервные копии',d:'Где хранятся данные',x:'Все данные хранятся на сервере вашего проекта Supabase, поэтому изменения одного участника сразу видят остальные. Резервные копии базы и файлов делаются средствами Supabase (панель проекта → Database → Backups; платные тарифы). Отдельной выгрузки внутри приложения нет. Без интернета новые данные не сохранятся.'},
+ {i:'📊',t:'Статистика',d:'Активность группы и прогресс',x:'На главной: «Этот месяц» (песни, демо, репетиции, файлы), «Наши песни» (сколько в работе и готово) и «Нужно сделать» — подсказки, что требует внимания.'}];
+const FAQ=[['Как добавить песню?','Песни → ＋ → «Новую песню» → заполните поля → «Создать песню». Песня сразу появится у всех участников.'],['Как изменить BPM?','Откройте песню → «Основное» → BPM (кнопки − и ＋ или вручную 20–300) → «Сохранить». Либо поменяйте в метрономе и нажмите «Сохранить в песне».'],['Как загрузить MP3?','Песня → «Аудио» → «Загрузить аудио». Поддерживаются MP3, WAV, M4A, OGG до 50 МБ. После загрузки сразу можно слушать.'],['Как записать демо?','Песня → «Аудио» → «🎙 Записать» (или «Под клик»). Остановите запись, прослушайте и сохраните.'],['Как добавить участника?','Группа → «Пригласить в группу» → email участника. Он регистрируется с этим адресом и принимает приглашение. Либо отправьте ему код группы — вы одобрите его запрос в разделе «Запросы на вступление».'],['Как сменить статус песни?','Нажмите на плашку статуса на карточке или в песне и выберите новый.'],['Как переименовать или удалить демо?','Песня → «Аудио» → «✏️ Переименовать» или «🗑 Удалить» у нужной записи.'],['Файл не загружается','Проверьте формат (MP3, WAV, M4A, OGG, GP5, PDF, JPG, PNG, MP4…) и размер: не больше 50 МБ.'],['Не работает микрофон','Разрешите доступ к микрофону в настройках браузера для этого сайта и откройте приложение по обычной ссылке в Safari или Chrome.'],['Как переключить группу?','Нажмите «🎸 Название ▾» вверху и выберите группу из списка.']];
+function helpV(){const q=(S.hq||'').toLowerCase().trim(),all=[...HELP.map(h=>({t:h.i+' '+h.t,d:h.d,x:h.x})),...FAQ.map(f=>({t:'❓ '+f[0],d:'',x:f[1]}))],hit=q?all.filter(a=>(a.t+' '+a.d+' '+a.x).toLowerCase().includes(q)):null;
+ return`<h2>📚 Как пользоваться</h2><div class=mu>Всё необходимое для работы группы в одном приложении.</div><input id=hq placeholder="🔍 Что хотите найти? Например: как изменить BPM" value="${esc(S.hq||'')}" data-in=hq>
+ ${hit?(hit.map(a=>`<details class=card open><summary><b>${esc(a.t)}</b></summary><div style="margin-top:8px;white-space:pre-line">${esc(a.x)}</div></details>`).join('')||'<p class=mu>Ничего не найдено. Попробуйте другое слово.</p>'):`<div class="card hero"><b>🚀 Начало работы</b>
+ <div style="margin-top:8px"><b>Шаг 1.</b> Создайте группу — название, тип<br><button class=s data-a=hstep data-k=group>Создать группу</button></div>
+ <div style="margin-top:8px"><b>Шаг 2.</b> Создайте песню — название, BPM, тональность, размер, статус<br><button class=s data-a=hstep data-k=song>Создать песню</button></div>
+ <div style="margin-top:8px"><b>Шаг 3.</b> Добавьте идею — загрузите аудио или запишите через микрофон<br><button class=s data-a=hstep data-k=idea>Записать идею</button></div>
+ <div style="margin-top:8px"><b>Шаг 4.</b> Используйте метроном — BPM, размер, акцент<br><button class=s data-a=hstep data-k=metro>Открыть метроном</button></div>
+ <div style="margin-top:8px"><b>Шаг 5.</b> Запланируйте репетицию — дата, время, место<br><button class=s data-a=hstep data-k=reh>Запланировать</button></div></div>
+ ${HELP.map(h=>`<details class=card><summary><b>${h.i} ${esc(h.t)}</b><div class=mu>${esc(h.d)}</div></summary><div style="margin-top:8px;white-space:pre-line">${esc(h.x)}</div></details>`).join('')}
+ <h3>❓ Частые вопросы</h3>${FAQ.map(f=>`<details class=card><summary><b>${esc(f[0])}</b></summary><div style="margin-top:8px">${esc(f[1])}</div></details>`).join('')}`}`}
+
+const MN=['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],p2=n=>String(n).padStart(2,'0');
+function rehCard(r){const me=S.user.id;const at=S.D.att.filter(a=>a.rehearsal_id===r.id),mine=at.find(a=>a.user_id===me)?.status,c=k=>at.filter(a=>a.status===k).length;
  return S.er===r.id?rehForm(r):`<div class=card><b>${esc(r.title)}</b><div>${r.date} · ${r.start_time.slice(0,5)}${r.end_time?'–'+r.end_time.slice(0,5):''} · ${esc(r.location)}</div>
  <div>${Object.entries(AL).map(([k,l])=>`<span class="chip ${mine===k?'on':''}" data-a=att data-id=${r.id} data-s=${k}>${l}</span>`).join('')}</div>
  <div class=mu>Будут: ${c('GOING')} · Возможно: ${c('MAYBE')} · Не смогут: ${c('NOT_GOING')}</div>
- ${at.map(a=>`<div class=mu>${esc(nm(a.user_id))} — ${AL[a.status]}</div>`).join('')}${isAdm()?`<button class="s g" data-a=editreh data-id=${r.id}>Изменить</button><button class="s g" data-a=delreh data-id=${r.id}>Удалить</button>`:''}</div>`}).join('')||'<p class=mu>Репетиций нет</p>'}`}
-function memV(){const own=myRole()==='OWNER';
- return`<h2>Участники</h2>${isAdm()?`<div class=card><b>Группа</b><input id=bn value="${esc(band().name)}"><input id=bd placeholder="Описание" value="${esc(band().description||'')}"><button data-a=saveband>Сохранить название</button></div>`:''}<div class=card>Код приглашения:<div class=code>${esc(band().invite_code)}</div></div>
- ${isAdm()?`<h3>Пригласить в группу</h3><div class=card><input id=ie type=email placeholder="Email участника (с ним он регистрируется в приложении)"><button data-a=invite>Отправить приглашение</button><button class=g data-a=shareinv>Отправить ссылку на приложение</button>
- ${S.invAll.filter(x=>x.band_id===S.bid).map(i=>`<div class=row style="align-items:center"><span class=mu>${esc(i.email)} · ожидает ответа</span><button class="s g" data-a=revoke data-id=${i.id}>Отозвать</button></div>`).join('')}</div>`:''}
- ${S.D.mem.map(m=>`<div class=card>${esc(m.profiles?.display_name||'?')} — <b>${m.role}</b>${isAdm()&&m.role!=='OWNER'?`<div><button class="s g" data-a=role data-id=${m.id} data-r=${m.role==='ADMIN'?'MEMBER':'ADMIN'}>${m.role==='ADMIN'?'Сделать участником':'Сделать админом'}</button>${own?`<button class="s g" data-a=kick data-id=${m.id}>Удалить</button>`:''}</div>`:''}</div>`).join('')}`}
+ ${at.map(a=>`<div class=mu>${esc(nm(a.user_id))} — ${AL[a.status]}</div>`).join('')}${isAdm()?`<button class="s g" data-a=editreh data-id=${r.id}>Изменить</button><button class="s g" data-a=delreh data-id=${r.id}>Удалить</button>`:''}</div>`}
+function rehsV(){const me=S.user.id,d3=new Date(Date.now()+3*864e5).toISOString().slice(0,10),T=tdy(),R=S.D.rehs,rv=S.rv||'cal';
+ const form=isAdm()?`<details class=card ${S.open==='reh'?'open':''}><summary><b>+ Новая репетиция</b></summary><input id=rt value="Репетиция"><input id=rd type=date value="${S.rdate||d3}"><div class=row><input id=rs type=time value="19:00"><input id=re type=time value="22:00"></div><input id=rl placeholder="Место"><textarea id=rn placeholder="Заметка: что нужно отработать…"></textarea><button data-a=addreh>Создать репетицию</button></details>`:'<p class=mu>Создавать репетиции могут владелец и админы</p>';
+ const head=`<h2>Репетиции</h2><div>${[['cal','Календарь'],['list','Список']].map(([k,l])=>`<span class="chip ${rv===k?'on':''}" data-a=rv data-k=${k}>${l}</span>`).join('')}</div>${form}`;
+ if(rv==='list')return head+(R.map(rehCard).join('')||'<p class=mu>Репетиций нет</p>');
+ const mk=S.rm||T.slice(0,7),[y,m]=mk.split('-').map(Number),off=(new Date(y,m-1,1).getDay()+6)%7,nd=new Date(y,m,0).getDate(),sd=S.sd&&S.sd.slice(0,7)===mk?S.sd:(T.slice(0,7)===mk?T:mk+'-01');
+ const has=new Set(R.map(r=>r.date));let cells='';for(let i=0;i<off;i++)cells+='<div class="cd e"></div>';
+ for(let d=1;d<=nd;d++){const ds=mk+'-'+p2(d);cells+=`<div class="cd ${ds===T?'t':''} ${ds===sd?'s':''}" data-a=day data-d=${ds}>${d}${has.has(ds)?'<i></i>':''}</div>`}
+ const day=R.filter(r=>r.date===sd),up=R.filter(r=>r.date>=T).slice(0,3);
+ return head+`<div class=cm><span data-a=rmo data-n=-1>‹</span><b>${MN[m-1].toUpperCase()} ${y}</b><span data-a=rmo data-n=1>›</span></div>
+ <div class=cal>${['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map(x=>`<div class=wd>${x}</div>`).join('')}${cells}</div>
+ <div class=sec>${fdate(sd).toUpperCase()}</div>${day.length?day.map(rehCard).join(''):`<div class=card><b>Репетиций нет</b>${isAdm()?`<button data-a=plan data-d=${sd}>＋ Запланировать репетицию</button>`:''}</div>`}
+ ${up.length?`<div class=sec>БЛИЖАЙШИЕ</div>${up.map(r=>`<div class="card gi" data-a=day data-d=${r.date}><b>${fdate(r.date)}</b><div class=mu>🎸 ${esc(r.title)} · ${r.start_time.slice(0,5)}${r.location?' · '+esc(r.location):''}</div></div>`).join('')}<button class=g data-a=rv data-k=list>Показать все →</button>`:''}`}
+const RBL={OWNER:['👑','Owner','Владелец группы'],ADMIN:['🛡','Admin','Администратор'],MEMBER:['👤','Участник','Участник группы']},BT=['Рок-группа','Метал','Панк','Джаз','Кавер-группа','Другое'];
+function memV(){const own=myRole()==='OWNER',bd=band(),code=bd.invite_code||'',typ=bd.type||'',ro={OWNER:0,ADMIN:1,MEMBER:2},ml=[...S.D.mem].sort((x,y)=>(ro[x.role]??3)-(ro[y.role]??3)),rq=(S.reqs||[]).filter(x=>x.band_id===S.bid),inv=S.invAll.filter(x=>x.band_id===S.bid);
+ const sub=`<div class=mu>${esc(typ)}</div>`;
+ const grp=isAdm()?`<div class=card><b>Информация о группе</b><label class=l>Название</label><input id=bn data-g=1 value="${esc(bd.name)}"><label class=l>Описание</label><input id=bd data-g=1 placeholder="Описание" value="${esc(bd.description||'')}"><label class=l>Тип</label><select id=bt data-g=1>${(BT.includes(typ)||!typ?BT:[typ,...BT]).map(x=>`<option ${x===typ?'selected':''}>${esc(x)}</option>`).join('')}</select><button id=sg data-a=saveband style="display:none">💾 Сохранить изменения</button></div>`:'';
+ const reqs=isAdm()&&rq.length?`<div class=sec>НОВЫЕ ЗАПРОСЫ · ${rq.length}</div>${rq.map(r=>`<div class=card><b>${esc(r.user_name||'Пользователь')}</b><div class=mu>Хочет присоединиться к «${esc(bd.name)}»</div><div class=row><button class=s data-a=approve data-id=${r.id}>Принять</button><button class="s g" data-a=reject data-id=${r.id}>Отклонить</button></div></div>`).join('')}`:'';
+ const codeC=`<div class=card><b>🔑 Код приглашения</b><div class=code>${esc(code)}</div><div class=mu>Человек вводит код в приложении («Присоединиться к группе») и отправляет запрос — вы его одобряете.</div><div class=row><button class=s data-a=copy data-c="${esc(code)}">📋 Копировать</button><button class="s g" data-a=share data-c="${esc(code)}" data-n="${esc(bd.name)}">📤 Поделиться</button></div></div>`;
+ const invC=isAdm()?`<div class=card><b>✉️ Пригласить в группу</b><input id=ie type=email placeholder="Email участника"><div class=mu>Человек увидит приглашение после входа с этим email.</div><button data-a=invite>Отправить приглашение</button>${inv.map(i=>`<div class=row style="align-items:center"><span class=mu>⏳ ${esc(i.email)} · ожидает принятия</span><button class="s g" data-a=revoke data-id=${i.id}>Отозвать</button></div>`).join('')}</div>
+ <div class=card><b>📲 Пригласить в MusicBandHub</b><div class=row><button class="s g" data-a=copylink>🔗 Скопировать ссылку</button><button class="s g" data-a=shareinv>📤 Поделиться</button></div></div>`:'';
+ const mems=`<div class=sec>УЧАСТНИКИ · ${ml.length}</div>${ml.map(m=>{const r=RBL[m.role]||RBL.MEMBER,n=m.profiles?.display_name||'?';return`<div class="card mb"><div class=pav>${esc(n.slice(0,1).toUpperCase())}</div><div class=mi><b>${esc(n)}</b> <span class="rb ${m.role}">${r[0]} ${r[1]}</span><div class=mu>${r[2]}</div></div>${isAdm()?`<span class=dd data-a=mmo data-id=${m.id}>⋮</span>`:''}</div>`}).join('')}`;
+ const roles=`<details class=card><summary><b>🔐 Права ролей</b></summary><div class=mu style="margin-top:8px"><b>👑 Owner</b> — полный доступ: группа, участники, песни, репетиции, файлы, медиа, настройки.<br><b>🛡 Admin</b> — песни, репетиции, файлы, медиа, приглашения; не может удалять владельца и передавать права владельца.<br><b>👤 Участник</b> — смотрит песни, добавляет черновики, демо, файлы и медиа, участвует в репетициях; не управляет участниками и настройками.</div></details>`;
+ return`<h2>Участники</h2><div style="font-weight:700">🎸 ${esc(bd.name)}</div>${sub}<div class=mu>Здесь можно управлять участниками группы, ролями и приглашениями.</div>${grp}${reqs}${codeC}${invC}${mems}${roles}
+ <h3>История группы</h3>${S.D.log.slice(0,20).map(a=>`<div class=mu style="margin:4px 0">• ${esc(desc(a))} (${dt(a.created_at)})</div>`).join('')}`}
+function mmV(){const m=S.D.mem.find(x=>x.id===S.mm);if(!m)return'';const r=RBL[m.role]||RBL.MEMBER,own=myRole()==='OWNER',n=m.profiles?.display_name||'?';let c='';
+ if(m.role==='OWNER')c=`<div class=mu>Владельца группы удалить нельзя.</div>`;
+ else if(!isAdm())c='';
+ else{c=`<button class=g data-a=role data-id=${m.id} data-r=${m.role==='ADMIN'?'MEMBER':'ADMIN'}>${m.role==='ADMIN'?'👤 Сделать участником':'🛡 Сделать администратором'}</button>${own?`<button class=g data-a=kick data-id=${m.id} style="color:var(--er)">🗑 Удалить из группы</button>`:'<div class=mu>Удалять участников может только владелец.</div>'}`}
+ return`<div class=ov data-a=mmx><div class=sh data-a=noop><h3>${esc(n)}</h3><div>${r[0]} ${r[1]} · <span class=mu>${r[2]}</span></div>${c}<button class=g data-a=mmx>Закрыть</button></div></div>`}
 
 /* ---------- actions ---------- */
 const ok=async(p,after)=>{try{const r=await p;if(r&&r.error)throw r.error;after&&await after(r);return r}catch(e){toast(err(e))}};
@@ -197,27 +491,40 @@ const A={
   if(error||!data.session)draw(true)},
  async invite(){const e=v('ie').trim().toLowerCase();if(!/^\S+@\S+\.\S+$/.test(e))return toast('Введите корректный email');
   const{error}=await sb.from('invitations').insert({band_id:S.bid,email:e,invited_by:S.user.id});
-  if(error)return toast(/duplicate|unique/i.test(error.message)?'Этот участник уже приглашён':/already_member/.test(error.message)?'Он уже в группе':err(error));toast('Приглашение отправлено');await loadInv()},
- shareinv(){const e=v('ie').trim(),x=`Регистрируйся в MusicBandHub${e?' с email '+e:''} — тебя ждёт приглашение в группу «${band().name}»: ${location.href}`;navigator.share?navigator.share({text:x}).catch(()=>{}):navigator.clipboard?.writeText(x).then(()=>toast('Текст скопирован'))},
+  if(error)return toast(/duplicate|unique/i.test(error.message)?'Этот участник уже приглашён':/already_member/.test(error.message)?'Он уже в группе':err(error));toast('✅ Приглашение отправлено на '+e);await loadInv()},
+ shareinv(){const e=v('ie').trim(),x=`Присоединяйся к «${band().name}» в MusicBandHub: ${location.href.split('#')[0]} — код группы: ${band().invite_code}${e?' (или зарегистрируйся с email '+e+')':''}`;navigator.share?navigator.share({text:x}).catch(()=>{}):navigator.clipboard?.writeText(x).then(()=>toast('Текст скопирован'))},
  async revoke(d){await ok(sb.from('invitations').delete().eq('id',d.id),loadInv)},
  async accept(d){const{data,error}=await sb.rpc('accept_invitation',{inv:d.id});if(error)return toast(err(error));S.gate=false;S.bid=data;localStorage.mbh_band=data;S.tab='home';toast('Вы в группе!');await loadBands()},
  async decline(d){await ok(sb.rpc('decline_invitation',{inv:d.id}),loadInv)},
- async saveband(){if(!v('bn').trim())return toast('Введите название');await ok(sb.from('bands').update({name:v('bn').trim(),description:v('bd').trim()}).eq('id',S.bid),async()=>{toast('Сохранено');await loadBands()})},
+ async saveband(){if(!v('bn').trim())return toast('Введите название');await ok(sb.from('bands').update({name:v('bn').trim(),description:v('bd').trim(),type:v('bt')}).eq('id',S.bid),async()=>{toast('Сохранено');await loadBands()})},
  cancel(){S.ed=null;S.er=null;draw(true)},
  editdraft(d){S.ed=d.id;draw(true)},editreh(d){S.er=d.id;draw(true)},
  async savedraft(d){if(!v('xt').trim())return toast('Введите название');await ok(sb.from('drafts').update({title:v('xt').trim(),description:v('xd'),type:v('xy'),song_id:v('xs')||null}).eq('id',d.id),async()=>{S.ed=null;await load();draw(true)})},
  async savereh(d){if(!v('et').trim()||!v('ed')||!v('es'))return toast('Заполните название, дату и время');await ok(sb.from('rehearsals').update({title:v('et').trim(),date:v('ed'),start_time:v('es'),end_time:v('ee')||null,location:v('el'),notes:v('en')}).eq('id',d.id),async()=>{S.er=null;await load();draw(true)})},
- lb(d){S.lb=d.id;draw(true)},lbx(){S.lb=null;draw(true)},mf(d){S.mc=d.k;S.mn=12;draw(true)},more(){S.mn+=12;draw(true)},
+ lb(d){S.lb=d.id;draw(true)},lbx(){S.lb=null;draw(true)},mf(d){S.mc=d.k;S.mn=12;draw(true)},more(){S.mn+=12;draw(true)},mmo(d){S.mm=d.id;draw(true)},mmx(){S.mm=null;draw(true)},copylink(){navigator.clipboard?.writeText(location.href.split('#')[0]).then(()=>toast('Ссылка скопирована'),()=>toast('Не удалось скопировать'))},rv(d){S.rv=d.k;draw(true)},rmo(d){const[y,m]=(S.rm||tdy().slice(0,7)).split('-').map(Number),x=new Date(y,m-1+Number(d.n),1);S.rm=x.getFullYear()+'-'+p2(x.getMonth()+1);draw(true)},day(d){S.sd=d.d;S.rm=d.d.slice(0,7);S.rv='cal';S.open=null;draw(true)},plan(d){S.rdate=d.d;S.open='reh';draw(true);scrollTo(0,0)},mt(d){S.mt=d.k;S.mk='all';S.mn=12;draw(true)},mkf(d){S.mk=d.k;S.mn=12;draw(true)},mopen(){S.ma={s:1};draw(true)},mclose(){S.ma=null;draw(true)},mk1(d){S.ma={s:2,k:d.k};draw(true)},mk2(d){S.mc=d.c;S.ma={s:3};draw(true)},mback(){S.ma=S.ma.s===3?{s:2,k:CAT().k}:{s:1};draw(true)},
  async mediadl(d){const m=S.D.media.find(x=>x.id===d.id);await ok(sb.storage.from('band-files').createSignedUrl(m.storage_path,120,{download:m.file_name}),r=>{const a=document.createElement('a');a.href=r.data.signedUrl;a.click()})},
  async mediadel(d){if(!confirm('Удалить файл?'))return;const m=S.D.media.find(x=>x.id===d.id);S.lb=null;await ok(sb.from('media').delete().eq('id',d.id),async()=>{sb.storage.from('band-files').remove([m.storage_path]);await load();draw(true)})},
- async signout(){unsub();unsubInv();localStorage.removeItem('mbh_band');await sb.auth.signOut()},
- async mkband(){if(!v('gn').trim())return;await ok(t(sb.from('bands').insert({name:v('gn').trim(),description:v('gd').trim(),owner_id:S.user.id}).select().single()).then(b=>{S.created=b;S.bid=b.id;localStorage.mbh_band=b.id;draw(true)}))},
+ noop(){},sheet(){S.sheet=true;draw(true)},sheetx(){S.sheet=false;draw(true)},prof(){S.prof=true;draw(true)},profx(){S.prof=false;draw(true)},
+ pick(d){S.sheet=false;S.prof=false;S.gate=false;S.bid=d.id;localStorage.mbh_band=d.id;S.song=null;S.tab='home';S.D=E0();sub();draw(true);load()},
+ newband(){S.sheet=false;S.gate=true;S.gm='create';S.created=null;S.msg='';draw(true)},joinband(){S.sheet=false;S.gate=true;S.gm='join';S.info='';S.msg='';draw(true)},
+ async savename(){const n=v('pn').trim();if(!n)return;await ok(sb.from('profiles').update({display_name:n}).eq('id',S.user.id),async()=>{toast('Сохранено');await load();draw(true)})},
+ async approve(d){const{error}=await sb.rpc('approve_join',{req:d.id});if(error)return toast(err(error));toast('Участник добавлен');await loadInv();await load()},
+ async reject(d){await ok(sb.from('join_requests').delete().eq('id',d.id),loadInv)},
+ async bio(){if(localStorage.mbh_bio){localStorage.removeItem('mbh_bio');toast('Блокировка выключена');return draw(true)}
+  if(!window.PublicKeyCredential)return toast('Этот браузер не поддерживает Face ID / Touch ID');
+  try{const cr=await navigator.credentials.create({publicKey:{challenge:crypto.getRandomValues(new Uint8Array(32)),rp:{name:'MusicBandHub'},user:{id:crypto.getRandomValues(new Uint8Array(16)),name:S.user.email,displayName:S.user.email},pubKeyCredParams:[{type:'public-key',alg:-7},{type:'public-key',alg:-257}],authenticatorSelection:{authenticatorAttachment:'platform',userVerification:'required'},timeout:60000}});
+   localStorage.mbh_bio=btoa(String.fromCharCode(...new Uint8Array(cr.rawId)));toast('Блокировка включена');draw(true)}catch(e){toast('Не удалось включить блокировку')}},
+ async unlock(){try{const id=Uint8Array.from(atob(localStorage.mbh_bio),c=>c.charCodeAt(0));await navigator.credentials.get({publicKey:{challenge:crypto.getRandomValues(new Uint8Array(32)),allowCredentials:[{type:'public-key',id,transports:['internal']}],userVerification:'required',timeout:60000}});S.locked=false;draw(true)}catch(e){toast('Не удалось разблокировать')}},
+ async signout(){localStorage.removeItem('mbh_bio');S.locked=false;S.sheet=false;S.prof=false;unsub();unsubInv();localStorage.removeItem('mbh_band');await sb.auth.signOut()},
+ async mkband(){if(!v('gn').trim())return;await ok(t(sb.from('bands').insert({name:v('gn').trim(),description:v('gd').trim(),owner_id:S.user.id,type:v('gt')}).select().single()).then(b=>{S.created=b;S.bid=b.id;localStorage.mbh_band=b.id;draw(true)}))},
  gateback(){S.gate=false;S.msg='';draw(true)},
  async opened(){S.gate=false;S.created=null;await loadBands()},
  copy(d,el){navigator.clipboard?.writeText(el.dataset.c).then(()=>toast('Скопировано'),()=>toast('Не удалось скопировать'))},
  share(d,el){const x='Вступай в «'+el.dataset.n+'» в MusicBandHub: '+el.dataset.c;navigator.share?navigator.share({text:x}).catch(()=>{}):navigator.clipboard?.writeText(x).then(()=>toast('Скопировано'))},
- async join(){await ok(t(sb.rpc('join_band',{code:v('gc')})).then(id=>{S.gate=false;S.bid=id;localStorage.mbh_band=id;return loadBands()}).catch(e=>{S.msg=err(e);draw(true)}))},
- tab(d){S.tab=d.k;if(d.k!=='songs')S.song=null;draw(true)},
+ async join(){const c=v('gc').trim();if(!c)return toast('Введите код группы');const{error}=await sb.rpc('request_join',{code:c});if(error){S.msg=err(error);S.info='';return draw(true)}S.msg='';S.info='Запрос отправлен. Админ группы должен его одобрить — группа появится у вас после этого.';draw(true)},
+ go(d){S.dd=null;S.tab=d.k;S.song=null;S.open=d.open||null;if(d.ft)S.ft=d.ft;if(d.mc){S.mc=d.mc;S.mt=grp(d.mc);S.mk=CAT().k}if(d.fs!==undefined)S.fs=d.fs;draw(true);scrollTo(0,0)},
+ ft(d){S.ft=d.k;draw(true)},moreq(){S.more=!S.more;draw(true)},allt(){S.allT=!S.allT;draw(true)},
+ tab(d){S.dd=null;S.open=null;S.tab=d.k;if(d.k!=='songs')S.song=null;draw(true)},
  open(d){S.tab='songs';S.song=d.id;draw(true);scrollTo(0,0)},back(){S.song=null;draw(true)},
  fs(d){S.fs=S.fs===d.s?'':d.s;draw(true)},
  async addsong(){const bpm=v('nb')?+v('nb'):null;if(!v('nt').trim())return;if(bpm!==null&&!(bpm>=20&&bpm<=300))return toast('BPM должен быть от 20 до 300');
@@ -230,17 +537,55 @@ const A={
  async adddraft(){if(!v('dt').trim())return;await ok(sb.from('drafts').insert({band_id:S.bid,title:v('dt').trim(),description:v('dd'),type:v('dy'),song_id:v('ds')||null,created_by:S.user.id}),load)},
  async deldraft(d){await ok(sb.from('drafts').delete().eq('id',d.id),load)},
  async addreh(){if(!v('rt').trim()||!v('rd')||!v('rs'))return toast('Заполните название, дату и время');
-  await ok(sb.from('rehearsals').insert({band_id:S.bid,title:v('rt').trim(),date:v('rd'),start_time:v('rs'),end_time:v('re')||null,location:v('rl'),created_by:S.user.id}),load)},
+  S.sd=v('rd');S.rm=v('rd').slice(0,7);S.rdate=null;S.open=null;await ok(sb.from('rehearsals').insert({band_id:S.bid,title:v('rt').trim(),date:v('rd'),start_time:v('rs'),end_time:v('re')||null,location:v('rl'),notes:v('rn'),created_by:S.user.id}),load)},
  async delreh(d){if(confirm('Удалить репетицию?'))await ok(sb.from('rehearsals').delete().eq('id',d.id),load)},
  async att(d){await ok(sb.from('rehearsal_attendees').upsert({rehearsal_id:d.id,user_id:S.user.id,status:d.s},{onConflict:'rehearsal_id,user_id'}),load)},
- async role(d){await ok(sb.from('band_members').update({role:d.r}).eq('id',d.id),load)},
- async kick(d){if(confirm('Удалить участника из группы?'))await ok(sb.from('band_members').delete().eq('id',d.id),load)}
+ async role(d){S.mm=null;await ok(sb.from('band_members').update({role:d.r}).eq('id',d.id),load)},
+ async kick(d){S.mm=null;if(confirm('Удалить участника из группы?'))await ok(sb.from('band_members').delete().eq('id',d.id),load)}
 };
 document.addEventListener('submit',e=>{e.preventDefault();if(e.target.id==='af')A.signup()});
-document.addEventListener('click',e=>{const el=e.target.closest('[data-a]');if(!el||!A[el.dataset.a])return;e.preventDefault();A[el.dataset.a](el.dataset,el)});
+Object.assign(A,{
+ open(d){S.tab='songs';S.song=d.id;S.st='main';S.sh2=null;draw(true);scrollTo(0,0)},
+ stab(d){S.st=d.k;draw(true)},
+ createmenu(){S.sh2={t:'create'};draw(true)},sheet2x(){S.sh2=null;draw(true)},
+ statmenu(d){S.sh2={t:'status',id:d.id};draw(true)},songmenu(d){S.sh2={t:'menu',id:d.id};draw(true)},
+ newsong(){S.sh2={t:'new'};draw(true)},addtext(){S.sh2={t:'new',mode:'text'};draw(true)},
+ recidea(){S.sh2=null;draw(true);rOpen(null,false)},
+ rec(d){S.sh2=null;draw(true);rOpen(d.id,!!d.u)},metro(d){S.sh2=null;draw(true);mOpen(d.id)},
+ bpmd(d){const i=document.getElementById(d.t);if(i)i.value=Math.max(20,(+i.value||120)-1)},bpmu(d){const i=document.getElementById(d.t);if(i)i.value=Math.min(300,(+i.value||120)+1)},
+ async createsong(){const title=v('nst').trim(),bpm=v('nsb')?+v('nsb'):null;if(!title)return toast('Введите название песни');if(bpm!==null&&!(Number.isInteger(bpm)&&bpm>=20&&bpm<=300))return toast('BPM должен быть от 20 до 300');
+  const mode=S.sh2?.mode;await ok(t(sb.from('songs').insert({band_id:S.bid,title,status:v('nss'),bpm,key_signature:v('nsk')||null,time_signature:v('nsz').trim()||null,created_by:S.user.id}).select().single()).then(async s=>{S.sh2=null;S.tab='songs';S.song=s.id;S.st=mode==='text'?'text':'main';toast('Песня создана');await load();draw(true)}))},
+ async setstat(d){S.sh2=null;const s=S.D.songs.find(x=>x.id===d.id);if(s)s.status=d.s;draw(true);await ok(sb.from('songs').update({status:d.s}).eq('id',d.id),load)},
+ async delsong2(d){if(!confirm('Удалить песню?'))return;S.sh2=null;await ok(sb.from('songs').delete().eq('id',d.id),async()=>{if(S.song===d.id)S.song=null;await load();draw(true)})},
+ async savemain(){const bpm=v('bpm')?+v('bpm'):null;if(!v('t').trim())return toast('Введите название');if(bpm!==null&&!(Number.isInteger(bpm)&&bpm>=20&&bpm<=300))return toast('BPM должен быть от 20 до 300');
+  await ok(sb.from('songs').update({title:v('t').trim(),bpm,key_signature:v('key')||null,time_signature:v('ts').trim()||null,description:v('dsc')}).eq('id',S.song),async()=>{toast('Сохранено');await load();draw(true)})},
+ async savetext(){await ok(sb.from('songs').update({structure:v('str'),lyrics:v('lyr'),chords:v('chr'),notes:v('nts')}).eq('id',S.song),async()=>{toast('Текст сохранён');await load();draw(true)})},
+ cardplay(d){playFile(d.id)},rowplay(d){playFile(d.id)},
+ async ren(d){const f=S.D.files.find(x=>x.id===d.id),n=prompt('Новое название',f.file_name);if(!n||!n.trim())return;await ok(sb.from('song_files').update({file_name:n.trim()}).eq('id',d.id),async()=>{await load();draw(true)})},
+ async delfile2(d){if(!confirm('Удалить файл?'))return;const f=S.D.files.find(x=>x.id===d.id);if(PLAY.id===d.id){const a=document.getElementById('au');a.pause();PLAY.id=null;document.getElementById('pl').style.display='none'}
+  await ok(sb.from('song_files').delete().eq('id',d.id),async()=>{if(f)sb.storage.from('band-files').remove([f.storage_path]);await load();draw(true)})},
+ moreg(d){const k=d.k;if(k==='help'){S.tab='help'}else if(k==='rec'){rOpen(null,false);return}else if(k==='met'){mOpen(null);return}else if(k==='prof'){S.prof=true}else{S.tab=k}draw(true);scrollTo(0,0)},
+ hstep(d){const k=d.k;if(k==='group'){S.sheet=true}else if(k==='song'){S.tab='songs';S.song=null;S.sh2={t:'new'}}else if(k==='idea'){rOpen(null,false);return}else if(k==='metro'){mOpen(null);return}else if(k==='reh'){S.tab='rehs';S.open='reh'}draw(true);scrollTo(0,0)}
+});
+document.addEventListener('input',e=>{const el=e.target;
+ if(el.dataset.in==='hq'){S.hq=el.value;const p=el.selectionStart;draw(true);const n=document.getElementById('hq');n.focus();n.setSelectionRange(p,p)}
+ if(el.dataset.sk){const a=document.getElementById('au');if(PLAY.id===el.dataset.id&&a.duration)a.currentTime=a.duration*el.value/1000}});
+document.addEventListener('change',async e=>{const el=e.target;
+ if(el.id==='au2'&&el.files.length){S.busy=true;draw(true);let n=0;for(const f of el.files){try{await addAudio(f,{song:S.song,name:f.name,ext:f.name.split('.').pop().toLowerCase(),dur:await audioDur(f)});n++}catch(x){toast(em(x))}}S.busy=false;await load();if(n)toast('Загружено: '+n);draw(true)}
+ if(el.id==='imp2'&&el.files.length){const L=[...el.files];S.sh2=null;S.busy=true;draw(true);let n=0,last=null;
+  for(const f of L){try{const ext=f.name.split('.').pop().toLowerCase();if(!AUD.includes(ext))throw new Error('Неподдерживаемый формат: '+f.name);
+   const s=await t(sb.from('songs').insert({band_id:S.bid,title:f.name.replace(/\.[^.]+$/,''),status:'IDEA',created_by:S.user.id}).select().single());
+   await addAudio(f,{song:s.id,name:f.name,ext,dur:await audioDur(f)});n++;last=s.id}catch(x){toast(em(x))}}
+  S.busy=false;await load();if(n){toast('Импортировано: '+n);if(n===1){S.tab='songs';S.song=last;S.st='audio'}}draw(true)}});
+document.getElementById('mo').addEventListener('click',e=>{const el=e.target.closest('[data-m]');if(el&&MA[el.dataset.m])MA[el.dataset.m](el.dataset,el)});
+document.getElementById('mo').addEventListener('change',e=>{const f=MC[e.target.dataset.mc];if(f&&e.target.dataset.mc!=='rng')f(e.target)});
+document.getElementById('mo').addEventListener('input',e=>{if(e.target.dataset.mc==='rng')MC.rng(e.target)});
+document.getElementById('ro').addEventListener('click',e=>{const el=e.target.closest('[data-r]');if(el&&RA[el.dataset.r])RA[el.dataset.r](el.dataset,el)});
+document.addEventListener('click',e=>{const el=e.target.closest('[data-a]');if(!el||!A[el.dataset.a])return;if(el.dataset.a!=='noop')e.preventDefault();A[el.dataset.a](el.dataset,el)});
+['input','change'].forEach(ev=>document.addEventListener(ev,e=>{if(e.target.dataset&&e.target.dataset.g){const b=document.getElementById('sg');if(b)b.style.display='block'}}));
 document.addEventListener('input',e=>{if(e.target.dataset.in==='q'){S.q=e.target.value;const p=e.target.selectionStart;draw(true);const n=document.getElementById('sq');n.focus();n.setSelectionRange(p,p)}});
 document.addEventListener('change',async e=>{const el=e.target;
- if(el.id==='mu'&&el.files.length){const L=[...el.files];S.busy=true;draw(true);let n=0;
+ if(el.id==='mu'&&el.files.length){const L=[...el.files];S.busy=true;S.ma=null;draw(true);let n=0;
   for(const f of L){const ext=f.name.split('.').pop().toLowerCase();
    if(!(IMGX.includes(ext)||VIDX.includes(ext))){toast('Неподдерживаемый формат: '+f.name);continue}
    if((VIDX.includes(ext)?'video':'image')!==CAT().k){toast('В этот раздел можно добавлять только '+(CAT().k==='image'?'фото':'видео')+': '+f.name);continue}
@@ -248,7 +593,7 @@ document.addEventListener('change',async e=>{const el=e.target;
    try{const path=`bands/${S.bid}/media/${Date.now()}-${Math.random().toString(36).slice(2,7)}-${f.name.replace(/[^A-Za-z0-9._-]/g,'_')}`;toast(`Загрузка ${n+1}/${L.length}…`);
     const u=await sb.storage.from('band-files').upload(path,f,{contentType:f.type||undefined});if(u.error)throw u.error;
     const i=await sb.from('media').insert({band_id:S.bid,file_name:f.name,storage_path:path,kind:CAT().k,category:S.mc,file_size:f.size,uploaded_by:S.user.id});if(i.error)throw i.error;n++}catch(x){toast(err(x))}}
-  S.busy=false;if(n)toast('Загружено: '+n);await load();draw(true);return}
+  S.busy=false;if(n){toast('Загружено: '+n);S.mt=grp(S.mc);S.mk='all'}await load();draw(true);return}
  if(el.dataset.ch==='band'&&el.value==='__new'){S.gate=true;S.created=null;S.msg='';draw(true);return}
  if(el.dataset.ch==='band'){S.bid=el.value;localStorage.mbh_band=S.bid;S.song=null;S.D={songs:[],drafts:[],rehs:[],att:[],log:[],mem:[],files:[]};sub();draw(true);load()}
  if(el.id==='fi'&&el.files[0]){const f=el.files[0],ext=f.name.split('.').pop().toLowerCase();
@@ -261,12 +606,52 @@ document.addEventListener('change',async e=>{const el=e.target;
   catch(x){toast(err(x))}S.busy=false;await load();draw(true)}});
 
 /* ---------- boot ---------- */
-S.urls={};S.mc='concert_photo';S.mn=12;
+S.roles={};S.reqs=[];S.gm='create';S.urls={};S.ft='drafts';S.mc='concert_photo';S.mn=12;S.mt='all';S.mk='all';S.ma=null;S.rv='cal';
 try{S.f=JSON.parse(localStorage.mbh_last||'{}');localStorage.setItem('_t','1');localStorage.removeItem('_t')}catch(e){S.noStore=true}
+Object.assign(A,{
+ dnew(){S.drf=blankDrf();S.drfiles=[];S.sh3=true;draw(true)},
+ songdraft(d){const s=S.D.songs.find(x=>x.id===d.id);S.drf={...blankDrf(),title:s.title+' — идея',song:s.id,bpm:s.bpm||'',key:s.key_signature||'',sig:s.time_signature||''};S.drfiles=[];S.sh3=true;draw(true)},
+ dedit(d){const x=S.D.drafts.find(y=>y.id===d.id);S.drf={id:x.id,title:x.title,desc:x.description||'',body:x.body||'',link:x.link||'',bpm:x.bpm||'',key:x.key_signature||'',sig:x.time_signature||'',types:dTypes(x),song:x.song_id||''};S.drfiles=[];S.sh3=true;draw(true)},
+ dtype(d){drfRead();const t=S.drf.types,i=t.indexOf(d.k);i>=0?t.splice(i,1):t.push(d.k);draw(true)},
+ drmf(d){drfRead();S.drfiles.splice(+d.i,1);draw(true)},sh3x(){S.sh3=false;S.drf=null;S.drfiles=[];draw(true)},
+ drec(){drfRead();rOpen(null,false);REC.target='draft'},
+ dopen(d){S.dd=d.id;draw(true);scrollTo(0,0)},dback(){S.dd=null;draw(true)},dflt(d){S.df=d.k;draw(true)},
+ dlink(d){S.sh2={t:'dlink',id:d.id};draw(true)},
+ async dsetsong(d){S.sh2=null;let sid=d.s||null;const dr=S.D.drafts.find(x=>x.id===d.id);
+  try{if(sid==='__new'){const s=await t(sb.from('songs').insert({band_id:S.bid,title:dr.title,status:'IDEA',created_by:S.user.id}).select().single());sid=s.id}
+   const r=await sb.from('drafts').update({song_id:sid}).eq('id',d.id);if(r.error)throw r.error;toast(sid?'Черновик привязан к песне':'Привязка снята');await load()}catch(x){toast(em(x))}draw(true)},
+ async dsave(){drfRead();const f=S.drf;if(!f.title.trim())return toast('Введите название');const bpm=f.bpm?+f.bpm:null;if(bpm!==null&&!(Number.isInteger(bpm)&&bpm>=20&&bpm<=300))return toast('BPM должен быть от 20 до 300');
+  S.busy=true;draw(true);
+  try{let sid=f.song||null;if(sid==='__new'){const s=await t(sb.from('songs').insert({band_id:S.bid,title:f.title.trim(),status:'IDEA',created_by:S.user.id}).select().single());sid=s.id}
+   const ty=f.types.length?f.types:['IDEA'],row={band_id:S.bid,title:f.title.trim(),description:f.desc,type:ty[0],types:ty,song_id:sid,body:ty.includes('TEXT')?f.body:'',link:(ty.some(x=>['LINK','VIDEO','FILM'].includes(x))?f.link.trim():'')||null,bpm,key_signature:f.key||null,time_signature:f.sig.trim()||null};let id=f.id;
+   if(id){let r=await sb.from('drafts').update(row).eq('id',id);if(r.error&&colErr(r.error)){toast('Выполните SQL 008, чтобы сохранялись все поля');r=await sb.from('drafts').update(coreRow(row)).eq('id',id)}if(r.error)throw r.error}
+   else{row.created_by=S.user.id;let r=await sb.from('drafts').insert(row).select().single();if(r.error&&colErr(r.error)){toast('Выполните SQL 008, чтобы сохранялись все поля');r=await sb.from('drafts').insert(coreRow(row)).select().single()}if(r.error)throw r.error;id=r.data.id}
+   for(const x of S.drfiles)await addDraftFile(id,x);
+   const was=f.id;S.sh3=false;S.drf=null;S.drfiles=[];toast(was?'Сохранено':'Черновик добавлен');S.tab='files';S.ft='drafts';await load()}catch(x){toast(em(x))}
+  S.busy=false;draw(true)},
+ async dtosong(d){const dr=S.D.drafts.find(x=>x.id===d.id);if(!dr)return;if(dr.song_id&&!confirm('Черновик уже привязан к песне. Создать ещё одну песню?'))return;
+  try{const s=await t(sb.from('songs').insert({band_id:S.bid,title:dr.title,status:'IDEA',bpm:dr.bpm||null,key_signature:dr.key_signature||null,time_signature:dr.time_signature||null,description:dr.description||'',lyrics:dr.body||'',created_by:S.user.id}).select().single());let n=0;
+   for(const f of dFiles(dr.id).filter(x=>AUD.includes(x.file_type))){n++;const path=`bands/${S.bid}/songs/${s.id}/${Date.now()}-${Math.random().toString(36).slice(2,7)}.${f.file_type}`,c=await sb.storage.from('band-files').copy(f.storage_path,path);if(c.error)throw c.error;
+    const row={song_id:s.id,band_id:S.bid,file_name:'Demo '+String(n).padStart(2,'0'),storage_path:path,file_type:f.file_type,file_size:f.file_size,version:1,uploaded_by:S.user.id,duration_sec:f.duration_sec??null,bpm:dr.bpm||null,time_signature:dr.time_signature||null};
+    let r=await sb.from('song_files').insert(row);if(r.error&&/column|schema/i.test(r.error.message)){delete row.duration_sec;delete row.bpm;delete row.time_signature;r=await sb.from('song_files').insert(row)}if(r.error)throw r.error}
+   await sb.from('drafts').update({song_id:s.id}).eq('id',dr.id);toast('Песня создана из черновика');S.dd=null;S.tab='songs';S.song=s.id;S.st=n?'audio':'main';await load()}catch(x){toast(em(x))}draw(true)},
+ async ddel(d){if(!confirm('Удалить черновик?'))return;const paths=dFiles(d.id).map(f=>f.storage_path);await ok(sb.from('drafts').delete().eq('id',d.id),async()=>{if(paths.length)sb.storage.from('band-files').remove(paths);S.dd=null;await load();draw(true)})},
+ async dfdel(d){if(!confirm('Удалить файл?'))return;const f=(S.D.dfiles||[]).find(x=>x.id===d.id);if(PLAY.id===d.id){document.getElementById('au').pause();PLAY.id=null;document.getElementById('pl').style.display='none'}
+  await ok(sb.from('draft_files').delete().eq('id',d.id),async()=>{if(f)sb.storage.from('band-files').remove([f.storage_path]);await load();draw(true)})}
+});
+document.addEventListener('input',e=>{const el=e.target;if(el.dataset.in==='dq'){S.dq=el.value;const p=el.selectionStart;draw(true);const n=document.getElementById('dq');n.focus();n.setSelectionRange(p,p)}});
+document.addEventListener('change',async e=>{const el=e.target;if(!['dfa','dfv','dfi'].includes(el.id)||!el.files.length)return;drfRead();
+ const okx={dfa:AUD,dfv:dKinds.video,dfi:dKinds.image}[el.id];
+ for(const f of el.files){const ext=f.name.split('.').pop().toLowerCase();if(!okx.includes(ext)){toast('Неподдерживаемый формат: '+f.name);continue}if(f.size>50*1048576){toast('Файл больше 50 МБ: '+f.name);continue}S.drfiles.push({blob:f,name:f.name,ext,dur:el.id==='dfa'?await audioDur(f):null})}
+ draw(true)});
+document.getElementById('au').addEventListener('timeupdate',function(){if(!PLAY.id)return;const r=document.querySelector('.sk[data-id="'+PLAY.id+'"]');if(r&&this.duration)r.value=Math.round(this.currentTime/this.duration*1000)});['play','pause','ended'].forEach(ev=>document.getElementById('au').addEventListener(ev,syncPlay));
 const _au=document.getElementById('au'),_eq=document.getElementById('eq');['play','playing'].forEach(e=>_au.addEventListener(e,()=>_eq.classList.add('on')));['pause','ended'].forEach(e=>_au.addEventListener(e,()=>_eq.classList.remove('on')));
 if(S.cfg){sb=supabase.createClient(S.cfg.url,S.cfg.key,{auth:{persistSession:true,autoRefreshToken:true,storageKey:'mbh-auth',detectSessionInUrl:false}});
  sb.auth.onAuthStateChange((ev,ses)=>{
   if(ses?.user){if(S.user?.id!==ses.user.id){S.user=ses.user;S.msg='';setTimeout(loadBands,0)}else S.user=ses.user}
   else{const was=!!S.user;S.user=null;S.bands=[];S.invAll=[];unsub();unsubInv();S.msg=was&&ev!=='SIGNED_OUT'?'Сессия истекла, войдите снова':'';draw(true)}})}
+if(localStorage.mbh_bio)S.locked=true;
+const _sp=document.getElementById('splash');_sp.innerHTML=LOGO+'<div class=sp-t>MUSICBAND<br>HUB</div><div class=sp-d>• • •</div><div class=sp-b>'+esc((localStorage.mbh_bn||'').toUpperCase())+'</div>';
+setTimeout(()=>{_sp.style.opacity=0;setTimeout(()=>_sp.remove(),400);if(S.locked)A.unlock()},1400);
 draw(true);
 </script></body></html>

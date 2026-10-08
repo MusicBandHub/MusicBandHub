@@ -747,7 +747,7 @@ Object.assign(A,{
  async ren(d){const f=S.D.files.find(x=>x.id===d.id),n=prompt('Новое название',f.file_name);if(!n||!n.trim())return;await ok(sb.from('song_files').update({file_name:n.trim()}).eq('id',d.id),async()=>{await load();draw(true)})},
  async delfile2(d){if(!confirm('Удалить файл?'))return;const f=S.D.files.find(x=>x.id===d.id);if(PLAY.id===d.id){const a=document.getElementById('au');a.pause();PLAY.id=null;document.getElementById('pl').style.display='none'}
   await ok(sb.from('song_files').delete().eq('id',d.id),async()=>{if(f)sb.storage.from('band-files').remove([f.storage_path]);await load();draw(true)})},
- moreg(d){const k=d.k;if(k==='help'){S.tab='help'}else if(k==='rec'){rOpen(null,false);return}else if(k==='met'){mOpen(null);return}else if(k==='prof'){S.prof=true}else{S.tab=k}draw(true);scrollTo(0,0)},
+ moreg(d){const k=d.k;if(k==='help'){S.tab='help'}else if(k==='rec'){rOpen(null,false);return}else if(k==='met'){mOpen(null);return}else if(k==='prof'){S.prof=true}else{S.tab=k;if(['sound','tasks','finance','calendar'].includes(k)){BM.loaded=false;bmLoad().then(()=>draw(true));return}}draw(true);scrollTo(0,0)},
  hstep(d){const k=d.k;if(k==='group'){S.sheet=true}else if(k==='song'){S.tab='songs';S.song=null;S.sh2={t:'new'}}else if(k==='idea'){rOpen(null,false);return}else if(k==='metro'){mOpen(null);return}else if(k==='reh'){S.tab='rehs';S.open='reh'}draw(true);scrollTo(0,0)}
 });
 document.addEventListener('input',e=>{const el=e.target;

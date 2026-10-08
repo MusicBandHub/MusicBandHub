@@ -109,6 +109,28 @@ nav a.on,.nav a.on{color:#c6ff1a!important;text-shadow:0 0 12px rgba(198,255,26,
 .meter i,.progress i,.progress-bar{background:linear-gradient(90deg,#c6ff1a,#34e0a1,#7c3aed)!important;box-shadow:0 0 12px rgba(52,224,161,.30)!important}
 h1,h2,h3{letter-spacing:-.3px!important}
 a{color:#34e0a1}
+
+/* CYBER NEON MOTION PACK */
+button.s,.btn.s,.chip,.tag,.badge{min-height:30px!important;padding:5px 9px!important;font-size:12px!important;border-radius:9px!important}
+button.s{width:auto!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:5px!important}
+.like,.likes,.heart,.like-btn,[data-like],button[aria-label*="лайк" i]{background:rgba(124,58,237,.10)!important;color:#f2f2f5!important;border:1px solid rgba(124,58,237,.40)!important;box-shadow:none!important;transition:transform .18s,box-shadow .18s,color .18s,border-color .18s!important}
+.like:hover,.likes:hover,.heart:hover,.like-btn:hover,[data-like]:hover{color:#c6ff1a!important;border-color:#c6ff1a!important;box-shadow:0 0 16px rgba(198,255,26,.18)!important;transform:translateY(-1px)!important}
+.like.active,.liked,.heart.active,.like-btn.active,[data-like].active{color:#c6ff1a!important;border-color:#34e0a1!important;background:rgba(52,224,161,.10)!important;box-shadow:0 0 18px rgba(52,224,161,.18)!important}
+@keyframes mbhPulse{0%,100%{box-shadow:0 0 0 rgba(52,224,161,0)}50%{box-shadow:0 0 24px rgba(52,224,161,.18)}}
+@keyframes mbhFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes mbhGlow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.18)}}
+@keyframes mbhEq{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
+.card,.song-card,.panel,.box{animation:mbhPulse 5s ease-in-out infinite}
+nav a.on{animation:mbhGlow 2.4s ease-in-out infinite}
+.hero,.song-hero{animation:mbhFloat 6s ease-in-out infinite}
+button:not(:disabled):active,.btn:not(:disabled):active{transform:scale(.96)!important}
+.mbh-eq{display:inline-flex;align-items:flex-end;gap:2px;height:22px;padding:2px 4px}
+.mbh-eq i{width:3px;height:100%;border-radius:4px;background:linear-gradient(to top,#7c3aed,#34e0a1,#c6ff1a);transform-origin:bottom;animation:mbhEq .72s ease-in-out infinite}
+.mbh-eq i:nth-child(2){animation-delay:-.55s}.mbh-eq i:nth-child(3){animation-delay:-.3s}.mbh-eq i:nth-child(4){animation-delay:-.65s}.mbh-eq i:nth-child(5){animation-delay:-.15s}.mbh-eq i:nth-child(6){animation-delay:-.42s}
+.mbh-wave{position:relative;height:38px;display:flex;align-items:center;gap:2px;overflow:hidden}
+.mbh-wave i{width:3px;min-height:5px;border-radius:5px;background:linear-gradient(to top,#7c3aed,#34e0a1,#c6ff1a);box-shadow:0 0 8px rgba(52,224,161,.25);animation:mbhEq .65s ease-in-out infinite}
+.mbh-wave i:nth-child(2n){animation-duration:.9s}.mbh-wave i:nth-child(3n){animation-duration:.55s}.mbh-wave i:nth-child(4n){animation-delay:-.3s}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 </style></head><body>
 <div id="splash"></div>
 <div id="app"></div>
@@ -724,4 +746,16 @@ if(localStorage.mbh_bio)S.locked=true;
 const _sp=document.getElementById('splash');_sp.innerHTML=LOGO+'<div class=sp-t>MUSICBAND<br>HUB</div><div class=sp-d>• • •</div><div class=sp-b>'+esc((localStorage.mbh_bn||'').toUpperCase())+'</div>';
 setTimeout(()=>{_sp.style.opacity=0;setTimeout(()=>_sp.remove(),400);if(S.locked)A.unlock()},1400);
 draw(true);
+
+// Cyber Neon visualizer helper
+function mbhWave(n=28){
+  let h='<div class="mbh-wave">';
+  for(let i=0;i<n;i++)h+='<i style="height:'+((8+(i*17)%25))+'px"></i>';
+  return h+'</div>';
+}
+function mbhEq(){return '<span class="mbh-eq"><i></i><i></i><i></i><i></i><i></i><i></i></span>';}
+document.addEventListener('click',e=>{
+ const b=e.target.closest('button,.btn');
+ if(b&&!b.disabled){b.classList.remove('mbh-pop');void b.offsetWidth;b.classList.add('mbh-pop')}
+});
 </script></body></html>

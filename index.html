@@ -900,7 +900,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-pact]');if
  if(x==='toggle'){a.paused?a.play():a.pause()}else if(x==='back10'){a.currentTime=Math.max(0,a.currentTime-10)}else if(x==='fwd10'){a.currentTime=Math.min(a.duration||a.currentTime+10,a.currentTime+10)}else if(x==='close'){a.pause();p.style.display='none'}else if(x==='loop'){a.loop=!a.loop;b.classList.toggle('on',a.loop)}else if(x==='speed'){const z=[1,.75,1.25,1.5,2],n=z.indexOf(a.playbackRate);a.playbackRate=z[(n+1)%z.length];b.textContent=a.playbackRate+'×'}else if(x==='next'){const ids=S.D.files.filter(f=>AUD.includes((f.file_type||'').toLowerCase()));const k=ids.findIndex(f=>f.id===PLAY.id);if(ids[(k+1)%ids.length])playFile(ids[(k+1)%ids.length].id)}}); 
 function mbhSyncSeek(){const a=document.getElementById('au'),q=document.getElementById('pseek'),cur=document.getElementById('pcur'),dur=document.getElementById('pdur');if(!a||!q)return;const d=Number.isFinite(a.duration)&&a.duration>0?a.duration:0;if(d&&document.activeElement!==q)q.value=String(Math.max(0,Math.min(1000,(a.currentTime/d)*1000)));if(cur)cur.textContent=pTime(a.currentTime);if(dur)dur.textContent=pTime(d)}
 document.addEventListener('input',e=>{const a=document.getElementById('au');if(!a)return;if(e.target.id==='pseek'&&Number.isFinite(a.duration)&&a.duration>0){a.currentTime=(Number(e.target.value)/1000)*a.duration;mbhSyncSeek()}if(e.target.id==='pvol')a.volume=Math.max(0,Math.min(1,Number(e.target.value)||0))});
-document.addEventListener('change',e=>{const a=document.getElementById('au');if(e.target.id==='pseek'&&a&&Number.isFinite(a.duration)&&a.duration>0){a.currentTime=(Number(e.target.value)/100)*a.duration;mbhSyncSeek()}});
+document.addEventListener('change',e=>{const a=document.getElementById('au');if(e.target.id==='pseek'&&a&&Number.isFinite(a.duration)&&a.duration>0){a.currentTime=(Number(e.target.value)/1000)*a.duration;mbhSyncSeek()}});
 const mbhAudio=document.getElementById('au');
 if(mbhAudio){['timeupdate','loadedmetadata','durationchange','progress','playing','pause','ended'].forEach(ev=>mbhAudio.addEventListener(ev,mbhSyncSeek));}
 let mbhSeekRAF=0;
@@ -995,7 +995,49 @@ document.addEventListener('click',e=>{
  const b=e.target.closest('button,.btn');
  if(b&&!b.disabled){b.classList.remove('mbh-pop');void b.offsetWidth;b.classList.add('mbh-pop')}
 });
-</script><script src="ai3.js"></script></body></html>
+</script><script src="ai3.js"></script><style id="mbh-final-ui-fix">
+/* Final UI cleanup: player controls and responsive spacing. */
+.mbh-player .mbh-p-controls{
+  position:relative!important;
+  width:100%!important;
+  height:60px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  margin:7px 0 5px!important;
+}
+.mbh-player .mbh-p-controls .mbh-p-play{
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  transform:translate(-50%,-50%)!important;
+  width:46px!important;
+  height:46px!important;
+  min-width:46px!important;
+  min-height:46px!important;
+  margin:0!important;
+  padding:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border-radius:50%!important;
+}
+.mbh-player .mbh-p-controls>button:first-child,
+.mbh-player .mbh-p-controls>button:last-child{
+  position:absolute!important;
+  top:50%!important;
+  transform:translateY(-50%)!important;
+  margin:0!important;
+}
+.mbh-player .mbh-p-controls>button:first-child{left:calc(50% - 92px)!important}
+.mbh-player .mbh-p-controls>button:last-child{right:calc(50% - 92px)!important}
+@media(max-width:600px){
+  .mbh-player .mbh-p-controls{height:56px!important}
+  .mbh-player .mbh-p-controls .mbh-p-play{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important}
+  .mbh-player .mbh-p-controls>button:first-child{left:calc(50% - 78px)!important}
+  .mbh-player .mbh-p-controls>button:last-child{right:calc(50% - 78px)!important}
+}
+</style></body></html>
 
 <style id="v9-structure-style">#screen{min-height:calc(100vh - 130px)}nav[aria-label="Основная навигация"] a span{display:block}.file-tabs{display:flex;gap:8px;overflow:auto;padding:10px 0}.file-tabs .active{outline:1px solid var(--ac);box-shadow:0 0 0 1px var(--ac) inset}.files-screen{padding-bottom:24px}</style>
 

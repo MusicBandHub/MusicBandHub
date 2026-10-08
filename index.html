@@ -169,7 +169,7 @@ button:not(:disabled):active,.btn:not(:disabled):active{transform:scale(.96)!imp
 <div id="pl" class="mbh-player">
  <div class="mbh-p-top"><div class="mbh-p-disc"><div class="mbh-p-disc-in">♪</div></div><div class="mbh-p-info"><div class="mbh-p-kicker">NOW PLAYING</div><div id="pt" class="mbh-p-title">MusicBandHub</div><div id="pf" class="mbh-p-file">—</div></div><button class="mbh-p-x" data-pact="close" aria-label="Закрыть">×</button></div>
  <div class="mbh-p-wave" id="pwave"></div>
- <div class="mbh-p-seek"><span id="pcur">00:00</span><input id="pseek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Позиция"><span id="pdur">00:00</span></div>
+ <div class="mbh-p-seek"><span id="pcur">00:00</span><input id="pseek" type="range" min="0" max="1000" value="0" step="1" aria-label="Позиция"><span id="pdur">00:00</span></div>
  <div class="mbh-p-controls"><button data-pact="back10">↶10</button><button class="mbh-p-play" data-pact="toggle" id="pplay">▶</button><button data-pact="fwd10">10↷</button></div>
  <div class="mbh-p-tools"><button data-pact="loop" id="ploop">↻</button><button data-pact="speed" id="pspeed">1×</button><span class="mbh-p-vol">🔊 <input id="pvol" type="range" min="0" max="1" value="1" step="0.01"></span><button data-pact="next" title="Следующий трек">›</button></div>
  <audio id="au" preload="metadata"></audio>
@@ -741,13 +741,15 @@ document.getElementById('ro').addEventListener('click',e=>{const el=e.target.clo
 document.addEventListener('click',e=>{const el=e.target.closest('[data-a]');if(!el||!A[el.dataset.a])return;if(el.dataset.a!=='noop')e.preventDefault();A[el.dataset.a](el.dataset,el)});
 document.addEventListener('click',e=>{const b=e.target.closest('[data-pact]');if(!b)return;const a=document.getElementById('au'),p=document.getElementById('pl');if(!a||!p)return;const x=b.dataset.pact;
  if(x==='toggle'){a.paused?a.play():a.pause()}else if(x==='back10'){a.currentTime=Math.max(0,a.currentTime-10)}else if(x==='fwd10'){a.currentTime=Math.min(a.duration||a.currentTime+10,a.currentTime+10)}else if(x==='close'){a.pause();p.style.display='none'}else if(x==='loop'){a.loop=!a.loop;b.classList.toggle('on',a.loop)}else if(x==='speed'){const z=[1,.75,1.25,1.5,2],n=z.indexOf(a.playbackRate);a.playbackRate=z[(n+1)%z.length];b.textContent=a.playbackRate+'×'}else if(x==='next'){const ids=S.D.files.filter(f=>AUD.includes((f.file_type||'').toLowerCase()));const k=ids.findIndex(f=>f.id===PLAY.id);if(ids[(k+1)%ids.length])playFile(ids[(k+1)%ids.length].id)}}); 
-function mbhSyncSeek(){const a=document.getElementById('au'),q=document.getElementById('pseek'),cur=document.getElementById('pcur'),dur=document.getElementById('pdur');if(!a||!q)return;const d=Number.isFinite(a.duration)&&a.duration>0?a.duration:0;if(d&&!q.matches(':active'))q.value=String((a.currentTime/d)*100);if(cur)cur.textContent=pTime(a.currentTime);if(dur)dur.textContent=pTime(d)}
-document.addEventListener('input',e=>{const a=document.getElementById('au');if(!a)return;if(e.target.id==='pseek'&&Number.isFinite(a.duration)&&a.duration>0){a.currentTime=(Number(e.target.value)/100)*a.duration;mbhSyncSeek()}if(e.target.id==='pvol')a.volume=Math.max(0,Math.min(1,Number(e.target.value)||0))});
+function mbhSyncSeek(){const a=document.getElementById('au'),q=document.getElementById('pseek'),cur=document.getElementById('pcur'),dur=document.getElementById('pdur');if(!a||!q)return;const d=Number.isFinite(a.duration)&&a.duration>0?a.duration:0;if(d&&document.activeElement!==q)q.value=String(Math.max(0,Math.min(1000,(a.currentTime/d)*1000)));if(cur)cur.textContent=pTime(a.currentTime);if(dur)dur.textContent=pTime(d)}
+document.addEventListener('input',e=>{const a=document.getElementById('au');if(!a)return;if(e.target.id==='pseek'&&Number.isFinite(a.duration)&&a.duration>0){a.currentTime=(Number(e.target.value)/1000)*a.duration;mbhSyncSeek()}if(e.target.id==='pvol')a.volume=Math.max(0,Math.min(1,Number(e.target.value)||0))});
 document.addEventListener('change',e=>{const a=document.getElementById('au');if(e.target.id==='pseek'&&a&&Number.isFinite(a.duration)&&a.duration>0){a.currentTime=(Number(e.target.value)/100)*a.duration;mbhSyncSeek()}});
-document.addEventListener('timeupdate',mbhSyncSeek);
-document.addEventListener('loadedmetadata',mbhSyncSeek);
-document.addEventListener('durationchange',mbhSyncSeek);
-setInterval(mbhSyncSeek,200);
+const mbhAudio=document.getElementById('au');
+if(mbhAudio){['timeupdate','loadedmetadata','durationchange','progress','playing','pause','ended'].forEach(ev=>mbhAudio.addEventListener(ev,mbhSyncSeek));}
+let mbhSeekRAF=0;
+function mbhSeekLoop(){mbhSyncSeek();const a=document.getElementById('au');if(a&&!a.paused&&!a.ended)mbhSeekRAF=requestAnimationFrame(mbhSeekLoop)}
+mbhAudio?.addEventListener('playing',()=>{cancelAnimationFrame(mbhSeekRAF);mbhSeekRAF=requestAnimationFrame(mbhSeekLoop)});
+mbhAudio?.addEventListener('pause',()=>cancelAnimationFrame(mbhSeekRAF));
 document.addEventListener('play',syncPlay);document.addEventListener('pause',syncPlay);document.addEventListener('ended',()=>{syncPlay()});
 ['input','change'].forEach(ev=>document.addEventListener(ev,e=>{if(e.target.dataset&&e.target.dataset.g){const b=document.getElementById('sg');if(b)b.style.display='block'}}));
 document.addEventListener('input',e=>{if(e.target.dataset.in==='q'){S.q=e.target.value;const p=e.target.selectionStart;draw(true);const n=document.getElementById('sq');n.focus();n.setSelectionRange(p,p)}});

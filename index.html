@@ -1010,12 +1010,29 @@ document.addEventListener('click',e=>{
 </style>
 
 <style id="mbh-play-absolute-center">
-/* Final centering: Play is anchored to the exact horizontal midpoint of the player itself. */
-.mbh-player .mbh-p-controls{position:relative!important;display:flex!important;justify-content:center!important;align-items:center!important;width:100%!important;height:56px!important;margin:7px 0 5px!important;gap:8px!important}
-.mbh-player .mbh-p-controls .mbh-p-play{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;width:46px!important;height:46px!important;min-width:46px!important;max-width:46px!important;padding:0!important;margin:0!important;display:grid!important;place-items:center!important;border-radius:50%!important;z-index:2!important}
-.mbh-player .mbh-p-controls>button:first-child{margin-right:100px!important}
-.mbh-player .mbh-p-controls>button:last-child{margin-left:100px!important}
-@media(max-width:600px){.mbh-player .mbh-p-controls{height:52px!important}.mbh-player .mbh-p-controls .mbh-p-play{width:44px!important;height:44px!important;min-width:44px!important;max-width:44px!important}.mbh-player .mbh-p-controls>button:first-child{margin-right:82px!important}.mbh-player .mbh-p-controls>button:last-child{margin-left:82px!important}}
+/* Final: exact center for Play in Songs player */
+.mbh-player .mbh-p-controls{
+ position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;
+ width:100%!important;height:60px!important;margin:7px 0 5px!important;
+}
+.mbh-player .mbh-p-controls .mbh-p-play{
+ position:absolute!important;left:50%!important;top:50%!important;
+ transform:translate(-50%,-50%)!important;margin:0!important;
+ width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;
+ padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important;
+}
+.mbh-player .mbh-p-controls>button:first-child{
+ position:absolute!important;left:calc(50% - 92px)!important;margin:0!important;
+}
+.mbh-player .mbh-p-controls>button:last-child{
+ position:absolute!important;right:calc(50% - 92px)!important;margin:0!important;
+}
+@media(max-width:600px){
+ .mbh-player .mbh-p-controls{height:54px!important}
+ .mbh-player .mbh-p-controls .mbh-p-play{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important}
+ .mbh-player .mbh-p-controls>button:first-child{left:calc(50% - 78px)!important}
+ .mbh-player .mbh-p-controls>button:last-child{right:calc(50% - 78px)!important}
+}
 </style>
 <style id="mbh-premium-design">
 :root{--bg:#05070a!important;--surface:#0b1014!important;--surface2:#10171b!important;--line:rgba(120,255,215,.14)!important;--text:#f4fff9!important;--muted:#879b96!important;--lime:#d7ff38!important;--green:#35e6ad!important;--violet:#9b6cff!important;--red:#ff6475!important;--r:18px!important;--ac:#35e6ad!important}

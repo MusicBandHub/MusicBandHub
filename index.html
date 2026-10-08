@@ -999,39 +999,75 @@ document.addEventListener('click',e=>{
 
 <style id="v10-pages">#screen{box-sizing:border-box;width:100%;max-width:980px;margin:0 auto;padding:18px 14px 170px!important}#screen>section,#screen>.v4-head,#screen>.songs-premium{margin:0 0 18px}.screen-home .v4-head{padding:20px;border:1px solid rgba(255,255,255,.1);border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));box-shadow:0 18px 50px rgba(0,0,0,.28)}.screen-home .v4-stat,.screen-home .v4-song-progress,.screen-home .card,.screen-home .sec{margin-top:12px}.screen-songs .songs-head{position:sticky;top:0;z-index:3;padding:14px 0;background:linear-gradient(var(--bg),var(--bg),transparent)}.screen-songs .song-tools{margin:8px 0}.screen-songs .song-list{display:grid;gap:12px}.screen-songs .premium-song-card{border:1px solid rgba(255,255,255,.09);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.035)}.screen-rehs h2,.screen-files h2,.screen-more h2{margin:4px 0 14px;font-size:28px}.screen-rehs .card,.screen-rehs .cd,.screen-files .card,.screen-more .card{border-radius:16px}.screen-files .files-screen{padding:0}.screen-files .file-tabs{margin-bottom:14px}.screen-more{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.screen-more h2{grid-column:1/-1;margin-bottom:0}.screen-more .card{margin:0!important;min-height:76px;padding:16px!important}.screen-more .card:hover{transform:translateY(-1px)}nav[aria-label="Основная навигация"]{z-index:50}nav[aria-label="Основная навигация"] a{min-width:0}nav[aria-label="Основная навигация"] a span{font-size:11px;line-height:1.15;margin-top:4px}@media(max-width:600px){#screen{padding-left:12px!important;padding-right:12px!important}.screen-more{grid-template-columns:1fr 1fr}.screen-more .card{min-height:70px;padding:13px!important}.screen-home .v4-head{padding:16px}.screen-songs .songs-head{padding-top:6px}}
 
-<style id="mbh-play-center-fix">
-/* Fix: keep the main Play button mathematically centered in the player controls. */
-.mbh-player .mbh-p-controls{position:relative!important;display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important;justify-items:center!important;width:100%!important;min-height:56px!important;margin:10px 0!important}
-.mbh-player .mbh-p-controls>button:first-child{justify-self:end!important}
-.mbh-player .mbh-p-controls>.mbh-p-play{justify-self:center!important;align-self:center!important;margin:0!important;position:static!important;transform:none!important}
-.mbh-player .mbh-p-controls>button:last-child{justify-self:start!important}
-.mbh-player .mbh-p-play{width:52px!important;height:52px!important;min-width:52px!important;min-height:52px!important;padding:0!important;border-radius:50%!important;display:grid!important;place-items:center!important;line-height:1!important}
-@media(max-width:600px){.mbh-player .mbh-p-controls{grid-template-columns:1fr 56px 1fr!important}}
-</style>
-
-<style id="mbh-play-absolute-center">
-/* Final: exact center for Play in Songs player */
+<style id="mbh-play-final">
+/* Final Songs player layout */
+.mbh-player{position:relative!important;width:100%!important;overflow:hidden!important}
 .mbh-player .mbh-p-controls{
- position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;
- width:100%!important;height:60px!important;margin:7px 0 5px!important;
+ position:relative!important;
+ width:100%!important;
+ height:64px!important;
+ margin:8px 0 4px!important;
+ display:flex!important;
+ align-items:center!important;
+ justify-content:center!important;
+ gap:0!important;
 }
 .mbh-player .mbh-p-controls .mbh-p-play{
- position:absolute!important;left:50%!important;top:50%!important;
- transform:translate(-50%,-50%)!important;margin:0!important;
- width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;
- padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important;
+ position:absolute!important;
+ left:50%!important;
+ top:50%!important;
+ transform:translate(-50%,-50%)!important;
+ width:50px!important;
+ height:50px!important;
+ min-width:50px!important;
+ min-height:50px!important;
+ margin:0!important;
+ padding:0!important;
+ display:flex!important;
+ align-items:center!important;
+ justify-content:center!important;
+ text-align:center!important;
+ line-height:1!important;
+ border-radius:50%!important;
+ z-index:2!important;
 }
-.mbh-player .mbh-p-controls>button:first-child{
- position:absolute!important;left:calc(50% - 92px)!important;margin:0!important;
-}
+.mbh-player .mbh-p-controls .mbh-p-play::first-letter{margin:0!important}
+.mbh-player .mbh-p-controls>button:first-child,
 .mbh-player .mbh-p-controls>button:last-child{
- position:absolute!important;right:calc(50% - 92px)!important;margin:0!important;
+ position:absolute!important;
+ top:50%!important;
+ transform:translateY(-50%)!important;
+ margin:0!important;
+ width:48px!important;
+ height:40px!important;
+ min-height:40px!important;
+ padding:0!important;
+ display:flex!important;
+ align-items:center!important;
+ justify-content:center!important;
 }
+.mbh-player .mbh-p-controls>button:first-child{left:calc(50% - 108px)!important}
+.mbh-player .mbh-p-controls>button:last-child{right:calc(50% - 108px)!important}
+.mbh-player .mbh-p-controls button{box-sizing:border-box!important}
+.mbh-player .mbh-p-tools{
+ display:flex!important;
+ align-items:center!important;
+ justify-content:center!important;
+ gap:8px!important;
+ flex-wrap:wrap!important;
+}
+.mbh-player .mbh-p-seek{
+ display:grid!important;
+ grid-template-columns:42px minmax(0,1fr) 42px!important;
+ align-items:center!important;
+ gap:8px!important;
+}
+.mbh-player .mbh-p-seek input{min-width:0!important}
 @media(max-width:600px){
- .mbh-player .mbh-p-controls{height:54px!important}
- .mbh-player .mbh-p-controls .mbh-p-play{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important}
- .mbh-player .mbh-p-controls>button:first-child{left:calc(50% - 78px)!important}
- .mbh-player .mbh-p-controls>button:last-child{right:calc(50% - 78px)!important}
+ .mbh-player .mbh-p-controls{height:58px!important}
+ .mbh-player .mbh-p-controls .mbh-p-play{width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important}
+ .mbh-player .mbh-p-controls>button:first-child{left:calc(50% - 88px)!important}
+ .mbh-player .mbh-p-controls>button:last-child{right:calc(50% - 88px)!important}
 }
 </style>
 <style id="mbh-premium-design">

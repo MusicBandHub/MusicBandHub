@@ -944,7 +944,22 @@ p{line-height:1.55!important}
  .v4-task,.v4-song{padding:15px 0!important}
  .psc-main{padding-top:3px!important;padding-bottom:3px!important}
 }
-</style></head><body>
+</style>
+<style id="mbh-button-spacing-v23">
+/* Final button spacing: keep every control visually separated */
+button,.btn,[role="button"]{margin:6px 4px!important;}
+.row{gap:12px!important;}
+button+button,.btn+.btn,[role="button"]+[role="button"]{margin-left:8px!important;}
+.card button,.card .btn,.panel button,.panel .btn,.sheet button,.sheet .btn,.modal button,.modal .btn{margin:7px 5px!important;}
+.mbh-p-tools button,.mbh-p-controls button,.mbh-p-top button{margin:5px 4px!important;}
+.psc-top button,.psc-audio button,.psc-meta button{margin:5px 4px!important;}
+.song-actions button,.song-actions .btn,.song-tools button,.song-tools .btn{margin:7px 5px!important;}
+.v4-task button,.v4-song button,.v4-today-row button{margin:6px 4px!important;}
+nav[aria-label="Основная навигация"] a,nav[aria-label="Основная навигация"] button{margin:4px 3px!important;}
+@media(max-width:700px){button,.btn,[role="button"]{margin:7px 3px!important;}button+button,.btn+.btn,[role="button"]+[role="button"]{margin-left:6px!important;}.row{gap:10px!important;}}
+@media(max-width:390px){button,.btn,[role="button"]{margin:7px 0!important;}.row{gap:8px!important;}button+button,.btn+.btn,[role="button"]+[role="button"]{margin-left:0!important;}}
+</style>
+</head><body>
 <div id="splash"><div class="sp-mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="spg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c6ff1a"/><stop offset=".55" stop-color="#34e0a1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M6 46 L18 14 L32 40 L46 14 L58 46" fill="none" stroke="url(#spg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g stroke="url(#spg)" stroke-width="3" stroke-linecap="round"><path d="M2 32v6M10 26v16M54 26v16M62 32v6"/></g></svg></div><div class="sp-t">MUSICBAND<br>HUB</div><div class="sp-d">• • •</div><div class="sp-b">LOADING YOUR BAND</div></div>
 <div id="app"></div>
 <div id="pl" class="mbh-player">

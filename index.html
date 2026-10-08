@@ -148,7 +148,19 @@ nav a:active{transform:scale(.96)}
  nav a{height:52px!important;font-size:8px!important;border-radius:13px!important}
  nav a svg{width:18px!important;height:18px!important}
 }
-</style></head><body>
+</style>
+<style id="mbh-home-bottom-fix">
+/* Home: clean up the final month block without touching app logic */
+.screen-home .v4-month{padding:16px 18px 14px;margin:0 0 10px;border-radius:16px;background:linear-gradient(180deg,#11151a,#0d1014);border:1px solid #252b34}
+.screen-home .v4-month-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:12px}
+.screen-home .v4-month-grid .v4-stat{min-width:0;padding:4px 14px;border:0;border-left:1px solid #252b34;border-radius:0;background:transparent}
+.screen-home .v4-month-grid .v4-stat:first-child{border-left:0;padding-left:0}
+.screen-home .v4-month-grid .v4-stat:last-child{padding-right:0}
+.screen-home .v4-month-grid .v4-stat strong{font-size:18px;line-height:1.05;color:#f4f5f7}
+.screen-home .v4-month-grid .v4-stat span{margin-top:4px;font-size:8px;white-space:nowrap;color:#707986}
+@media(max-width:430px){.screen-home .v4-month{padding:14px}.screen-home .v4-month-grid .v4-stat{padding:4px 8px}.screen-home .v4-month-grid .v4-stat strong{font-size:16px}.screen-home .v4-month-grid .v4-stat span{font-size:7px}}
+</style>
+</head><body>
 <div id="splash"><div class="sp-mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="spg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c6ff1a"/><stop offset=".55" stop-color="#34e0a1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M6 46 L18 14 L32 40 L46 14 L58 46" fill="none" stroke="url(#spg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g stroke="url(#spg)" stroke-width="3" stroke-linecap="round"><path d="M2 32v6M10 26v16M54 26v16M62 32v6"/></g></svg></div><div class="sp-t">MUSICBAND<br>HUB</div><div class="sp-d">• • •</div><div class="sp-b">LOADING YOUR BAND</div></div>
 <div id="app"></div>
 <div id="pl" class="mbh-player">

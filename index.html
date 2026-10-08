@@ -616,10 +616,11 @@ function songV(){const s=S.D.songs.find(x=>x.id===S.song);if(!s){S.song=null;ret
  <label class=l>Аккорды</label><textarea id=chr style="min-height:120px">${esc(s.chords)}</textarea><label class=l>Заметки</label><textarea id=nts>${esc(s.notes)}</textarea><button data-a=savetext>Сохранить текст</button>`;
  if(tab==='files'){const ic2={gp:'🎸',gp5:'🎸',pdf:'📄',txt:'📄',png:'🖼',jpg:'🖼',jpeg:'🖼',mp4:'🎬'};
   body=`<label class=btn>${S.busy?'Загрузка…':'⬆ Добавить файл (GP5, PDF, фото, текст)'}<input type=file id=fi hidden ${S.busy?'disabled':''}></label>${oth.map(f=>`<div class=card><b>${ic2[f.file_type]||'📎'} ${esc(f.file_name)}</b> · v${f.version}<div class=mu>${Math.round(f.file_size/1024)} КБ · ${esc(nm(f.uploaded_by))} · ${dt(f.created_at)}</div><button class="s g" data-a=dl data-id=${f.id}>Скачать</button><button class="s g" data-a=delfile2 data-id=${f.id}>🗑 Удалить</button></div>`).join('')||'<p class=mu>Файлов пока нет.</p>'}`}
- return`<button class="g s" data-a=back>← Песни</button><h2 style="margin:6px 0">🎵 ${esc(s.title)}</h2><div><span class="badge b-${s.status}" data-a=statmenu data-id=${s.id}>${SB[s.status]} ▾</span> <span class=mu>${s.bpm||'—'} BPM · ${esc(s.time_signature||'4/4')} · ${esc(s.key_signature||'—')}</span></div>
- ${d0?`<div class="card hero" style="display:flex;gap:12px;align-items:center"><div class=playb data-a=cardplay data-id=${d0.id}>▶</div><div><div class=mu style="color:#d8c8ff">ДЕМО</div><b>${esc(d0.file_name)}</b> ${d0.duration_sec?'· '+fmtT(d0.duration_sec):''}</div></div>`:''}
+ return`<div class="song-topbar"><button class="song-back" data-a=back>‹</button><div class="song-top-title"><span>ПЕСНЯ</span><b>${esc(s.title)}</b></div><button class="song-more" data-a=statmenu data-id=${s.id}>•••</button></div>
+ ${hero}
  <div class="song-detail-actions"><button class="g" data-a="rec" data-id=${s.id}>🎙 Записать</button><button class="g" data-a="metro" data-id=${s.id}>🥁 Метроном</button><button class="g" data-a="songdraft" data-id=${s.id}>＋ Черновик</button></div>
- ${hero}<div class="song-detail-tabs">${tabs.map(([k,n])=>`<span class="chip ${tab===k?'on':''}" data-a=stab data-k=${k}>${n}</span>`).join('')}</div>${body}
+ <div class="song-detail-tabs">${tabs.map(([k,n])=>`<span class="chip ${tab===k?'on':''}" data-a=stab data-k=${k}</span>`).join('')}</div>${body}`;
+
 
 /* ----- листы: создать / статус / меню / новая песня ----- */
 function sheet2V(){const o=S.sh2;if(!o)return'';let c='';
@@ -1105,4 +1106,14 @@ nav[aria-label="Основная навигация"] a.on{background:linear-gra
 .song-detail-actions{display:grid!important;grid-template-columns:1fr 1fr 1fr!important;gap:8px!important;margin:10px 0 14px!important}.song-detail-actions button{min-width:0!important;font-size:10px!important;padding:9px 7px!important}
 .song-detail-tabs{display:flex!important;gap:7px!important;overflow-x:auto!important;padding:2px 0 8px!important;scrollbar-width:none!important}.song-detail-tabs::-webkit-scrollbar{display:none!important}.song-detail-tabs .chip{flex:0 0 auto!important;cursor:pointer!important}
 @media(max-width:480px){.song-hero{padding:17px!important;border-radius:18px!important}.song-hero-cover{width:64px!important;height:64px!important;font-size:27px!important}.song-hero>h2{font-size:23px!important}.song-detail-actions{grid-template-columns:1fr 1fr!important}.song-detail-actions button:last-child{grid-column:1/-1}.song-stats{gap:5px!important}.song-stat{font-size:9px!important;padding:9px 4px!important}}
+</style><style id="mbh-song-menu-final">
+.song-topbar{display:flex!important;align-items:center!important;gap:10px!important;margin:2px 0 8px!important;min-height:48px!important}
+.song-back,.song-more{width:42px!important;height:42px!important;min-width:42px!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important;border-radius:13px!important;background:rgba(16,24,25,.9)!important;border:1px solid rgba(53,230,173,.18)!important;color:var(--text)!important}
+.song-back{font-size:28px!important;line-height:1!important}
+.song-more{font-size:17px!important;letter-spacing:2px!important}
+.song-top-title{flex:1!important;min-width:0!important;text-align:center!important}
+.song-top-title span{display:block!important;font-size:8px!important;letter-spacing:2px!important;color:var(--lime)!important;font-weight:800!important}
+.song-top-title b{display:block!important;margin-top:2px!important;font-size:15px!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+.song-detail-actions{position:sticky!important;bottom:70px!important;z-index:5!important;padding:8px!important;margin:10px -4px 12px!important;border:1px solid rgba(53,230,173,.12)!important;border-radius:16px!important;background:rgba(8,13,15,.88)!important;backdrop-filter:blur(14px)!important}
+@media(max-width:480px){.song-detail-actions{grid-template-columns:1fr 1fr!important}.song-detail-actions button:last-child{grid-column:1/-1}.song-top-title b{font-size:14px!important}}
 </style>

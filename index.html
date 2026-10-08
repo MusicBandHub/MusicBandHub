@@ -171,7 +171,14 @@ nav a:active{transform:scale(.96)}
 .mbh-player.is-playing .mbh-p-disc{animation:mbhPlayerSpin 3s linear infinite}@keyframes mbhPlayerSpin{to{transform:rotate(360deg)}}
 @media(max-width:600px){.mbh-player{bottom:74px;width:calc(100% - 18px);padding:10px 10px 9px;border-radius:16px}.mbh-p-wave{height:34px}.mbh-p-controls{margin:5px 0 4px}.mbh-p-tools>button[data-pact="loop"] span{display:none}.mbh-p-tools>button[data-pact="next"]{font-size:0}.mbh-p-tools>button[data-pact="next"]:after{content:"Следующий ›";font-size:8px}.mbh-p-vol input{width:58px}}
 </style>
-</head><body>
+<style id="mbh-home-text-size">
+.screen-home h1,.screen-home h2{font-size:clamp(22px,5.6vw,30px)}
+.screen-home h3{font-size:18px}
+.screen-home .v4-label{font-size:10px}
+.screen-home .v4-song b{font-size:14px}
+.screen-home .v4-song span,.screen-home .mu{font-size:11px}
+.screen-home .v4-quick-grid button{font-size:12px}
+</style></head><body>
 <div id="splash"><div class="sp-mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="spg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c6ff1a"/><stop offset=".55" stop-color="#34e0a1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M6 46 L18 14 L32 40 L46 14 L58 46" fill="none" stroke="url(#spg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g stroke="url(#spg)" stroke-width="3" stroke-linecap="round"><path d="M2 32v6M10 26v16M54 26v16M62 32v6"/></g></svg></div><div class="sp-t">MUSICBAND<br>HUB</div><div class="sp-d">• • •</div><div class="sp-b">LOADING YOUR BAND</div></div>
 <div id="app"></div>
 <div id="pl" class="mbh-player">

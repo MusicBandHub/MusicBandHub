@@ -616,11 +616,11 @@ function songV(){const s=S.D.songs.find(x=>x.id===S.song);if(!s){S.song=null;ret
  <label class=l>Аккорды</label><textarea id=chr style="min-height:120px">${esc(s.chords)}</textarea><label class=l>Заметки</label><textarea id=nts>${esc(s.notes)}</textarea><button data-a=savetext>Сохранить текст</button>`;
  if(tab==='files'){const ic2={gp:'🎸',gp5:'🎸',pdf:'📄',txt:'📄',png:'🖼',jpg:'🖼',jpeg:'🖼',mp4:'🎬'};
   body=`<label class=btn>${S.busy?'Загрузка…':'⬆ Добавить файл (GP5, PDF, фото, текст)'}<input type=file id=fi hidden ${S.busy?'disabled':''}></label>${oth.map(f=>`<div class=card><b>${ic2[f.file_type]||'📎'} ${esc(f.file_name)}</b> · v${f.version}<div class=mu>${Math.round(f.file_size/1024)} КБ · ${esc(nm(f.uploaded_by))} · ${dt(f.created_at)}</div><button class="s g" data-a=dl data-id=${f.id}>Скачать</button><button class="s g" data-a=delfile2 data-id=${f.id}>🗑 Удалить</button></div>`).join('')||'<p class=mu>Файлов пока нет.</p>'}`}
- return`<div class="song-topbar"><button class="song-back" data-a=back>‹</button><div class="song-top-title"><span>ПЕСНЯ</span><b>${esc(s.title)}</b></div><button class="song-more" data-a=statmenu data-id=${s.id}>•••</button></div>
- ${hero}
- <div class="song-detail-actions"><button class="g" data-a="rec" data-id=${s.id}>🎙 Записать</button><button class="g" data-a="metro" data-id=${s.id}>🥁 Метроном</button><button class="g" data-a="songdraft" data-id=${s.id}>＋ Черновик</button></div>
- <div class="song-detail-tabs">${tabs.map(([k,n])=>`<span class="chip ${tab===k?'on':''}" data-a=stab data-k=${k}</span>`).join('')}</div>${body}`;
-
+ return`<button class="g s" data-a=back>← Песни</button><h2 style="margin:6px 0">🎵 ${esc(s.title)}</h2><div><span class="badge b-${s.status}" data-a=statmenu data-id=${s.id}>${SB[s.status]} ▾</span> <span class=mu>${s.bpm||'—'} BPM · ${esc(s.time_signature||'4/4')} · ${esc(s.key_signature||'—')}</span></div>
+ ${d0?`<div class="card hero" style="display:flex;gap:12px;align-items:center"><div class=playb data-a=cardplay data-id=${d0.id}>▶</div><div><div class=mu style="color:#d8c8ff">ДЕМО</div><b>${esc(d0.file_name)}</b> ${d0.duration_sec?'· '+fmtT(d0.duration_sec):''}</div></div>`:''}
+ <div class=row><button class=g data-a=rec data-id=${s.id}>🎙 Записать</button><button class=g data-a=metro data-id=${s.id}>🥁 Метроном</button></div>
+ <button class=g data-a=songdraft data-id=${s.id}>＋ Черновик из песни</button>
+ ${hero}<div style="overflow-x:auto;white-space:nowrap;padding-bottom:4px">${tabs.map(([k,n])=>`<span class="chip ${tab===k?'on':''}" data-a=stab data-k=${k}>${n}</span>`).join('')}</div>${body}`}
 
 /* ----- листы: создать / статус / меню / новая песня ----- */
 function sheet2V(){const o=S.sh2;if(!o)return'';let c='';
@@ -999,75 +999,39 @@ document.addEventListener('click',e=>{
 
 <style id="v10-pages">#screen{box-sizing:border-box;width:100%;max-width:980px;margin:0 auto;padding:18px 14px 170px!important}#screen>section,#screen>.v4-head,#screen>.songs-premium{margin:0 0 18px}.screen-home .v4-head{padding:20px;border:1px solid rgba(255,255,255,.1);border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));box-shadow:0 18px 50px rgba(0,0,0,.28)}.screen-home .v4-stat,.screen-home .v4-song-progress,.screen-home .card,.screen-home .sec{margin-top:12px}.screen-songs .songs-head{position:sticky;top:0;z-index:3;padding:14px 0;background:linear-gradient(var(--bg),var(--bg),transparent)}.screen-songs .song-tools{margin:8px 0}.screen-songs .song-list{display:grid;gap:12px}.screen-songs .premium-song-card{border:1px solid rgba(255,255,255,.09);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.035)}.screen-rehs h2,.screen-files h2,.screen-more h2{margin:4px 0 14px;font-size:28px}.screen-rehs .card,.screen-rehs .cd,.screen-files .card,.screen-more .card{border-radius:16px}.screen-files .files-screen{padding:0}.screen-files .file-tabs{margin-bottom:14px}.screen-more{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.screen-more h2{grid-column:1/-1;margin-bottom:0}.screen-more .card{margin:0!important;min-height:76px;padding:16px!important}.screen-more .card:hover{transform:translateY(-1px)}nav[aria-label="Основная навигация"]{z-index:50}nav[aria-label="Основная навигация"] a{min-width:0}nav[aria-label="Основная навигация"] a span{font-size:11px;line-height:1.15;margin-top:4px}@media(max-width:600px){#screen{padding-left:12px!important;padding-right:12px!important}.screen-more{grid-template-columns:1fr 1fr}.screen-more .card{min-height:70px;padding:13px!important}.screen-home .v4-head{padding:16px}.screen-songs .songs-head{padding-top:6px}}
 
-<style id="mbh-play-final">
-/* Final Songs player layout */
-.mbh-player{position:relative!important;width:100%!important;overflow:hidden!important}
+<style id="mbh-play-center-fix">
+/* Fix: keep the main Play button mathematically centered in the player controls. */
+.mbh-player .mbh-p-controls{position:relative!important;display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important;justify-items:center!important;width:100%!important;min-height:56px!important;margin:10px 0!important}
+.mbh-player .mbh-p-controls>button:first-child{justify-self:end!important}
+.mbh-player .mbh-p-controls>.mbh-p-play{justify-self:center!important;align-self:center!important;margin:0!important;position:static!important;transform:none!important}
+.mbh-player .mbh-p-controls>button:last-child{justify-self:start!important}
+.mbh-player .mbh-p-play{width:52px!important;height:52px!important;min-width:52px!important;min-height:52px!important;padding:0!important;border-radius:50%!important;display:grid!important;place-items:center!important;line-height:1!important}
+@media(max-width:600px){.mbh-player .mbh-p-controls{grid-template-columns:1fr 56px 1fr!important}}
+</style>
+
+<style id="mbh-play-absolute-center">
+/* Final: exact center for Play in Songs player */
 .mbh-player .mbh-p-controls{
- position:relative!important;
- width:100%!important;
- height:64px!important;
- margin:8px 0 4px!important;
- display:flex!important;
- align-items:center!important;
- justify-content:center!important;
- gap:0!important;
+ position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;
+ width:100%!important;height:60px!important;margin:7px 0 5px!important;
 }
 .mbh-player .mbh-p-controls .mbh-p-play{
- position:absolute!important;
- left:50%!important;
- top:50%!important;
- transform:translate(-50%,-50%)!important;
- width:50px!important;
- height:50px!important;
- min-width:50px!important;
- min-height:50px!important;
- margin:0!important;
- padding:0!important;
- display:flex!important;
- align-items:center!important;
- justify-content:center!important;
- text-align:center!important;
- line-height:1!important;
- border-radius:50%!important;
- z-index:2!important;
+ position:absolute!important;left:50%!important;top:50%!important;
+ transform:translate(-50%,-50%)!important;margin:0!important;
+ width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;
+ padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important;
 }
-.mbh-player .mbh-p-controls .mbh-p-play::first-letter{margin:0!important}
-.mbh-player .mbh-p-controls>button:first-child,
+.mbh-player .mbh-p-controls>button:first-child{
+ position:absolute!important;left:calc(50% - 92px)!important;margin:0!important;
+}
 .mbh-player .mbh-p-controls>button:last-child{
- position:absolute!important;
- top:50%!important;
- transform:translateY(-50%)!important;
- margin:0!important;
- width:48px!important;
- height:40px!important;
- min-height:40px!important;
- padding:0!important;
- display:flex!important;
- align-items:center!important;
- justify-content:center!important;
+ position:absolute!important;right:calc(50% - 92px)!important;margin:0!important;
 }
-.mbh-player .mbh-p-controls>button:first-child{left:calc(50% - 108px)!important}
-.mbh-player .mbh-p-controls>button:last-child{right:calc(50% - 108px)!important}
-.mbh-player .mbh-p-controls button{box-sizing:border-box!important}
-.mbh-player .mbh-p-tools{
- display:flex!important;
- align-items:center!important;
- justify-content:center!important;
- gap:8px!important;
- flex-wrap:wrap!important;
-}
-.mbh-player .mbh-p-seek{
- display:grid!important;
- grid-template-columns:42px minmax(0,1fr) 42px!important;
- align-items:center!important;
- gap:8px!important;
-}
-.mbh-player .mbh-p-seek input{min-width:0!important}
 @media(max-width:600px){
- .mbh-player .mbh-p-controls{height:58px!important}
- .mbh-player .mbh-p-controls .mbh-p-play{width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important}
- .mbh-player .mbh-p-controls>button:first-child{left:calc(50% - 88px)!important}
- .mbh-player .mbh-p-controls>button:last-child{right:calc(50% - 88px)!important}
+ .mbh-player .mbh-p-controls{height:54px!important}
+ .mbh-player .mbh-p-controls .mbh-p-play{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important}
+ .mbh-player .mbh-p-controls>button:first-child{left:calc(50% - 78px)!important}
+ .mbh-player .mbh-p-controls>button:last-child{right:calc(50% - 78px)!important}
 }
 </style>
 <style id="mbh-premium-design">
@@ -1093,27 +1057,4 @@ nav[aria-label="Основная навигация"] a.on{background:linear-gra
 .home-top{border-bottom-color:rgba(120,255,215,.10)!important}.brand-mark{background:rgba(12,18,20,.9)!important;border-color:rgba(53,230,173,.18)!important}
 .v4-stats .v4-stat,.v3-stat,.home-stat{background:rgba(7,12,15,.72)!important;border-color:rgba(120,255,215,.10)!important}.v4-stats .v4-stat:hover{border-color:rgba(53,230,173,.28)!important;box-shadow:0 10px 28px rgba(0,0,0,.2)!important}
 @media(max-width:700px){#app{padding-left:10px!important;padding-right:10px!important}.card{border-radius:16px!important}}
-</style><style id="mbh-song-detail-final">
-.song-hero{position:relative!important;margin:14px 0!important;padding:22px!important;border:1px solid rgba(53,230,173,.20)!important;border-radius:22px!important;background:linear-gradient(145deg,rgba(18,30,28,.98),rgba(7,12,15,.98))!important;box-shadow:0 18px 55px rgba(0,0,0,.35)!important;overflow:hidden!important}
-.song-hero:after{content:"";position:absolute;right:-80px;top:-100px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(155,108,255,.18),transparent 68%);pointer-events:none}
-.song-hero-cover{width:78px!important;height:78px!important;margin-bottom:14px!important;display:flex!important;align-items:center!important;justify-content:center!important;border-radius:18px!important;border:1px solid rgba(53,230,173,.20)!important;background:linear-gradient(135deg,#182923,#11171a)!important;color:var(--lime)!important;font-size:32px!important;box-shadow:0 10px 35px rgba(0,0,0,.28)!important}
-.song-hero>h2{font-size:27px!important;margin:0!important}.song-hero>.mu{margin-top:4px!important}
-.song-stats{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:7px!important;margin-top:16px!important}
-.song-stat{padding:10px 8px!important;text-align:center!important;border-radius:11px!important;background:rgba(4,9,11,.65)!important;border:1px solid rgba(120,255,215,.10)!important;font-size:10px!important;color:#b9c8c3!important}
-.song-player-clean{margin-top:14px!important}.song-player-main{width:100%!important;min-height:66px!important;padding:10px 14px!important;display:flex!important;align-items:center!important;gap:12px!important;text-align:left!important;border:1px solid rgba(53,230,173,.18)!important;border-radius:15px!important;background:rgba(6,12,14,.78)!important;color:var(--text)!important}
-.song-player-icon{width:46px!important;height:46px!important;min-width:46px!important;display:flex!important;align-items:center!important;justify-content:center!important;border-radius:50%!important;background:linear-gradient(135deg,var(--lime),var(--green))!important;color:#07100c!important;font-size:18px!important;line-height:1!important;box-shadow:0 0 24px rgba(53,230,173,.18)!important}
-.song-player-main span:last-child{min-width:0!important}.song-player-main b{display:block!important;font-size:13px!important}.song-player-main small{display:block!important;margin-top:3px!important;color:var(--muted)!important;font-size:10px!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
-.song-detail-actions{display:grid!important;grid-template-columns:1fr 1fr 1fr!important;gap:8px!important;margin:10px 0 14px!important}.song-detail-actions button{min-width:0!important;font-size:10px!important;padding:9px 7px!important}
-.song-detail-tabs{display:flex!important;gap:7px!important;overflow-x:auto!important;padding:2px 0 8px!important;scrollbar-width:none!important}.song-detail-tabs::-webkit-scrollbar{display:none!important}.song-detail-tabs .chip{flex:0 0 auto!important;cursor:pointer!important}
-@media(max-width:480px){.song-hero{padding:17px!important;border-radius:18px!important}.song-hero-cover{width:64px!important;height:64px!important;font-size:27px!important}.song-hero>h2{font-size:23px!important}.song-detail-actions{grid-template-columns:1fr 1fr!important}.song-detail-actions button:last-child{grid-column:1/-1}.song-stats{gap:5px!important}.song-stat{font-size:9px!important;padding:9px 4px!important}}
-</style><style id="mbh-song-menu-final">
-.song-topbar{display:flex!important;align-items:center!important;gap:10px!important;margin:2px 0 8px!important;min-height:48px!important}
-.song-back,.song-more{width:42px!important;height:42px!important;min-width:42px!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important;border-radius:13px!important;background:rgba(16,24,25,.9)!important;border:1px solid rgba(53,230,173,.18)!important;color:var(--text)!important}
-.song-back{font-size:28px!important;line-height:1!important}
-.song-more{font-size:17px!important;letter-spacing:2px!important}
-.song-top-title{flex:1!important;min-width:0!important;text-align:center!important}
-.song-top-title span{display:block!important;font-size:8px!important;letter-spacing:2px!important;color:var(--lime)!important;font-weight:800!important}
-.song-top-title b{display:block!important;margin-top:2px!important;font-size:15px!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
-.song-detail-actions{position:sticky!important;bottom:70px!important;z-index:5!important;padding:8px!important;margin:10px -4px 12px!important;border:1px solid rgba(53,230,173,.12)!important;border-radius:16px!important;background:rgba(8,13,15,.88)!important;backdrop-filter:blur(14px)!important}
-@media(max-width:480px){.song-detail-actions{grid-template-columns:1fr 1fr!important}.song-detail-actions button:last-child{grid-column:1/-1}.song-top-title b{font-size:14px!important}}
 </style>

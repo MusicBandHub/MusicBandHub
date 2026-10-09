@@ -2083,7 +2083,7 @@ document.getElementById('mo').addEventListener('click',e=>{const el=e.target.clo
 document.getElementById('mo').addEventListener('change',e=>{const f=MC[e.target.dataset.mc];if(f&&e.target.dataset.mc!=='rng')f(e.target)});
 document.getElementById('mo').addEventListener('input',e=>{if(e.target.dataset.mc==='rng')MC.rng(e.target)});
 document.getElementById('ro').addEventListener('click',e=>{const el=e.target.closest('[data-r]');if(el&&RA[el.dataset.r])RA[el.dataset.r](el.dataset,el)});
-document.addEventListener('click',e=>{const el=e.target.closest('[data-a]');if(!el||!A[el.dataset.a])return;/* Keep native file-picker activation trusted on mobile browsers. */if(!['noop','choosemedia'].includes(el.dataset.a))e.preventDefault();A[el.dataset.a](el.dataset,el)});
+document.addEventListener('click',e=>{if(e.target.closest('.mbh-choose-media')||e.target.matches('input[type=file]'))return;const el=e.target.closest('[data-a]');if(!el||!A[el.dataset.a])return;if(!['noop','choosemedia'].includes(el.dataset.a))e.preventDefault();A[el.dataset.a](el.dataset,el)});
 document.addEventListener('click',e=>{const b=e.target.closest('[data-pact]');if(!b)return;const a=document.getElementById('au'),p=document.getElementById('pl');if(!a||!p)return;const x=b.dataset.pact;
  if(x==='toggle'){a.paused?a.play():a.pause()}else if(x==='back10'){a.currentTime=Math.max(0,a.currentTime-10)}else if(x==='fwd10'){a.currentTime=Math.min(a.duration||a.currentTime+10,a.currentTime+10)}else if(x==='close'){a.pause();p.style.display='none'}else if(x==='loop'){a.loop=!a.loop;b.classList.toggle('on',a.loop)}else if(x==='speed'){const z=[1,.75,1.25,1.5,2],n=z.indexOf(a.playbackRate);a.playbackRate=z[(n+1)%z.length];b.textContent=a.playbackRate+'×'}else if(x==='next'){const ids=S.D.files.filter(f=>AUD.includes((f.file_type||'').toLowerCase()));const k=ids.findIndex(f=>f.id===PLAY.id);if(ids[(k+1)%ids.length])playFile(ids[(k+1)%ids.length].id)}}); 
 function mbhSyncSeek(){const a=document.getElementById('au'),q=document.getElementById('pseek'),cur=document.getElementById('pcur'),dur=document.getElementById('pdur');if(!a||!q)return;const d=Number.isFinite(a.duration)&&a.duration>0?a.duration:0;if(d&&document.activeElement!==q)q.value=String(Math.max(0,Math.min(1000,(a.currentTime/d)*1000)));if(cur)cur.textContent=pTime(a.currentTime);if(dur)dur.textContent=pTime(d)}
@@ -2182,6 +2182,8 @@ draw(true);
 // Reliable capture-phase delegation for metronome, recording and help shortcuts
 // Prevent duplicate execution by stopping the older bubble-phase delegates.
 document.addEventListener('click',function(e){
+ /* Do not let the modal backdrop handler cancel the native mobile file picker. */
+ if(e.target.closest('.mbh-choose-media')||e.target.matches('input[type=file]'))return;
  const el=e.target.closest('[data-m],[data-r],[data-a]');
  if(!el)return;
  const isM=el.hasAttribute('data-m'),isR=el.hasAttribute('data-r'),isA=el.hasAttribute('data-a');

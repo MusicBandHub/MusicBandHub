@@ -1314,7 +1314,14 @@ nav[aria-label="Основная навигация"]>a>span{display:block!impor
 .v4-user-sync.mbh-brand-user .v4-user-name{display:inline-block!important;margin:0!important;padding:0!important;color:var(--muted)!important;font-size:13px!important}
 .v4-head.mbh-brand-header .v4-settings{display:none!important}
 </style>
-<style id="mbh-home-brand-spacing-v41">.v4-head.mbh-brand-header{margin-top:14px!important;margin-bottom:24px!important;padding-top:26px!important;padding-bottom:28px!important}</style>
+<style id="mbh-home-brand-header-layout-v42">
+/* Header: band on the left with breathing room; product title centered and compact */
+body>header, #app>header, header:has(button.g[data-a="sheet"]){box-sizing:border-box!important;padding-left:16px!important;padding-right:16px!important;gap:12px!important}
+header:has(button.g[data-a="sheet"]) button.g[data-a="sheet"]{flex:0 1 auto!important;min-width:0!important;max-width:calc(100% - 54px)!important;padding:10px 12px!important;margin-left:2px!important;text-align:left!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+.v4-head.mbh-brand-header{position:relative!important;box-sizing:border-box!important;margin:14px 0 24px!important;padding:18px 16px 22px!important;min-height:76px!important;display:flex!important;align-items:center!important;justify-content:center!important}
+.mbh-brand-title{font-size:clamp(22px,5.4vw,28px)!important;line-height:1.2!important;letter-spacing:-.6px!important;text-align:center!important;margin:0!important}
+.v4-user-sync.mbh-brand-user{margin-top:9px!important}
+</style>
 </head><body>
 <div id="splash"><div class="sp-mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="spg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c6ff1a"/><stop offset=".55" stop-color="#34e0a1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M6 46 L18 14 L32 40 L46 14 L58 46" fill="none" stroke="url(#spg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g stroke="url(#spg)" stroke-width="3" stroke-linecap="round"><path d="M2 32v6M10 26v16M54 26v16M62 32v6"/></g></svg></div><div class="sp-t">MUSICBAND<br>HUB</div><div class="sp-d">• • •</div><div class="sp-b">LOADING YOUR BAND</div></div>
 <div id="app"></div>

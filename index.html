@@ -1487,6 +1487,19 @@ nav[aria-label="Основная навигация"]>a>span{display:block!impor
 @media(max-height:700px){.auth-screen{justify-content:flex-start;padding-top:8px}.auth-card{padding-top:20px;padding-bottom:20px}.auth-intro{padding-top:19px;padding-bottom:10px}.auth-intro h1{font-size:29px;margin:12px 0 8px}.auth-form>label{margin-top:9px}.auth-field{min-height:44px}.auth-field input{height:42px!important}.auth-submit{min-height:46px!important;margin-top:12px!important}.auth-footer{margin-top:14px;padding-top:12px}.auth-bottom-note{margin-top:10px}}
 @media(prefers-reduced-motion:reduce){.auth-card{animation:none!important}.auth-field,.auth-submit{transition:none!important}}
 </style>
+<style id="mbh-sheet-player-overlap-fix-v1">
+/* Keep modal sheets above the floating audio player so it never covers menu text. */
+.ov{z-index:10050!important}
+.ov>.sh{z-index:10051!important;position:relative!important}
+.ov .sh>h3{position:relative!important;z-index:1!important;line-height:1.3!important;overflow-wrap:anywhere!important}
+.ov .sh .gi{position:relative!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:10px!important;flex-wrap:nowrap!important;width:100%!important;min-width:0!important;max-width:100%!important;min-height:62px!important;margin:8px 0!important;padding:14px!important;line-height:1.4!important;white-space:normal!important;overflow-wrap:anywhere!important;word-break:normal!important}
+.ov .sh .gi>b{display:inline!important;min-width:0!important;line-height:1.35!important;overflow-wrap:anywhere!important;font-weight:800!important}
+.ov .sh .gi input[type=file]{display:none!important}
+@media(max-width:480px){
+ .ov .sh{max-height:82dvh!important;padding:22px 16px calc(18px + env(safe-area-inset-bottom,0px))!important}
+ .ov .sh .gi{min-height:58px!important;padding:12px!important;gap:9px!important}
+}
+</style>
 </head><body>
 <div id="splash"><div class="sp-mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="spg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c6ff1a"/><stop offset=".55" stop-color="#34e0a1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M6 46 L18 14 L32 40 L46 14 L58 46" fill="none" stroke="url(#spg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g stroke="url(#spg)" stroke-width="3" stroke-linecap="round"><path d="M2 32v6M10 26v16M54 26v16M62 32v6"/></g></svg></div><div class="sp-t">MUSICBAND<br>HUB</div><div class="sp-d">• • •</div><div class="sp-b">LOADING YOUR BAND</div></div>
 <div id="app"></div>

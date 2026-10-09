@@ -1439,7 +1439,55 @@ nav[aria-label="Основная навигация"]>a>span{display:block!impor
 .mbh-file-category-icon{width:29px!important;height:29px!important;border-radius:9px!important;font-size:17px!important}
 .mbh-file-category>span:nth-child(2){font-size:11px!important;line-height:1.15!important}
 @media(max-width:360px){.mbh-file-category-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}.mbh-file-category{min-height:76px!important}}
-</style></head><body>
+</style>
+<style id="mbh-registration-premium-v1">
+#app:has(.auth-screen){display:flex!important;align-items:center!important;justify-content:center!important;min-height:100dvh!important;padding:calc(18px + env(safe-area-inset-top,0px)) 18px calc(18px + env(safe-area-inset-bottom,0px))!important;max-width:none!important}
+.auth-screen{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;min-height:calc(100dvh - 36px);overflow:hidden;padding:22px 0 12px;color:#f4f6f8}
+.auth-screen:before{content:"";position:absolute;z-index:-2;inset:8% 0 10%;margin:auto;width:min(90vw,560px);height:480px;background:radial-gradient(ellipse,rgba(200,255,32,.07),rgba(52,224,161,.025) 40%,transparent 72%);filter:blur(16px);pointer-events:none}
+.auth-orb{position:absolute;z-index:-1;width:260px;height:260px;border:1px solid rgba(200,255,32,.075);border-radius:50%;pointer-events:none}
+.auth-orb:before,.auth-orb:after{content:"";position:absolute;inset:18px;border:1px solid rgba(139,92,246,.065);border-radius:50%}
+.auth-orb:after{inset:42px;border-color:rgba(52,224,161,.055)}
+.auth-orb-a{top:7%;right:-180px}.auth-orb-b{bottom:6%;left:-190px;transform:scale(1.2)}
+.auth-card{position:relative;width:min(100%,448px);padding:clamp(22px,5vw,34px);border:1px solid rgba(255,255,255,.09);border-radius:26px;background:linear-gradient(155deg,rgba(23,27,32,.98),rgba(12,14,18,.99) 68%);box-shadow:0 26px 90px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.035);overflow:hidden;animation:authRise .48s cubic-bezier(.2,.8,.2,1) both}
+.auth-card:before{content:"";position:absolute;top:0;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,rgba(200,255,32,.55),rgba(52,224,161,.35),transparent)}
+.auth-brand{display:flex;align-items:center;gap:12px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.075)}
+.auth-logo{display:grid;place-items:center;flex:0 0 48px;width:48px;height:48px;border:1px solid rgba(200,255,32,.24);border-radius:15px;background:linear-gradient(145deg,rgba(200,255,32,.12),rgba(52,224,161,.055));box-shadow:0 0 28px rgba(200,255,32,.055)}
+.auth-logo svg{display:block;width:31px;height:31px}
+.auth-brand-copy{display:flex;flex-direction:column;gap:5px;min-width:0}
+.auth-brand-copy b{font-size:16px;letter-spacing:-.3px;font-weight:900;color:#f8fafb}
+.auth-brand-copy span{font-size:8px;letter-spacing:1.45px;color:#7e8793;font-weight:800}
+.auth-brand-status{display:flex;align-items:center;gap:5px;margin-left:auto;color:#87928b;font-size:8px;font-weight:800;letter-spacing:1px}
+.auth-brand-status i,.auth-kicker span,.auth-bottom-note span{display:inline-block;width:6px;height:6px;background:#35e0a1;border-radius:50%;box-shadow:0 0 10px rgba(53,224,161,.6)}
+.auth-intro{padding:28px 0 19px}
+.auth-kicker{display:flex;align-items:center;gap:8px;color:#98a17f;font-size:9px;letter-spacing:1.2px;font-weight:850}
+.auth-kicker span{width:5px;height:5px;background:#c8ff20;box-shadow:0 0 10px rgba(200,255,32,.5)}
+.auth-intro h1{margin:17px 0 10px;font-size:clamp(29px,7vw,36px);line-height:1.05;letter-spacing:-1.55px!important;font-weight:900}
+.auth-intro h1 em{font-style:normal;color:#c8ff20}
+.auth-intro>p{max-width:340px;margin:0;color:#939ba7;font-size:12px;line-height:1.6}
+.auth-form{display:flex;flex-direction:column;gap:0;margin:0}
+.auth-form>label{margin:13px 0 7px;color:#d8dce2;font-size:11px;font-weight:750;letter-spacing:.15px}
+.auth-field{display:flex;align-items:center;gap:10px;min-height:49px;padding:0 13px;border:1px solid #303640;border-radius:12px;background:#0b0d11;transition:border-color .18s,box-shadow .18s,background .18s}
+.auth-field:focus-within{border-color:rgba(200,255,32,.65);background:#0d100e;box-shadow:0 0 0 3px rgba(200,255,32,.07)}
+.auth-field>span{display:grid;place-items:center;flex:0 0 18px;width:18px;color:#87917c;font-size:17px}
+.auth-field input{width:100%;min-width:0;height:47px!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;outline:0!important;box-shadow:none!important;background:transparent!important;color:#f4f6f8!important;font-size:13px!important}
+.auth-field input::placeholder{color:#606874;opacity:1}
+.auth-password-note{margin:7px 0 0;color:#737d88;font-size:10px}
+.auth-error:empty{display:none}
+.auth-error{margin:11px 0 0;padding:10px 12px;border:1px solid rgba(255,93,108,.22);border-radius:10px;background:rgba(255,93,108,.07);color:#ff9aa4;font-size:11px;line-height:1.45;overflow-wrap:anywhere}
+.auth-submit{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;width:100%!important;min-height:51px!important;margin-top:18px!important;padding:0 17px!important;border:1px solid rgba(217,255,86,.6)!important;border-radius:13px!important;background:linear-gradient(100deg,#c8ff20,#b7f53d)!important;color:#10130a!important;font-size:13px!important;font-weight:900!important;box-shadow:0 8px 24px rgba(200,255,32,.12)!important;transition:transform .18s,filter .18s,box-shadow .18s!important}
+.auth-submit span{display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:rgba(14,19,7,.1);font-size:19px;line-height:1}
+.auth-submit:active{transform:scale(.99)!important}
+.auth-submit:disabled{opacity:.66!important;cursor:wait}
+.auth-footer{display:flex;align-items:flex-start;gap:9px;margin-top:22px;padding-top:17px;border-top:1px solid rgba(255,255,255,.065);color:#78818d;font-size:10px;line-height:1.5}
+.auth-footer-icon{color:#c8ff20;font-size:13px;line-height:1.2}
+.auth-bottom-note{display:flex;align-items:center;justify-content:center;gap:8px;margin:18px 0 0;color:#5c6570;font-size:8px;font-weight:800;letter-spacing:1.5px;text-align:center}
+.auth-bottom-note span{width:4px;height:4px;opacity:.6}
+@keyframes authRise{from{opacity:0;transform:translateY(11px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:480px){#app:has(.auth-screen){padding:calc(10px + env(safe-area-inset-top,0px)) 12px calc(12px + env(safe-area-inset-bottom,0px))!important}.auth-screen{min-height:calc(100dvh - 22px);padding:5px 0}.auth-card{padding:22px 19px;border-radius:23px}.auth-brand{padding-bottom:18px}.auth-logo{width:43px;height:43px;flex-basis:43px;border-radius:13px}.auth-intro{padding:24px 0 16px}.auth-intro h1{font-size:31px}.auth-intro>p{font-size:11.5px}.auth-bottom-note{font-size:7px;letter-spacing:1.1px}}
+@media(max-height:700px){.auth-screen{justify-content:flex-start;padding-top:8px}.auth-card{padding-top:20px;padding-bottom:20px}.auth-intro{padding-top:19px;padding-bottom:10px}.auth-intro h1{font-size:29px;margin:12px 0 8px}.auth-form>label{margin-top:9px}.auth-field{min-height:44px}.auth-field input{height:42px!important}.auth-submit{min-height:46px!important;margin-top:12px!important}.auth-footer{margin-top:14px;padding-top:12px}.auth-bottom-note{margin-top:10px}}
+@media(prefers-reduced-motion:reduce){.auth-card{animation:none!important}.auth-field,.auth-submit{transition:none!important}}
+</style>
+</head><body>
 <div id="splash"><div class="sp-mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="spg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c6ff1a"/><stop offset=".55" stop-color="#34e0a1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M6 46 L18 14 L32 40 L46 14 L58 46" fill="none" stroke="url(#spg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g stroke="url(#spg)" stroke-width="3" stroke-linecap="round"><path d="M2 32v6M10 26v16M54 26v16M62 32v6"/></g></svg></div><div class="sp-t">MUSICBAND<br>HUB</div><div class="sp-d">• • •</div><div class="sp-b">LOADING YOUR BAND</div></div>
 <div id="app"></div>
 <div id="pl" class="mbh-player">
@@ -1533,9 +1581,27 @@ document.addEventListener('focusout',()=>setTimeout(()=>{if(S.dirty)draw()},150)
 
 function setupV(){return`<h1>MusicBandHub</h1><p class=mu>Один раз укажите данные вашего Supabase-проекта (Project Settings → API). Они хранятся только в этом браузере. Используйте только anon/publishable ключ.</p>
 <input id=cu placeholder="https://xxxx.supabase.co"><input id=ck placeholder="anon / publishable key"><button data-a=cfg>Сохранить</button>`}
-function authV(){return`<div class=logo>${LOGO}<h1>MusicBandHub</h1><p>Твоя музыкальная вселенная</p></div>
-<form id=af autocomplete=on><input id=an name=name autocomplete=name placeholder="Имя пользователя" value="${esc(S.f?.n)}"><input id=ae name=email type=email autocomplete=username placeholder="Email" value="${esc(S.f?.e)}"><input id=ap name=password type=password autocomplete=current-password placeholder="Пароль (от 6 символов)">
-<div class=er>${esc(S.msg)}</div><button type=submit ${S.busy?'disabled':''}>Создать аккаунт</button></form>${S.noStore?'<p class=er>Браузер не сохраняет данные входа. Откройте приложение по ссылке в Safari или Chrome, а не внутри другого приложения.</p>':''}<p class=mu style="text-align:center;margin-top:24px">Продолжая, вы соглашаетесь с условиями использования</p>`}
+function authV(){return`<section class="auth-screen">
+ <div class="auth-orb auth-orb-a"></div><div class="auth-orb auth-orb-b"></div>
+ <div class="auth-card">
+  <header class="auth-brand"><div class="auth-logo">${LOGO}</div><div class="auth-brand-copy"><b>MusicBandHub</b><span>WORKSPACE FOR MUSICIANS</span></div><span class="auth-brand-status"><i></i> ONLINE</span></header>
+  <div class="auth-intro"><div class="auth-kicker"><span></span> ТВОЯ МУЗЫКАЛЬНАЯ ВСЕЛЕННАЯ</div><h1>Вся группа.<br><em>В одном месте.</em></h1><p>Песни, демо, тексты, репетиции и концертные материалы — вместе с командой.</p></div>
+  <form id="af" class="auth-form" autocomplete="on">
+   <label for="an">Как тебя зовут?</label>
+   <div class="auth-field"><span aria-hidden="true">♙</span><input id="an" name="name" autocomplete="name" placeholder="Имя пользователя" value="${esc(S.f?.n)}" required></div>
+   <label for="ae">Email</label>
+   <div class="auth-field"><span aria-hidden="true">✉</span><input id="ae" name="email" type="email" autocomplete="username" placeholder="name@example.com" value="${esc(S.f?.e)}" required></div>
+   <label for="ap">Пароль</label>
+   <div class="auth-field"><span aria-hidden="true">⌑</span><input id="ap" name="password" type="password" autocomplete="new-password" minlength="6" placeholder="Не менее 6 символов" required></div>
+   <p class="auth-password-note">Минимум 6 символов</p>
+   <div class="er auth-error">${esc(S.msg)}</div>
+   <button class="auth-submit" type="submit" ${S.busy?'disabled':''}>${S.busy?'Создаём аккаунт…':'Создать аккаунт'} <span aria-hidden="true">↗</span></button>
+  </form>
+  ${S.noStore?'<p class="er auth-error is-visible">Браузер не сохраняет данные входа. Откройте приложение в обычном браузере, например Chrome.</p>':''}
+  <div class="auth-footer"><span class="auth-footer-icon">✦</span><span>После регистрации сможешь создать группу или присоединиться к своей.</span></div>
+ </div>
+ <div class="auth-bottom-note"><span></span> СОЗДАНО ДЛЯ МУЗЫКАНТОВ · MUSICBANDHUB</div>
+</section>`}
 function gateV(){const c=S.created,gm=S.bands.length?S.gm:'both';
  if(c)return`<h2>Группа создана!</h2><div class=mu>Вы стали 👑 Owner. Код группы:</div><div class=code>${esc(c.invite_code)}</div>
  <button data-a=copy data-c="${esc(c.invite_code)}">Скопировать код</button><button class=g data-a=share data-c="${esc(c.invite_code)}" data-n="${esc(c.name)}">Поделиться кодом</button><button data-a=opened>Открыть группу</button>`;

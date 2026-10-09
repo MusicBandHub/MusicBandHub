@@ -1777,6 +1777,17 @@ const _sp=document.getElementById('splash');_sp.querySelector('.sp-b').textConte
 setTimeout(()=>{_sp.style.opacity=0;setTimeout(()=>_sp.remove(),500);if(S.locked)A.unlock()},2400);
 draw(true);
 
+<style id="mbh-modal-overlay-fix-v35">
+/* Metronome and recorder are independent full-screen dialogs, not content in the More page. */
+#mo.pan,#ro.pan{display:none;position:fixed!important;inset:0!important;z-index:10000!important;box-sizing:border-box!important;width:100%!important;height:100%!important;height:100dvh!important;max-width:none!important;margin:0!important;padding:calc(18px + env(safe-area-inset-top,0px)) 16px calc(22px + env(safe-area-inset-bottom,0px))!important;overflow-x:hidden!important;overflow-y:auto!important;background:rgba(7,9,13,.98)!important;color:var(--text,#f4f5f7)!important;border:0!important;border-radius:0!important;overscroll-behavior:contain!important;-webkit-overflow-scrolling:touch!important}
+#mo.pan>div:first-child,#ro.pan>div:first-child{position:sticky!important;top:0!important;z-index:2!important;background:rgba(7,9,13,.98)!important;padding:4px 0 12px!important}
+#mo.pan .row,#ro.pan .row{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:8px!important}
+#mo.pan button,#ro.pan button{box-sizing:border-box!important;max-width:100%!important;min-height:42px!important;white-space:normal!important;overflow-wrap:anywhere!important}
+#mo.pan input,#mo.pan select,#ro.pan input,#ro.pan select{box-sizing:border-box!important;min-width:0!important;max-width:100%!important}
+#mo.pan .row button{flex:1 1 48px!important;margin:0!important}
+#mo.pan .row input{flex:2 1 90px!important}
+#mo.pan .dots{max-width:100%!important;overflow:hidden!important;flex-wrap:wrap!important;justify-content:center!important}
+</style>
 // Reliable capture-phase delegation for metronome, recording and help shortcuts
 // Prevent duplicate execution by stopping the older bubble-phase delegates.
 document.addEventListener('click',function(e){

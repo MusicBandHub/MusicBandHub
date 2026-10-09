@@ -1778,8 +1778,29 @@ const BAND_AI_PROMPTS=['Что нам делать дальше? Проанал�
  async dl(d){const f=S.D.files.find(x=>x.id===d.id);await ok(sb.storage.from('band-files').createSignedUrl(f.storage_path,120,{download:f.file_name}),r=>{const a=document.createElement('a');a.href=r.data.signedUrl;a.click()})},
  async adddraft(){if(!v('dt').trim())return;await ok(sb.from('drafts').insert({band_id:S.bid,title:v('dt').trim(),description:v('dd'),type:v('dy'),song_id:v('ds')||null,created_by:S.user.id}),load)},
  async deldraft(d){await ok(sb.from('drafts').delete().eq('id',d.id),load)},
- async addreh(){if(!v('rt').trim()||!v('rd')||!v('rs'))return toast('Заполните название, дату и время');
-  S.sd=v('rd');S.rm=v('rd').slice(0,7);S.rdate=null;S.open=null;await ok(sb.from('rehearsals').insert({band_id:S.bid,title:v('rt').trim(),date:v('rd'),start_time:v('rs'),end_time:v('re')||null,location:v('rl'),notes:v('rn'),created_by:S.user.id}),load)},
+ async addreh(){
+  if(S.busy)return;
+  const title=v('rt').trim(),date=v('rd'),start=v('rs'),end=v('re');
+  if(!title||!date||!start){toast('Заполните название, дату и время');return}
+  if(end&&end<=start){toast('Время окончания должно быть позже начала');return}
+  if(!S.user||!S.bid||!sb){toast('Сначала войдите в группу');return}
+  S.busy=true;
+  const btn=document.querySelector('[data-a="addreh"]');
+  if(btn){btn.disabled=true;btn.textContent='Создаём…'}
+  try{
+   const row={band_id:S.bid,title,date,start_time:start,end_time:end||null,location:v('rl').trim()||null,notes:v('rn').trim()||null,created_by:S.user.id};
+   const result=await sb.from('rehearsals').insert(row);
+   if(result.error)throw result.error;
+   S.sd=date;S.rm=date.slice(0,7);S.rdate=null;S.open=null;
+   toast('Репетиция создана');
+   await load();
+   draw(true);
+  }catch(e){
+   console.error('Create rehearsal failed:',e);
+   const msg=(e&&e.message)||'Неизвестная ошибка';
+   toast(msg.includes('permission')||msg.includes('policy')?'Нет прав на создание репетиции. Проверьте роль и доступы группы.':'Не удалось создать репетицию: '+msg);
+  }finally{S.busy=false}
+ },
  async delreh(d){if(confirm('Удалить репетицию?'))await ok(sb.from('rehearsals').delete().eq('id',d.id),load)},
  async att(d){await ok(sb.from('rehearsal_attendees').upsert({rehearsal_id:d.id,user_id:S.user.id,status:d.s},{onConflict:'rehearsal_id,user_id'}),load)},
  async role(d){S.mm=null;await ok(sb.from('band_members').update({role:d.r}).eq('id',d.id),load)},

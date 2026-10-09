@@ -1194,6 +1194,41 @@ nav[aria-label="Основная навигация"]>a>span{
 }
 </style>
 
+
+<style id="mbh-player-layout-fix-v43">
+/* Player: centered, non-overlapping controls and compact tool row. */
+.mbh-player{box-sizing:border-box!important;overflow:hidden!important;max-width:calc(100vw - 16px)!important}
+.mbh-player *{box-sizing:border-box!important}
+.mbh-player .mbh-p-top{display:grid!important;grid-template-columns:38px minmax(0,1fr) 32px!important;gap:9px!important;align-items:center!important}
+.mbh-player .mbh-p-info{min-width:0!important;overflow:hidden!important}
+.mbh-player .mbh-p-title,.mbh-player .mbh-p-file{display:block!important;max-width:100%!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+.mbh-player .mbh-p-x{position:static!important;justify-self:end!important;margin:0!important;flex:none!important}
+.mbh-player .mbh-p-controls{position:static!important;display:grid!important;grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr)!important;align-items:center!important;justify-items:center!important;gap:10px!important;width:100%!important;height:auto!important;min-height:48px!important;margin:8px 0!important;padding:0 8px!important}
+.mbh-player .mbh-p-controls>button,.mbh-player .mbh-p-controls>button:first-child,.mbh-player .mbh-p-controls>button:last-child,.mbh-player .mbh-p-controls .mbh-p-play{
+ position:static!important;left:auto!important;right:auto!important;top:auto!important;transform:none!important;
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ width:100%!important;min-width:0!important;max-width:100%!important;height:36px!important;min-height:36px!important;
+ margin:0!important;padding:0 6px!important;flex:none!important;white-space:nowrap!important;
+}
+.mbh-player .mbh-p-controls .mbh-p-play{width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;border-radius:50%!important;justify-self:center!important}
+.mbh-player .mbh-p-tools{display:grid!important;grid-template-columns:minmax(0,1fr) 42px minmax(64px,1fr) minmax(0,1fr)!important;align-items:center!important;justify-content:stretch!important;gap:6px!important;width:100%!important;min-width:0!important;padding-top:4px!important}
+.mbh-player .mbh-p-tools>button{display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;min-width:0!important;max-width:100%!important;height:32px!important;margin:0!important;padding:0 4px!important;overflow:hidden!important;white-space:nowrap!important;font-size:10px!important}
+.mbh-player .mbh-p-tools>button[data-pact="loop"] span{display:inline!important;margin-left:3px!important}
+.mbh-player .mbh-p-vol{display:flex!important;align-items:center!important;justify-content:center!important;gap:3px!important;min-width:0!important;width:100%!important;overflow:hidden!important;font-size:10px!important}
+.mbh-player .mbh-p-vol input{display:block!important;width:100%!important;min-width:0!important;max-width:100%!important;margin:0!important}
+.mbh-player .mbh-p-seek{display:grid!important;grid-template-columns:36px minmax(0,1fr) 36px!important;gap:7px!important;align-items:center!important;width:100%!important;min-width:0!important}
+.mbh-player .mbh-p-seek span{min-width:0!important;flex:none!important;text-align:center!important;white-space:nowrap!important}
+.mbh-player .mbh-p-seek input{width:100%!important;min-width:0!important;margin:0!important}
+@media(max-width:380px){
+ .mbh-player{padding:9px!important}
+ .mbh-player .mbh-p-controls{grid-template-columns:minmax(0,1fr) 42px minmax(0,1fr)!important;gap:7px!important;padding:0 3px!important}
+ .mbh-player .mbh-p-controls .mbh-p-play{width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important}
+ .mbh-player .mbh-p-tools{grid-template-columns:minmax(0,1fr) 34px minmax(48px,.9fr) minmax(0,1fr)!important;gap:4px!important}
+ .mbh-player .mbh-p-tools>button{font-size:9px!important;padding:0 2px!important}
+ .mbh-player .mbh-p-tools>button[data-pact="loop"] span{font-size:8px!important}
+}
+</style>
+
 </head><body>
 <div id="splash"><div class="sp-mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="spg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c6ff1a"/><stop offset=".55" stop-color="#34e0a1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M6 46 L18 14 L32 40 L46 14 L58 46" fill="none" stroke="url(#spg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g stroke="url(#spg)" stroke-width="3" stroke-linecap="round"><path d="M2 32v6M10 26v16M54 26v16M62 32v6"/></g></svg></div><div class="sp-t">MUSICBAND<br>HUB</div><div class="sp-d">• • •</div><div class="sp-b">LOADING YOUR BAND</div></div>
 <div id="app"></div>

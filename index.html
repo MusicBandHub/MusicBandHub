@@ -1258,6 +1258,19 @@ nav[aria-label="Основная навигация"]>a>span{
 .mbh-reh-actions .mbh-reh-delete{border:1px solid rgba(255,77,94,.4)!important;background:rgba(255,77,94,.1)!important;color:#ff6675!important}
 @media(max-width:360px){.mbh-reh-card{padding:16px 10px!important}.mbh-reh-votes{gap:5px}.mbh-reh-votes .mbh-vote{padding:9px 3px!important;font-size:11px!important}.mbh-reh-counts>span{padding:6px 7px;font-size:11px}.mbh-reh-actions{gap:7px}}
 </style>
+
+<style id="mbh-gig-checklist-spacing-v1">
+/* Concert checklist: clear spacing, aligned labels, contained controls */
+.mbh-gig-checklist{box-sizing:border-box;width:100%;max-width:100%;min-width:0;margin:18px auto!important;padding:18px!important;overflow:hidden;border-radius:18px}
+.mbh-gig-checklist *{box-sizing:border-box;min-width:0}
+.mbh-gig-checklist-title{margin:0 0 14px!important;font-size:18px;line-height:1.35;overflow-wrap:anywhere}
+.mbh-gig-checklist-items{display:flex;flex-direction:column;gap:8px;width:100%}
+.mbh-gig-checkitem{display:flex!important;align-items:center!important;gap:12px!important;width:100%;max-width:100%;margin:0!important;padding:12px 13px!important;border:1px solid var(--bd,rgba(150,160,180,.2));border-radius:12px;background:rgba(150,160,180,.055);line-height:1.4;cursor:pointer;transition:background .16s,border-color .16s}
+.mbh-gig-checkitem:has(input:checked){border-color:rgba(52,217,150,.45);background:rgba(52,217,150,.09)}
+.mbh-gig-checkitem input[type=checkbox]{flex:0 0 19px!important;width:19px!important;height:19px!important;min-width:19px!important;margin:0!important;accent-color:#34d996;cursor:pointer}
+.mbh-gig-checkitem span{flex:1;display:block;overflow-wrap:anywhere;font-size:14px}
+@media(max-width:380px){.mbh-gig-checklist{padding:13px!important}.mbh-gig-checklist-title{font-size:17px}.mbh-gig-checklist-items{gap:7px}.mbh-gig-checkitem{padding:11px 10px!important;gap:10px!important}.mbh-gig-checkitem span{font-size:13px}}
+</style>
 </head><body>
 <div id="splash"><div class="sp-mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="spg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c6ff1a"/><stop offset=".55" stop-color="#34e0a1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M6 46 L18 14 L32 40 L46 14 L58 46" fill="none" stroke="url(#spg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g stroke="url(#spg)" stroke-width="3" stroke-linecap="round"><path d="M2 32v6M10 26v16M54 26v16M62 32v6"/></g></svg></div><div class="sp-t">MUSICBAND<br>HUB</div><div class="sp-d">• • •</div><div class="sp-b">LOADING YOUR BAND</div></div>
 <div id="app"></div>
@@ -1680,7 +1693,7 @@ function gigV(){
  <div class=card><div style="display:flex;justify-content:space-between"><b>Сет-лист · ${chosen.length} песен</b><b style="color:var(--ac)">≈ ${tm} мин</b></div>
  ${chosen.length?chosen.map((s,i)=>`<div class="mb" style="padding:8px 0;border-bottom:1px solid var(--bd)"><div class=pav style="width:32px;height:32px">${i+1}</div><div class=mi><b>${esc(s.title)}</b><div class=mu>${s.bpm?s.bpm+' BPM':''} ${s.key_signature?' · '+esc(s.key_signature):''}</div></div><button class="s g" data-a=gigup data-i=${i}>↑</button><button class="s g" data-a=gigdown data-i=${i}>↓</button><button class="s g" data-a=gigremove data-id="${s.id}">×</button></div>`).join(''):'<div class=mu style="padding:10px 0">Добавьте песни из списка ниже.</div>'}
  ${available.length?`<select id=gadd><option value="">＋ Добавить песню в сет-лист</option>${available.map(s=>`<option value="${s.id}">${esc(s.title)}</option>`).join('')}</select><button data-a=gigadd>Добавить</button>`:''}</div>
- <div class=card><b>Чек-лист перед концертом</b>${ck.map((x,i)=>`<label style="display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--bd)"><input type=checkbox data-gigck="${i}" ${GIG.check[i]?'checked':''} style="width:auto;margin:0"><span>${x}</span></label>`).join('')}</div>`;
+ <section class="card mbh-gig-checklist"><h3 class="mbh-gig-checklist-title">Чек-лист перед концертом</h3><div class="mbh-gig-checklist-items">${ck.map((x,i)=>`<label class="mbh-gig-checkitem"><input type="checkbox" data-gigck="${i}" ${GIG.check[i]?'checked':''}><span>${x}</span></label>`).join('')}</div></section>`;
 }
 const BM={tasks:[],fin:[],events:[],sc:[],view:'month',loaded:false};
 async function bmLoad(){if(BM.loaded)return;const q=await Promise.all([sb.from('band_tasks').select('*').eq('band_id',S.bid).order('due_date',{ascending:true}),sb.from('band_finances').select('*').eq('band_id',S.bid).order('event_date',{ascending:false}),sb.from('band_events').select('*').eq('band_id',S.bid).order('start_at',{ascending:true}),sb.from('soundchecks').select('*').eq('band_id',S.bid).order('sort_order',{ascending:true})]);BM.tasks=q[0].data||[];BM.fin=q[1].data||[];BM.events=q[2].data||[];BM.sc=q[3].data||[];BM.loaded=true}

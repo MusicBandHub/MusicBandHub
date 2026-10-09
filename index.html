@@ -2122,7 +2122,7 @@ Object.assign(A,{
    if(id){let r=await sb.from('drafts').update(row).eq('id',id);if(r.error&&colErr(r.error)){toast('Выполните SQL 008, чтобы сохранялись все поля');r=await sb.from('drafts').update(coreRow(row)).eq('id',id)}if(r.error)throw r.error}
    else{row.created_by=S.user.id;let r=await sb.from('drafts').insert(row).select().single();if(r.error&&colErr(r.error)){toast('Выполните SQL 008, чтобы сохранялись все поля');r=await sb.from('drafts').insert(coreRow(row)).select().single()}if(r.error)throw r.error;id=r.data.id}
    for(const x of S.drfiles)await addDraftFile(id,x);
-   const was=f.id;S.sh3=false;S.drf=null;S.drfiles=[];toast(was?'Сохранено':'Черновик добавлен');S.tab='files';S.ft='drafts';await load()}catch(x){toast(em(x))}
+   const was=f.id;S.sh3=false;S.drf=null;S.drfiles=[];toast(was?'Сохранено':'Черновик добавлен');S.tab='files';S.ft=ty[0];S.df=ty[0];await load()}catch(x){toast(em(x))}
   S.busy=false;draw(true)},
  async dtosong(d){const dr=S.D.drafts.find(x=>x.id===d.id);if(!dr)return;if(dr.song_id&&!confirm('Черновик уже привязан к песне. Создать ещё одну песню?'))return;
   try{const s=await t(sb.from('songs').insert({band_id:S.bid,title:dr.title,status:'IDEA',bpm:dr.bpm||null,key_signature:dr.key_signature||null,time_signature:dr.time_signature||null,description:dr.description||'',lyrics:dr.body||'',created_by:S.user.id}).select().single());let n=0;

@@ -831,7 +831,7 @@ nav[aria-label="Основная навигация"] a span{
 .screen-calendar .grid,.screen-calendar [class*="calendar-grid"],
 .screen-calendar [class*="cal-grid"]{
  display:grid!important;
- grid-template-columns:repeat(7,minmax(0,1fr))!important;
+ grid-template-columns:repeat(6,minmax(0,1fr))!important;
  gap:6px!important;
  width:100%!important;
  box-sizing:border-box!important;
@@ -1285,7 +1285,7 @@ body:has(#ro[style*="display: block"]) #ro.pan{
 
 <style id="mbh-settings-tab-v37">
 .settings-page{max-width:760px;margin:0 auto;padding:4px 0 30px}.settings-page>h2{font-size:24px;margin:8px 0 18px}.settings-page>section{margin:0 0 14px;padding:16px!important}.settings-page>section h3{margin:0 0 14px;font-size:16px}.settings-page .mu{overflow-wrap:anywhere;line-height:1.55;margin:10px 0}.settings-page .gi{margin:8px 0;padding:12px!important}.settings-signout{width:100%;min-height:48px;margin:4px 0 18px;background:#35191d!important;color:#ff777f!important;border:1px solid #713039!important;border-radius:12px!important;font-weight:750!important}
-nav[aria-label="Основная навигация"]{grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:2px!important}nav[aria-label="Основная навигация"] a{padding-left:1px!important;padding-right:1px!important}nav[aria-label="Основная навигация"] a span{font-size:clamp(6px,1.65vw,8px)!important}
+nav[aria-label="Основная навигация"]{grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:2px!important}nav[aria-label="Основная навигация"] a{padding-left:1px!important;padding-right:1px!important}nav[aria-label="Основная навигация"] a span{font-size:clamp(6px,1.65vw,8px)!important}
 @media(max-width:430px){nav[aria-label="Основная навигация"]{grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:1px!important}nav[aria-label="Основная навигация"] a span{font-size:6.5px!important}}
 </style>
 </head><body>
@@ -1397,7 +1397,7 @@ function sheetV(){if(!S.sheet)return'';return`<div class=ov data-a=sheetx><div c
 function settingsV(){const name=nm(S.user.id)!=='—'?nm(S.user.id):(S.user.user_metadata?.display_name||'');return '<div class="settings-page"><h2>Настройки</h2><section class=card><h3>Профиль</h3><label class=l>Имя</label><input id=pn value="'+esc(name)+'" placeholder="Имя"><div class=mu>Email: '+esc(S.user.email)+'</div><button data-a=savename>Сохранить имя</button></section><section class=card><h3>Мои группы</h3>'+S.bands.map(b=>'<div class="card gi" data-a=pick data-id="'+b.id+'">🎸 <b>'+esc(b.name)+'</b> — '+(RL[S.roles[b.id]]||'')+'</div>').join('')+'</section><section class=card><h3>Безопасность</h3><div class=mu>Блокировка приложения по Face ID / Touch ID при запуске. Включается на этом устройстве.</div><button class=g data-a=bio>'+(localStorage.mbh_bio?'Выключить блокировку':'Включить блокировку')+'</button></section><button class="settings-signout" data-a=signout>Выйти из аккаунта</button></div>';}
 function shellV(){
  const st=!S.net?'<span class=er>Нет соединения · Offline</span>':S.sync==='ok'?'<span style=color:var(--ok)>Синхронизировано</span>':'Синхронизация...';
- const T=[['home','Главная'],['songs','Песни'],['rehs','Репетиции'],['files','Файлы'],['mem','Группа'],['more','Ещё'],['settings','Настройки']];
+ const T=[['home','Главная'],['songs','Песни'],['rehs','Репетиции'],['files','Файлы'],['mem','Группа'],['more','Ещё']];
  return`<header><button class=g data-a=sheet style="flex:1;text-align:left;margin:0;padding:10px 14px;font-weight:700">🎸 ${esc(band()?.name||'')} ▾</button><div class=pav data-a=prof>${esc((nm(S.user.id)!=='—'?nm(S.user.id):(S.user.user_metadata?.display_name||'?')).slice(0,1).toUpperCase())}</div></header>
  <div class=mu>${st}</div>${invBanner()}<main id="screen" class="screen-${S.tab}">${S.tab==='home'?homeV():S.tab==='ai'?aiV():S.tab==='songs'?(S.song?songV():songsV()):S.tab==='files'?filesV():S.tab==='more'?moreV():S.tab==='gig'?gigV():S.tab==='sound'?soundV():S.tab==='tasks'?tasksV():S.tab==='finance'?finV():S.tab==='calendar'?calV():S.tab==='help'?helpV():S.tab==='settings'?settingsV():S.tab==='rehs'?rehsV():memV()}</main>
  <nav aria-label="Основная навигация">${T.map(([k,l])=>`<a class="${(S.tab===k||(k==='more'&&S.tab==='help'))?'on':''}" data-a=tab data-k=${k}>${ic(k)}<span>${l}</span></a>`).join('')}</nav>${lbV()}${maV()}${mmV()}${sheetV()}${sheet2V()}${sheet3V()}`}
@@ -1895,7 +1895,7 @@ Object.assign(A,{
  async ren(d){const f=S.D.files.find(x=>x.id===d.id),n=prompt('Новое название',f.file_name);if(!n||!n.trim())return;await ok(sb.from('song_files').update({file_name:n.trim()}).eq('id',d.id),async()=>{await load();draw(true)})},
  async delfile2(d){if(!confirm('Удалить файл?'))return;const f=S.D.files.find(x=>x.id===d.id);if(PLAY.id===d.id){const a=document.getElementById('au');a.pause();PLAY.id=null;document.getElementById('pl').style.display='none'}
   await ok(sb.from('song_files').delete().eq('id',d.id),async()=>{if(f)sb.storage.from('band-files').remove([f.storage_path]);await load();draw(true)})},
- moreg(d){const k=d.k;if(k==='help'){S.tab='help'}else if(k==='rec'){rOpen(null,false);return}else if(k==='met'){mOpen(null);return}else if(k==='prof'){S.prof=true}else{S.tab=k;if(['sound','tasks','finance','calendar'].includes(k)){BM.loaded=false;bmLoad().then(()=>draw(true));return}}draw(true);scrollTo(0,0)},
+ moreg(d){const k=d.k;if(k==='help'){S.tab='help'}else if(k==='rec'){rOpen(null,false);return}else if(k==='met'){mOpen(null);return}else if(k==='prof'){S.prof=false;S.tab='settings'}else{S.tab=k;if(['sound','tasks','finance','calendar'].includes(k)){BM.loaded=false;bmLoad().then(()=>draw(true));return}}draw(true);scrollTo(0,0)},
  hstep(d){const k=d.k;if(k==='group'){S.sheet=true}else if(k==='song'){S.tab='songs';S.song=null;S.sh2={t:'new'}}else if(k==='idea'){rOpen(null,false);return}else if(k==='metro'){mOpen(null);return}else if(k==='reh'){S.tab='rehs';S.open='reh'}draw(true);scrollTo(0,0)}
 });
 document.addEventListener('input',e=>{const el=e.target;

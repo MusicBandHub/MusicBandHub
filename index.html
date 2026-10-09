@@ -1453,6 +1453,7 @@ nav[aria-label="Основная навигация"]>a>span{display:block!impor
 <div id="mo" class="pan"></div><div id="ro" class="pan"></div>
 <div id="toast"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tus-js-client@4/dist/tus.min.js"></script>
 <script>
 const v=id=>document.getElementById(id)?.value??'';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -2098,28 +2099,68 @@ mbhAudio?.addEventListener('pause',()=>cancelAnimationFrame(mbhSeekRAF));
 document.addEventListener('play',syncPlay);document.addEventListener('pause',syncPlay);document.addEventListener('ended',()=>{syncPlay()});
 ['input','change'].forEach(ev=>document.addEventListener(ev,e=>{if(e.target.dataset&&e.target.dataset.g){const b=document.getElementById('sg');if(b)b.style.display='block'}}));
 document.addEventListener('input',e=>{if(e.target.dataset.in==='q'){S.q=e.target.value;const p=e.target.selectionStart;draw(true);const n=document.getElementById('sq');n.focus();n.setSelectionRange(p,p)}});
+async function uploadMediaObject(path,file,onProgress){
+ const ext=(file.name.split('.').pop()||'').toLowerCase();
+ /* Supabase recommends resumable TUS uploads for files over 6 MB. */
+ if(!(VIDX.includes(ext)&&file.size>6*1024*1024&&window.tus&&window.tus.Upload)){
+  const u=await sb.storage.from('band-files').upload(path,file,{contentType:file.type||undefined});
+  if(u.error)throw u.error;
+  return;
+ }
+ const sr=await sb.auth.getSession();
+ if(sr.error)throw sr.error;
+ const token=sr.data?.session?.access_token;
+ if(!token)throw new Error('Сессия истекла — войдите в группу заново');
+ const projectRef=new URL(S.cfg.url).hostname.split('.')[0];
+ await new Promise((resolve,reject)=>{
+  const upload=new window.tus.Upload(file,{
+   endpoint:`https://${projectRef}.storage.supabase.co/storage/v1/upload/resumable`,
+   retryDelays:[0,3000,5000,10000,20000],
+   headers:{authorization:`Bearer ${token}`,apikey:S.cfg.key},
+   uploadDataDuringCreation:true,
+   removeFingerprintOnSuccess:true,
+   metadata:{bucketName:'band-files',objectName:path,contentType:file.type||'application/octet-stream',cacheControl:'3600'},
+   chunkSize:6*1024*1024,
+   onError:error=>reject(error),
+   onProgress:(uploaded,total)=>{if(total>0&&onProgress)onProgress(Math.min(100,Math.floor(uploaded/total*100)))},
+   onSuccess:()=>resolve()
+  });
+  upload.findPreviousUploads().then(previous=>{
+   if(previous.length)upload.resumeFromPreviousUpload(previous[0]);
+   upload.start();
+  }).catch(reject);
+ });
+}
 document.addEventListener('change',async e=>{const el=e.target;
  if(el.id==='mu'&&el.files&&el.files.length){
-  /* Snapshot upload context before redraw removes the file input/modal from the DOM. */
+  /* Capture values before draw() removes the file input/modal. */
   const L=[...el.files],uploadKind=CAT().k,uploadCategory=S.mc,uploadBand=S.bid,uploadUser=S.user?.id;
   S.busy=true;S.ma=null;draw(true);let n=0;const failures=[];
   for(const f of L){const ext=f.name.split('.').pop().toLowerCase();
    if(!(IMGX.includes(ext)||VIDX.includes(ext))){failures.push('Неподдерживаемый формат: '+f.name);continue}
    if((VIDX.includes(ext)?'video':'image')!==uploadKind){failures.push('Неверный тип файла: '+f.name);continue}
-   if(f.size>50*1048576){failures.push('Файл больше 50 МБ: '+f.name);continue}
+   if(f.size>50*1000*1000){failures.push('Файл больше 50 МБ — лимит Supabase Free: '+f.name);continue}
+   let path='';
    try{
-    const path=`bands/${uploadBand}/media/${Date.now()}-${Math.random().toString(36).slice(2,7)}-${f.name.replace(/[^A-Za-z0-9._-]/g,'_')}`;
+    path=`bands/${uploadBand}/media/${Date.now()}-${Math.random().toString(36).slice(2,7)}-${f.name.replace(/[^A-Za-z0-9._-]/g,'_')}`;
+    const progress=p=>toast(`Загрузка ${n+1}/${L.length}: ${p}%`);
     toast(`Загрузка ${n+1}/${L.length}…`);
-    const u=await sb.storage.from('band-files').upload(path,f,{contentType:f.type||undefined});if(u.error)throw u.error;
+    await uploadMediaObject(path,f,uploadKind==='video'?progress:null);
     const i=await sb.from('media').insert({band_id:uploadBand,file_name:f.name,storage_path:path,kind:uploadKind,category:uploadCategory,file_size:f.size,uploaded_by:uploadUser}).select().single();
     if(i.error){await sb.storage.from('band-files').remove([path]);throw i.error}
     n++;
-   }catch(x){console.error('MusicBandHub media upload failed:',x);failures.push(f.name+': '+err(x))}
+   }catch(x){
+    console.error('MusicBandHub media upload failed:',x);
+    const message=String(x?.message||x);
+    if(/413|payload too large|maximum.*size|exceed.*limit|file size.*limit/i.test(message))failures.push(f.name+': превышен лимит хранилища Supabase Free — 50 МБ на файл');
+    else failures.push(f.name+': '+err(x));
+    if(path)try{await sb.storage.from('band-files').remove([path])}catch(_){}
+   }
   }
   S.busy=false;
   if(n){S.tab='media';S.mt='all';S.mk='all';S.mq='';}
   await load();draw(true);
-  if(failures.length)toast(n?'Загружено: '+n+'. Ошибок: '+failures.length:failures[0].slice(0,115));
+  if(failures.length)toast(n?'Загружено: '+n+'. Ошибок: '+failures.length:failures[0].slice(0,150));
   else if(n)toast('Загружено: '+n);
   return}
  if(el.dataset.ch==='band'&&el.value==='__new'){S.gate=true;S.created=null;S.msg='';draw(true);return}

@@ -1283,6 +1283,17 @@ body:has(#ro[style*="display: block"]) #ro.pan{
 }
 </style>
 
+<style id="mbh-metronome-bottom-nav-fix-v38">
+/* Keep the bottom navigation visible while the metronome overlay is open. */
+body:has(#mo[style*="display: block"]) nav[aria-label="Основная навигация"]{
+  z-index:10002!important;
+  bottom:calc(8px + env(safe-area-inset-bottom,0px))!important;
+}
+body:has(#mo[style*="display: block"]) #mo.pan{
+  padding-bottom:calc(94px + env(safe-area-inset-bottom,0px))!important;
+}
+</style>
+
 <style id="mbh-settings-tab-v37">
 .settings-page{max-width:760px;margin:0 auto;padding:4px 0 30px}.settings-page>h2{font-size:24px;margin:8px 0 18px}.settings-page>section{margin:0 0 14px;padding:16px!important}.settings-page>section h3{margin:0 0 14px;font-size:16px}.settings-page .mu{overflow-wrap:anywhere;line-height:1.55;margin:10px 0}.settings-page .gi{margin:8px 0;padding:12px!important}.settings-signout{width:100%;min-height:48px;margin:4px 0 18px;background:#35191d!important;color:#ff777f!important;border:1px solid #713039!important;border-radius:12px!important;font-weight:750!important}
 nav[aria-label="Основная навигация"]{grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:2px!important}nav[aria-label="Основная навигация"] a{padding-left:1px!important;padding-right:1px!important}nav[aria-label="Основная навигация"] a span{font-size:clamp(6px,1.65vw,8px)!important}

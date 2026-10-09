@@ -1710,7 +1710,7 @@ function sheet3V(){if(!S.sh3||!S.drf)return'';const f=S.drf,h=t=>f.types.include
  <div class=row><label class="btn g" style="margin:5px 0">📁 Загрузить аудио<input type=file id=dfa accept=".mp3,.wav,.m4a,.ogg,audio/*" multiple hidden></label><button class=g data-a=drec>🎙 Записать</button></div>`:''}
  ${(h('LINK')||h('VIDEO')||h('FILM'))?`<label class=l>Ссылка (YouTube / VK / облако)</label><input id=dfl value="${esc(f.link)}" placeholder="https://...">`:''}
  ${(h('VIDEO')||h('FILM'))?`<label class="btn g">＋ Загрузить видео<input type=file id=dfv accept="video/*" multiple hidden></label>`:''}
- `<label class="btn g" style="display:inline-flex;align-items:center;gap:8px;margin:8px 0">＋ Добавить ещё фото<input type=file id=dfi accept="image/*" multiple hidden></label>`
+ ${h('IMAGE')?`<label class="btn g" style="display:inline-flex;align-items:center;gap:8px;margin:8px 0">＋ Добавить ещё фото<input type=file id=dfi accept="image/*" multiple hidden></label>`:''}
  ${S.drfiles.map((x,i)=>`<div class=mu>📎 ${esc(x.name)}${x.dur?' · '+fmtT(x.dur):''} <span data-a=drmf data-i=${i} style="cursor:pointer;color:var(--er)">✕</span></div>`).join('')}
  ${f.id?`<div class=mu>Уже прикреплено: ${dFiles(f.id).length} файл(ов). Удалить их можно в карточке черновика.</div>`:''}
  <label class=l>🎵 Привязать к песне</label><select id=dfs><option value="">Без привязки</option>${S.D.songs.map(s=>`<option value=${s.id} ${f.song===s.id?'selected':''}>${esc(s.title)}</option>`).join('')}<option value=__new>＋ Создать новую песню</option></select>

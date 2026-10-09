@@ -1004,6 +1004,17 @@ nav[aria-label="Основная навигация"] a,nav[aria-label="Осно
 .v4-head .v4-settings{position:absolute!important;top:12px!important;right:12px!important;left:auto!important;transform:none!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;width:36px!important;height:36px!important;min-width:36px!important;margin:0!important;padding:0!important;box-sizing:border-box!important;z-index:2!important;}
 @media(max-width:480px){.v4-head{padding:14px 52px 18px 12px!important}.v4-head .v4-kicker{font-size:8px!important;letter-spacing:1.3px!important}.v4-head .v4-settings{right:8px!important;top:10px!important;width:34px!important;height:34px!important;min-width:34px!important}.v4-head p{font-size:11px!important;}}
 </style>
+
+<style id="mbh-month-stats-center-v28">
+/* Center the month title and all four statistic tiles within their panel */
+.v4-month{box-sizing:border-box!important;width:100%!important;min-width:0!important;overflow:hidden!important;}
+.v4-month>.v4-label{width:100%!important;text-align:center!important;margin:0 auto 14px!important;}
+.v4-month-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:10px!important;width:100%!important;box-sizing:border-box!important;align-items:stretch!important;}
+.v4-month-grid>.v4-stat,.v4-month-grid>.home-stat,.v4-month-grid>.stat,.v4-month-grid>div{min-width:0!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;padding:12px 6px!important;}
+.v4-month-grid strong,.v4-month-grid b{display:block!important;width:100%!important;text-align:center!important;line-height:1.15!important;}
+.v4-month-grid span,.v4-month-grid small{display:block!important;width:100%!important;text-align:center!important;overflow-wrap:anywhere!important;line-height:1.3!important;}
+@media(max-width:520px){.v4-month-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}.v4-month-grid>.v4-stat,.v4-month-grid>.home-stat,.v4-month-grid>.stat,.v4-month-grid>div{padding:12px 8px!important;}}
+</style>
 </head><body>
 <div id="splash"><div class="sp-mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="spg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c6ff1a"/><stop offset=".55" stop-color="#34e0a1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M6 46 L18 14 L32 40 L46 14 L58 46" fill="none" stroke="url(#spg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g stroke="url(#spg)" stroke-width="3" stroke-linecap="round"><path d="M2 32v6M10 26v16M54 26v16M62 32v6"/></g></svg></div><div class="sp-t">MUSICBAND<br>HUB</div><div class="sp-d">• • •</div><div class="sp-b">LOADING YOUR BAND</div></div>
 <div id="app"></div>

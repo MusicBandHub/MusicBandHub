@@ -1271,6 +1271,17 @@ nav[aria-label="Основная навигация"]>a>span{
 .mbh-gig-checkitem span{flex:1;display:block;overflow-wrap:anywhere;font-size:14px}
 @media(max-width:380px){.mbh-gig-checklist{padding:13px!important}.mbh-gig-checklist-title{font-size:17px}.mbh-gig-checklist-items{gap:7px}.mbh-gig-checkitem{padding:11px 10px!important;gap:10px!important}.mbh-gig-checkitem span{font-size:13px}}
 </style>
+
+<style id="mbh-rec-bottom-nav-fix-v36">
+/* Keep the main bottom menu visible above the microphone recorder overlay. */
+body:has(#ro[style*="display: block"]) nav[aria-label="Основная навигация"]{
+  z-index:10002!important;
+  bottom:calc(8px + env(safe-area-inset-bottom,0px))!important;
+}
+body:has(#ro[style*="display: block"]) #ro.pan{
+  padding-bottom:calc(94px + env(safe-area-inset-bottom,0px))!important;
+}
+</style>
 </head><body>
 <div id="splash"><div class="sp-mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="spg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c6ff1a"/><stop offset=".55" stop-color="#34e0a1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M6 46 L18 14 L32 40 L46 14 L58 46" fill="none" stroke="url(#spg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g stroke="url(#spg)" stroke-width="3" stroke-linecap="round"><path d="M2 32v6M10 26v16M54 26v16M62 32v6"/></g></svg></div><div class="sp-t">MUSICBAND<br>HUB</div><div class="sp-d">• • •</div><div class="sp-b">LOADING YOUR BAND</div></div>
 <div id="app"></div>

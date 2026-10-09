@@ -1777,6 +1777,20 @@ const _sp=document.getElementById('splash');_sp.querySelector('.sp-b').textConte
 setTimeout(()=>{_sp.style.opacity=0;setTimeout(()=>_sp.remove(),500);if(S.locked)A.unlock()},2400);
 draw(true);
 
+// Reliable capture-phase delegation for metronome, recording and help shortcuts
+// Prevent duplicate execution by stopping the older bubble-phase delegates.
+document.addEventListener('click',function(e){
+ const el=e.target.closest('[data-m],[data-r],[data-a]');
+ if(!el)return;
+ const isM=el.hasAttribute('data-m'),isR=el.hasAttribute('data-r'),isA=el.hasAttribute('data-a');
+ const key=isM?el.dataset.m:isR?el.dataset.r:el.dataset.a;
+ const table=isM?MA:isR?RA:A;
+ if(!table||typeof table[key]!=='function')return;
+ if(isA&&key!=='noop')e.preventDefault();
+ e.stopImmediatePropagation();
+ try{table[key](el.dataset,el)}catch(err){console.error('MusicBandHub action failed:',key,err);if(typeof toast==='function')toast('Не удалось выполнить действие. Проверьте консоль браузера.');}
+},true);
+
 // Cyber Neon visualizer helper
 function mbhWave(n=28){
   let h='<div class="mbh-wave">';

@@ -1579,7 +1579,7 @@ function maV(){const o=S.ma;if(!o)return'';let c='';
  else if(o.s===2){const L=CATS.filter(x=>x[2]===o.k).map(x=>[x[0],grp(x[0])==='concert'?['🎤','Концерт']:grp(x[0])==='rehearsal'?['🥁','Репетиция']:['🎬','Клипы']]);
   c=`<h3 class=mbh-add-title>Куда добавить?</h3><div class="pk mbh-media-pick mbh-destination-pick">${L.map(([id,[e,t]])=>`<button class="mbh-pick-card ${id==='CONCERT'?'mbh-pick-photo':'mbh-pick-video'}" data-a=mk2 data-c=${id}><span class="mbh-pick-icon">${e}</span><b>${t}</b><small>${t==='Концерт'?'Выступления и живые сеты':'Материалы с репетиций группы'}</small><i>＋</i></button>`).join('')}</div><button class="mbh-back-button" data-a=mback><span>←</span> Назад</button>`}
  else{const k=CAT().k;
-  c=`<h3>Добавить ${k==='image'?'фото':'видео'}</h3><div class=mu>${esc(CAT().l)}</div><div class=hn>Максимальный размер — 50 МБ.<br>${k==='image'?'Поддерживаются JPG, PNG, WEBP, HEIC, GIF.':'Поддерживаются MP4, MOV, M4V, WEBM.'}</div><button type=button class="btn mbh-choose-media" data-a=choosemedia>＋ Выбрать ${k==='image'?'фото':'видео'}</button><input type=file id=mu accept="${k==='image'?'image/*':'video/*'}" multiple hidden><button class=g data-a=mback>Назад</button>`}
+  c=`<h3>Добавить ${k==='image'?'фото':'видео'}</h3><div class=mu>${esc(CAT().l)}</div><div class=hn>Максимальный размер — 50 МБ.<br>${k==='image'?'Поддерживаются JPG, PNG, WEBP, HEIC, GIF.':'Поддерживаются MP4, MOV, M4V, WEBM.'}</div><label class="btn mbh-choose-media" style="position:relative;overflow:hidden">＋ Выбрать ${k==='image'?'фото':'видео'}<input type=file id=mu accept="${k==='image'?'image/*':'video/*'}" multiple style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;margin:0"></label><button class=g data-a=mback>Назад</button>`}
  return`<div class=ov data-a=mclose><div class=sh data-a=noop>${c}</div></div>`}
 function lbV(){const m=(S.D.media||[]).find(x=>x.id===S.lb);if(!m)return'';const u=S.urls[m.id];if(!u)return'';
  return`<div style="position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:20;display:flex;flex-direction:column;padding:calc(12px + env(safe-area-inset-top)) 12px calc(12px + env(safe-area-inset-bottom))"><div style="flex:1;display:flex;align-items:center;justify-content:center;min-height:0">${m.kind==='video'?`<video src="${u}" controls autoplay playsinline style="max-width:100%;max-height:100%"></video>`:`<img src="${u}" style="max-width:100%;max-height:100%" alt="">`}</div>
@@ -2188,7 +2188,7 @@ document.addEventListener('click',function(e){
  const key=isM?el.dataset.m:isR?el.dataset.r:el.dataset.a;
  const table=isM?MA:isR?RA:A;
  if(!table||typeof table[key]!=='function')return;
- if(isA&&key!=='noop')e.preventDefault();
+ if(isA&&!['noop','choosemedia'].includes(key))e.preventDefault();
  e.stopImmediatePropagation();
  try{table[key](el.dataset,el)}catch(err){console.error('MusicBandHub action failed:',key,err);if(typeof toast==='function')toast('Не удалось выполнить действие. Проверьте консоль браузера.');}
 },true);

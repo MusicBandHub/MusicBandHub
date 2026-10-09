@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="theme-color" content="#0d0b0c">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Рёв — тренер экстрим-вокала</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0b0c;--glow:#3b0b14;--ink:#f0e8da;--mut:#a6988f;--acc:#d2132f;--gold:#d4af5a;--ok:#d4af5a;--panel:#171314;--line:#372d2f;--foil:linear-gradient(180deg,#f8e9b4,#d4af5a 52%,#8c6b24);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#ece3d3;--glow:#e3b9ae;--ink:#231518;--mut:#6d5e5a;--acc:#b00f26;--gold:#8a6414;--ok:#8a6414;--panel:#e0d5c2;--line:#c9b9a0;--foil:linear-gradient(180deg,#b8902f,#6f4d0c)}}
+:root[data-theme="light"]{--bg:#ece3d3;--glow:#e3b9ae;--ink:#231518;--mut:#6d5e5a;--acc:#b00f26;--gold:#8a6414;--ok:#8a6414;--panel:#e0d5c2;--line:#c9b9a0;--foil:linear-gradient(180deg,#b8902f,#6f4d0c)}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100%;background:radial-gradient(90% 50% at 50% -5%,var(--glow),transparent 70%) var(--bg);color:var(--ink);font:400 16px/1.5 Manrope,system-ui,sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.07;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+main{max-width:720px;margin:0 auto;padding:16px 16px 48px;position:relative}
+.logo{font:700 clamp(56px,16vw,84px)/.95 Oswald,Impact,sans-serif;letter-spacing:.1em;margin:6px 0 0;background:var(--foil);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 rgba(0,0,0,.55))}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:12px 0}
+h2{font:600 24px/1.1 Oswald,Impact,sans-serif;letter-spacing:.05em;margin:18px 0 8px;color:var(--gold)}
+p{margin:0 0 10px}.mut{color:var(--mut)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:2px;margin:12px -16px 16px;padding:0 16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);overflow-x:auto}
+nav button{background:none;border:0;color:var(--mut);font:600 17px Oswald,sans-serif;letter-spacing:.05em;padding:12px;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+nav button[aria-selected=true]{color:var(--gold);border-color:var(--acc)}
+button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.safe{border:1px solid var(--line);border-left:4px solid var(--gold);padding:8px 12px;background:var(--panel);font-size:14px;margin-bottom:16px}
+canvas{width:100%;height:200px;display:block;background:var(--panel);border:1px solid var(--line);box-shadow:0 14px 40px -20px var(--acc)}
+.go{width:100%;margin:12px 0;padding:16px;background:linear-gradient(180deg,#e0213d,#9d0b20);color:#fff;border:1px solid var(--gold);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 8px 24px -10px var(--acc);font:700 22px Oswald,sans-serif;letter-spacing:.12em;cursor:pointer}
+.go.stop{background:var(--panel);color:var(--ink);animation:rec 1.4s infinite}
+.go.stop:before{content:"● ";color:var(--acc)}
+@keyframes rec{50%{box-shadow:0 0 0 6px rgba(210,19,47,.3)}}
+.btn{padding:12px 18px;background:var(--panel);border:1px solid var(--gold);color:var(--ink);font:600 16px Oswald,sans-serif;letter-spacing:.06em;cursor:pointer}
+.btn.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.met{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.met div{background:var(--panel);border:1px solid var(--line);padding:10px 4px;text-align:center}
+.met b{display:block;font:600 24px Oswald,sans-serif;color:var(--gold)}.met span{font-size:12px;color:var(--mut)}
+ul.h{list-style:none;padding:0;margin:0}
+ul.h li{padding:10px 12px;margin-bottom:8px;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--acc)}
+ul.h li.good{border-left-color:var(--gold)}
+.sum{background:var(--panel);border:1px solid var(--line);border-top:2px solid var(--gold);padding:14px;margin-top:16px}
+.rate{display:flex;gap:8px;margin:8px 0}
+.rate button{flex:1;padding:12px;background:none;border:1px solid var(--line);color:var(--ink);font:600 18px Oswald,sans-serif;cursor:pointer}
+.rate button.on{border-color:var(--gold);background:var(--gold);color:#120e0f}
+details{border-top:1px solid var(--line);padding:10px 0}
+summary{font:600 22px Oswald,sans-serif;letter-spacing:.04em;cursor:pointer}
+details ul{margin:6px 0 10px 18px;padding:0}
+label.c{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line);cursor:pointer}
+label.c input{width:22px;height:22px;accent-color:var(--acc);margin-top:2px}
+.aiout{white-space:pre-wrap;margin:10px 0;line-height:1.6}
+.aif{display:flex;gap:8px;margin-top:8px}
+.aif input{flex:1;min-width:0;padding:12px;background:var(--bg);color:var(--ink);border:1px solid var(--line);font:inherit}
+.aif button{padding:0 16px;background:var(--acc);color:#fff;border:0;font:600 16px Oswald,sans-serif;cursor:pointer}
+select{width:100%;padding:12px;background:var(--panel);color:var(--ink);border:1px solid var(--line);font:inherit;margin-top:12px}
+input[type=range]{width:100%;accent-color:var(--acc)}
+.row{display:flex;gap:10px;align-items:center;margin:8px 0}.row select{margin:0}
+.dots{display:flex;gap:10px}.dots i{width:16px;height:16px;border-radius:50%;background:var(--line)}.dots i.on{background:var(--acc);box-shadow:0 0 14px var(--acc)}
+.br{width:150px;height:150px;border-radius:50%;margin:16px auto;border:2px solid var(--gold);display:grid;place-items:center;font:600 22px Oswald,sans-serif;box-shadow:0 0 34px -8px var(--acc);transition:transform 4s ease-in-out}
+.st{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.st div{background:var(--panel);border:1px solid var(--line);padding:10px 4px;text-align:center;font-size:12px;color:var(--mut)}
+.st b{display:block;font:600 26px Oswald,sans-serif;color:var(--gold)}
+.pb{height:6px;background:var(--line);margin:6px 0 14px}.pb i{display:block;height:100%;background:var(--foil)}
+.sp{display:flex;align-items:flex-end;gap:4px;height:70px;margin-bottom:14px}.sp i{flex:1;background:var(--acc);min-height:4px}.sp i.g{background:var(--gold)}
+.hide{display:none}
+dialog{background:var(--panel);color:var(--ink);border:1px solid var(--gold);padding:18px;width:min(92vw,460px)}
+dialog::backdrop{background:rgba(0,0,0,.72)}
+dialog label{display:block;margin:12px 0 4px;font-size:14px;color:var(--mut)}
+dialog input,dialog select{width:100%;padding:11px;background:var(--bg);color:var(--ink);border:1px solid var(--line);font:inherit;margin:0}
+.cfgrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+#cfgMsg{margin-top:10px;font-size:14px;white-space:pre-wrap}
+#spl{position:fixed;inset:0;z-index:99;background:#070506;color:#f0e8da;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;cursor:pointer;transition:opacity .8s,visibility .8s;overflow:hidden}
+#spl.off{opacity:0;visibility:hidden}
+#spl:before{content:"";position:absolute;inset:0;background:#fff;opacity:0;animation:fl .6s .5s}
+#spl:after{content:"";position:absolute;width:140vmax;height:140vmax;background:radial-gradient(circle,rgba(210,19,47,.35),transparent 55%);animation:pulse 2.4s ease-in-out infinite alternate}
+@keyframes fl{0%{opacity:.9}100%{opacity:0}}
+@keyframes pulse{from{transform:scale(.6);opacity:.4}to{transform:scale(1);opacity:1}}
+#spl .eq{position:relative;z-index:1;display:flex;gap:5px;align-items:flex-end;height:100px}
+#spl .eq i{width:7px;height:10px;background:linear-gradient(#f8e9b4,#d2132f);animation:eq 1s ease-in-out infinite alternate;animation-delay:calc(var(--i)*60ms)}
+@keyframes eq{to{height:100px}}
+#spl .lg{position:relative;z-index:1;font:700 clamp(80px,26vw,150px)/1 Oswald,Impact,sans-serif;letter-spacing:.1em;background:linear-gradient(180deg,#f8e9b4,#d4af5a 52%,#8c6b24);-webkit-background-clip:text;background-clip:text;color:transparent;animation:slam .6s cubic-bezier(.2,1.6,.4,1) .5s both,shake .45s 1.15s}
+@keyframes slam{from{transform:scale(2.6);opacity:0;filter:blur(12px)}to{transform:none;opacity:1;filter:none}}
+@keyframes shake{20%{transform:translate(-6px,3px)}40%{transform:translate(6px,-3px)}60%{transform:translate(-4px,2px)}80%{transform:translate(3px,-1px)}}
+#spl p{position:relative;z-index:1;margin:0;font:600 20px Oswald,sans-serif;letter-spacing:.2em;color:#d4af5a;animation:up .8s 1.5s both}
+#spl small{position:relative;z-index:1;color:#8d8079;animation:up .8s 2s both}
+@keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){#spl *,#spl:before,#spl:after,.go.stop{animation:none!important}.br{transition:none}}
+</style>
+</head>
+<body>
+<div id="spl" role="button" aria-label="Пропустить заставку"><div class="eq"></div><div class="lg">РЁВ</div><p>Тренер экстрим-вокала</p><small>Нажми, чтобы пропустить</small></div>
+<main>
+<h1 class="logo">РЁВ</h1><div class="rule"></div>
+<div class="row"><button class="btn" id="cfg">Настройки ИИ</button><span class="mut" id="cfgSt"></span></div>
+<p class="mut">Тренер для экстрим-вокала. Слушает голос через микрофон и сразу говорит, что поправить.</p>
+<div class="safe">Боль, першение или осиплость — стоп и отдых. Приложение даёт ориентиры, а не диагноз. Если горло болит регулярно, нужен фониатр или педагог по экстрим-вокалу.</div>
+<nav role="tablist">
+<button role="tab" aria-selected="true" data-t="coach">Коуч</button>
+<button role="tab" aria-selected="false" data-t="tech">Техники</button>
+<button role="tab" aria-selected="false" data-t="warm">Разминка</button>
+<button role="tab" aria-selected="false" data-t="tools">Студия</button>
+<button role="tab" aria-selected="false" data-t="log">Дневник</button>
+</nav>
+
+<section id="coach">
+<canvas id="cv"></canvas>
+<select id="tq" aria-label="Что поёшь сейчас"><option>Фрай</option><option>Низкий гроул</option><option>Средний скрим</option><option>Высокий скрим</option><option>Чистый вокал</option><option>Разные техники</option></select>
+<button class="go" id="go">Начать петь</button>
+<div class="met">
+<div><b id="mDb">—</b><span>громкость, дБ</span></div>
+<div><b id="mP">—</b><span>тон</span></div>
+<div><b id="mB">—</b><span>яркость</span></div>
+<div><b id="mL">0</b><span>фраза, с</span></div>
+</div>
+<h2>Подсказки</h2>
+<ul class="h" id="hints"><li class="good">Нажми «Начать петь», встань в 15–20 см от микрофона и спой фразу. Рычание и скрим тоже считаются.</li></ul>
+<div id="sum" class="sum hide"></div>
+</section>
+
+<section id="tech" class="hide"></section>
+
+<section id="warm" class="hide">
+<h2>Разминка на 12 минут</h2>
+<p class="mut">Делай до того, как рычать. Начинай тихо.</p>
+<div id="wl"></div>
+</section>
+
+<section id="tools" class="hide">
+<h2>Метроном</h2>
+<div class="row"><input type="range" id="bpm" min="60" max="200" value="100" aria-label="Темп"><b id="bv">100</b></div>
+<div class="row"><button class="btn" id="mt">Старт</button><div class="dots" id="dots"><i></i><i></i><i></i><i></i></div></div>
+<h2>Опорный тон</h2>
+<p class="mut">Низкая нота для настройки гроула и контроля высоты.</p>
+<div class="row"><select id="nt" aria-label="Нота"></select><button class="btn" id="tn">Звук</button></div>
+<h2>Дыхание 4–6</h2>
+<div class="br" id="br">Готов</div>
+<div class="row"><button class="btn" id="bs">Старт</button><span class="mut" id="bn"></span></div>
+</section>
+
+<section id="log" class="hide">
+<h2>Дневник сессий</h2>
+<div id="ll"></div>
+</section>
+</main>
+<dialog id="dlg" aria-label="Настройки ИИ">
+<h2 style="margin-top:0">Подключение ИИ</h2>
+<p class="mut" style="font-size:14px">Нужно только для разбора после сессии. Ключ хранится в этом браузере. Не публикуй сайт с вписанным ключом: для публичного сайта выбери «Свой сервер».</p>
+<label for="cp">Сервис</label>
+<select id="cp"><option value="gemini">Google Gemini (есть бесплатный уровень)</option><option value="openai">OpenAI-совместимый (OpenRouter, Groq и др.)</option><option value="anthropic">Anthropic Claude</option><option value="proxy">Свой сервер (прокси)</option></select>
+<div id="fe"><label for="ce">Адрес API</label><input id="ce" autocomplete="off"></div>
+<div id="fm"><label for="cm">Модель</label><input id="cm" autocomplete="off"></div>
+<div id="fk"><label for="ck">Ключ API</label><input id="ck" type="password" autocomplete="off"></div>
+<label for="cf">Или загрузи файл настроек (.json)</label>
+<input id="cf" type="file" accept=".json,application/json">
+<div class="cfgrow"><button class="btn on" id="cs" type="button">Сохранить</button><button class="btn" id="ct" type="button">Проверить</button><button class="btn" id="cc" type="button">Очистить</button><button class="btn" id="cx" type="button">Закрыть</button></div>
+<div id="cfgMsg" aria-live="polite"></div>
+</dialog>
+
+<script>
+const $=s=>document.querySelector(s);
+const TECH=[
+{n:"Фрай (хрипящий низ)",w:"Основа почти всех гроулов: мягкое «скрипение» связок на минимуме воздуха.",s:["Зевни и расслабь челюсть и язык.","Скажи низкое «а» как скрипящая дверь, воздуха совсем немного.","Держи 3–4 секунды, не давя шеей."],m:["Давление воздуха вместо опоры","Шея и плечи напряжены"],d:"5 раз по 4 секунды в тишине, потом то же на разной громкости."},
+{n:"Низкий гроул",w:"Фрай плюс воздух и опора, глубокий тёмный звук.",s:["Начни с фрая.","Добавь воздух с опорой от живота, горло оставь открытым.","Меняй гласные «о–а–у», чтобы найти самый свободный резонанс."],m:["Сжатие у корня языка","Слишком громко, слишком рано"],d:"Фрай → гроул → фрай, по 3 секунды, 6 повторов."},
+{n:"Средний скрим",w:"Фрай на повышении тона с большим потоком воздуха.",s:["Из фрая плавно поднимай высоту, как сирена.","Опора глубокая, плечи вниз.","Рот открыт, звук направляй вперёд, а не в горло."],m:["Подъём шеи и подбородка","Задержка дыхания перед звуком"],d:"Сирена вверх-вниз на фрае, 5 раз по 5 секунд."},
+{n:"Высокий скрим",w:"Тонкий яркий звук. Главное в нём — открытое горло.",s:["Разогрейся на среднем скриме.","Звук короткими «ай/эй» с ровным выдохом.","Не форсируй громкость: сначала чистота, потом сила."],m:["Давление в горле","Слишком долгие фразы без пауз"],d:"Короткие «эй» по 1–2 секунды с паузой, 8 повторов."}
+];
+const WARM=["Дыхание 4–6 (вдох 4, выдох 6) — 2 мин","Губная трель на сирене — 2 мин","Лёгкий массаж челюсти и шеи — 1 мин","«У» сирена вверх-вниз, тихо — 2 мин","Тихий фрай на выдохе — 3 мин","Стакан воды комнатной температуры — 2 мин"];
+const tabs=["coach","tech","warm","tools","log"];
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
+ document.querySelectorAll("nav button").forEach(x=>x.setAttribute("aria-selected",x===b));
+ tabs.forEach(t=>$("#"+t).classList.toggle("hide",t!==b.dataset.t));
+ if(b.dataset.t==="log")renderLog();
+});
+$("#tech").innerHTML=TECH.map(t=>`<details><summary>${t.n}</summary><p>${t.w}</p><b>Как делать</b><ul>${t.s.map(x=>`<li>${x}</li>`).join("")}</ul><b>Частые ошибки</b><ul>${t.m.map(x=>`<li>${x}</li>`).join("")}</ul><p class="mut">Упражнение: ${t.d}</p></details>`).join("");
+$("#wl").innerHTML=WARM.map(x=>`<label class="c"><input type="checkbox"><span>${x}</span></label>`).join("");
+
+let ac,an,stream,run=false,raf,cool={},S,fr=0,lastT=0;
+const cv=$("#cv"),g=cv.getContext("2d");
+function sizeCv(){const r=devicePixelRatio||1;cv.width=cv.clientWidth*r;cv.height=200*r}
+sizeCv();addEventListener("resize",()=>{sizeCv();if(!run)draw(new Float32Array(1024).fill(-100),23)});
+const NN=["До","До#","Ре","Ре#","Ми","Фа","Фа#","Соль","Соль#","Ля","Ля#","Си"];
+const note=f=>{const n=Math.round(12*Math.log2(f/440))+69;return NN[((n%12)+12)%12]+(Math.floor(n/12)-1)};
+const sd=a=>{const m=a.reduce((x,y)=>x+y,0)/a.length;return Math.sqrt(a.reduce((x,y)=>x+(y-m)**2,0)/a.length)};
+function hint(id,txt,good){
+ const now=Date.now();if(cool[id]&&now-cool[id]<9000)return;cool[id]=now;
+ const li=document.createElement("li");if(good)li.className="good";li.textContent=txt;
+ const ul=$("#hints");ul.prepend(li);while(ul.children.length>5)ul.lastChild.remove();
+}
+async function start(){
+ try{stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}})}
+ catch(e){hint("mic","Нет доступа к микрофону. Разреши его в настройках браузера и открой страницу в обычной вкладке.");return}
+ ac=new (window.AudioContext||window.webkitAudioContext)();
+ an=ac.createAnalyser();an.fftSize=2048;an.smoothingTimeConstant=.6;
+ ac.createMediaStreamSource(stream).connect(an);
+ S={t0:Date.now(),db:[],cent:[],pit:[],voiced:0,frames:0,hard:0,quiet:0,phr:0,maxPhr:0,gap:0,sumDb:0,peak:0,sdv:[],centSum:0,dbSq:0,pmin:1e9,pmax:0,nph:0,phSum:0,tech:$("#tq").value};
+ cool={};$("#hints").innerHTML="";$("#sum").classList.add("hide");
+ run=true;lastT=performance.now();$("#go").textContent="Закончить";$("#go").classList.add("stop");
+ loop();
+}
+function stop(){
+ run=false;cancelAnimationFrame(raf);stream.getTracks().forEach(t=>t.stop());ac.close();
+ $("#go").textContent="Начать петь";$("#go").classList.remove("stop");
+ summary();
+}
+$("#go").onclick=()=>run?stop():start();
+function loop(){
+ raf=requestAnimationFrame(loop);
+ const now=performance.now(),dt=(now-lastT)/1000;lastT=now;fr++;
+ const n=an.fftSize,x=new Float32Array(n);an.getFloatTimeDomainData(x);
+ let sq=0,pk=0;for(let i=0;i<n;i++){sq+=x[i]*x[i];pk=Math.max(pk,Math.abs(x[i]))}
+ const db=20*Math.log10(Math.sqrt(sq/n)+1e-9),sr=ac.sampleRate;
+ const fd=new Float32Array(an.frequencyBinCount);an.getFloatFrequencyData(fd);
+ const hz=sr/an.fftSize,top=Math.floor(8000/hz);let a=0,b=0;
+ for(let i=2;i<top;i++){const m=Math.pow(10,fd[i]/20);a+=m*i*hz;b+=m}
+ const cent=b>0?a/b:0,voiced=db>-42;
+ let pitch=0,clar=0;
+ if(voiced&&fr%2===0){
+  const lo=Math.floor(sr/900),hi=Math.floor(sr/70);let r0=0,best=0,bl=0;
+  for(let i=0;i<n;i++)r0+=x[i]*x[i];
+  for(let l=lo;l<hi;l++){let r=0;for(let i=0;i<n-l;i++)r+=x[i]*x[i+l];if(r>best){best=r;bl=l}}
+  clar=best/r0;if(clar>.55)pitch=sr/bl;
+ }
+ S.frames++;S.peak=Math.max(S.peak,pk);S.tp=Math.max(S.tp||0,pk);
+ if(voiced){S.voiced++;S.sumDb+=db;S.dbSq+=db*db;S.centSum+=cent;if(pitch){S.pmin=Math.min(S.pmin,pitch);S.pmax=Math.max(S.pmax,pitch)}S.db.push(db);S.cent.push(cent);if(pitch)S.pit.push(1200*Math.log2(pitch/110));
+  S.phr+=dt;S.gap=0;S.maxPhr=Math.max(S.maxPhr,S.phr);if(cent>3200&&clar<.4)S.hard++;if(db<-36)S.quiet++;
+ }else{S.gap+=dt;if(S.gap>.3){if(S.phr>.3){S.nph++;S.phSum+=S.phr}S.phr=0}}
+ if(S.db.length>90)S.db.shift();if(S.cent.length>90)S.cent.shift();if(S.pit.length>45)S.pit.shift();
+ if(fr%6===0){
+  $("#mDb").textContent=voiced?db.toFixed(0):"—";
+  $("#mP").textContent=pitch?note(pitch):(voiced?"шум":"—");
+  $("#mB").textContent=voiced?(cent<1500?"тёмный":cent<3000?"ровный":"резкий"):"—";
+  $("#mL").textContent=S.phr.toFixed(1);
+ }
+ if(fr%45===0)coach(pk);
+ draw(fd,hz,db);
+}
+function coach(){const pk=S.tp||0;S.tp=0;
+ const d=S.db,c=S.cent,el=(Date.now()-S.t0)/1000;
+ if(pk>.89)hint("clip","Звук перегружается. Отодвинься от микрофона на 5–10 см или пой чуть тише, иначе потеряешь детали тембра.");
+ if(d.length>40){
+  S.sdv.push(sd(d));
+  const m=d.reduce((p,q)=>p+q,0)/d.length;
+  if(m<-38)hint("quiet","Звук тихий. Добавь опору от живота и больше потока воздуха. Громкость должна идти от дыхания, а не от шеи.");
+  if(sd(d)>6)hint("jerk","Громкость скачет. Держи ровный поток выдоха, как будто выдыхаешь на стекло.");
+  const cm=c.reduce((p,q)=>p+q,0)/c.length;
+  if(cm>3200)hint("hard","Много резкого шипения в звуке. Часто это зажим в горле: расслабь челюсть и язык, открой рот чуть шире, опусти плечи.");
+  if(S.phr>=4&&sd(d)<4)hint("long","Ровная длинная фраза, так держать. Если горло устало, сделай паузу и глоток воды.",true);
+ }
+ if(S.pit.length>20&&sd(S.pit)>70)hint("pitch","Высота плавает. Для скрима и гроула это нормально, но для чистого пения ищи точку опоры в дыхании.");
+ if(S.voiced<20&&el>12)hint("none","Голоса почти не слышно. Проверь микрофон и подойди ближе.");
+ if(el>600)hint("rest","Прошло 10 минут. Сделай паузу минимум на 5 минут и выпей воды.");
+}
+const PK=new Array(56).fill(0);
+function draw(fd,hz){
+ const W=cv.width,H=cv.height,cs=getComputedStyle(document.documentElement),a=cs.getPropertyValue("--acc"),go=cs.getPropertyValue("--gold"),bins=56,bw=W/bins,m=H/2;
+ g.clearRect(0,0,W,H);
+ const gr=g.createLinearGradient(0,0,0,H);gr.addColorStop(0,go);gr.addColorStop(.5,a);gr.addColorStop(1,go);
+ g.shadowColor=a;g.shadowBlur=14;
+ for(let i=0;i<bins;i++){
+  const k=Math.round(80*Math.pow(100,i/bins)/hz),v=Math.max(.02,Math.min(1,(fd[k]+100)/70)),h=v*m*.95;
+  g.fillStyle=gr;g.fillRect(i*bw+2,m-h,bw-4,h*2);
+  PK[i]=Math.max(v,PK[i]-.008);g.fillStyle=go;
+  g.fillRect(i*bw+2,m-PK[i]*m*.95-3,bw-4,2);g.fillRect(i*bw+2,m+PK[i]*m*.95+1,bw-4,2);
+ }
+ g.shadowBlur=0;
+}
+draw(new Float32Array(1024).fill(-100),23);
+function summary(){
+ const dur=Math.round((Date.now()-S.t0)/1000),v=Math.max(S.voiced,1);
+ const hardP=Math.round(100*S.hard/v),quietP=Math.round(100*S.quiet/v);
+ if(S.phr>.3){S.nph++;S.phSum+=S.phr}
+ const avgDb=S.sumDb/v,dbSd=Math.sqrt(Math.max(0,S.dbSq/v-avgDb*avgDb));
+ S.m={техника:S.tech,длительность_с:dur,доля_звучания_процентов:Math.round(100*S.voiced/Math.max(S.frames,1)),средняя_громкость_дБ:+avgDb.toFixed(1),разброс_громкости_дБ:+dbSd.toFixed(1),были_перегрузы:S.peak>.89,самая_длинная_фраза_с:+S.maxPhr.toFixed(1),средняя_фраза_с:S.nph?+(S.phSum/S.nph).toFixed(1):0,число_фраз:S.nph,резкий_шипящий_звук_процентов:hardP,тихий_звук_процентов:quietP,средняя_яркость_Гц:Math.round(S.centSum/v),диапазон_тона:S.pmin<1e9?note(S.pmin)+"–"+note(S.pmax):"тон не определялся (шумовой звук)"};
+ const tips=[];
+ if(S.voiced<30)tips.push("Голоса было мало для оценки. Спой 1–2 минуты подряд.");
+ else{
+  if(S.maxPhr<3)tips.push("Фразы короткие. Потренируй длину выдоха: фрай 4–6 секунд на одном выдохе.");
+  if(hardP>35)tips.push("Много резкого звука ("+hardP+"%). Раскрой горло и расслабь корень языка, чаще работай на среднем скриме.");
+  if(quietP>40)tips.push("Много тихих участков. Усиль опору и поток воздуха.");
+  if(S.peak>.89)tips.push("Были перегрузы. Держи микрофон дальше.");
+  if(!tips.length)tips.push("Сессия ровная. Для роста добавь новую технику из раздела «Техники».");
+ }
+ const el=$("#sum");el.classList.remove("hide");
+ el.innerHTML=`<h2>Итоги</h2><p>Длительность ${Math.floor(dur/60)} мин ${dur%60} с. Самая длинная фраза ${S.maxPhr.toFixed(1)} с.</p><ul>${tips.map(t=>`<li>${t}</li>`).join("")}</ul><p><b>Как горло после сессии?</b> (1 — болит, 5 — свободно)</p><div class="rate">${[1,2,3,4,5].map(n=>`<button data-n="${n}">${n}</button>`).join("")}</div><p class="mut" id="rm"></p><h2>ИИ-тренер</h2><p class="mut">Разбирает цифры этой сессии и говорит, чего не хватает и как это исправить. Сама запись никуда не отправляется. Подключение ИИ настраивается кнопкой «Настройки ИИ» вверху страницы.</p><button class="go" id="ai">Получить разбор от ИИ</button><div class="aiout" id="aiOut" aria-live="polite"></div><div class="aif hide" id="aiF"><input id="aiQ" placeholder="Задай тренеру вопрос"><button id="aiSend">Спросить</button></div>`;
+ $("#ai").onclick=()=>askAI(true);$("#aiSend").onclick=()=>askAI(false);
+ el.querySelectorAll(".rate button").forEach(b=>b.onclick=()=>{
+  el.querySelectorAll(".rate button").forEach(x=>x.classList.toggle("on",x===b));
+  const n=+b.dataset.n;save({t:Date.now(),d:new Date().toLocaleDateString("ru-RU"),dur,mp:+S.maxPhr.toFixed(1),c:n});
+  $("#rm").textContent=n<=2?"Горло просит отдыха. Сделай паузу на сегодня и пей воду. Если боль не проходит, обратись к врачу.":"Сохранено в дневнике.";
+ });
+ el.scrollIntoView({behavior:"smooth"});
+}
+let hist=[],busy=false;
+const SYS="Ты опытный тренер по экстрим-вокалу (фрай, гроул, скрим). Тебе даны только числа, измеренные микрофоном, а не сама запись, поэтому не выдумывай то, чего по цифрам не видно, и честно говори, если данных мало. Не ставь медицинских диагнозов; при боли или осиплости советуй отдых и фониатра. Отвечай по-русски, простым текстом без markdown и таблиц.";
+async function askAI(first){
+ if(busy)return;const out=$("#aiOut");
+ let sample=null;try{if(window.claude&&claude.use)sample=await claude.use("sample")}catch(e){}
+ const cfg=loadCfg();
+ if(!sample&&!cfg){out.textContent="ИИ не подключён. Нажми «Настройки ИИ» вверху страницы и добавь ключ API или файл настроек.";openCfg();return}
+ if(first){
+  const past=load().slice(0,3).map(e=>e.d+": фраза до "+e.mp+" с, горло "+e.c+"/5").join("; ")||"нет";
+  hist=[{role:"user",content:SYS+"\n\nДанные сессии: "+JSON.stringify(S.m)+"\nПрошлые сессии: "+past+"\n\nСделай разбор до 220 слов: 1) что получается; 2) чего не хватает, максимум 3 пункта с привязкой к цифрам; 3) как исправить: 3 конкретных упражнения на неделю; 4) на что смотреть в следующей сессии."}];
+ }else{
+  const q=$("#aiQ").value.trim();if(!q)return;
+  hist.push({role:"user",content:q});$("#aiQ").value="";
+ }
+ busy=true;out.textContent="Тренер слушает цифры…";
+ try{
+  const r=cfg?{text:await callApi(cfg,hist)}:await sample(hist,{onText:({text})=>{out.textContent=text},cache:false});
+  hist.push({role:"assistant",content:r.text});out.textContent=r.text;$("#aiF").classList.remove("hide");
+ }catch(e){
+  out.textContent=e&&e.code==="rate_limited"?"Слишком много запросов. Подожди минуту и попробуй снова.":e&&e.code==="not_granted"?"Доступ к ИИ не разрешён. Нажми кнопку ещё раз и подтверди запрос.":"Ошибка ИИ: "+(e&&e.name==="AbortError"?"время ожидания истекло":(e&&(e.message||e.code))||"неизвестная");
+ }
+ busy=false;
+}
+function load(){try{return JSON.parse(localStorage.getItem("rev_log")||"[]")}catch(e){return []}}
+function save(e){try{const l=load();l.unshift(e);localStorage.setItem("rev_log",JSON.stringify(l.slice(0,60)))}catch(x){}}
+function renderLog(){
+ const l=load();
+ if(!l.length){$("#ll").innerHTML='<p class="mut">Пока пусто. Закончи сессию в «Коуче» и оцени состояние горла.</p>';return}
+ const tot=l.reduce((a,e)=>a+e.dur,0)/60,mins=Math.round(tot),best=Math.max(...l.map(e=>e.mp));
+ const days=new Set(l.filter(e=>e.t).map(e=>new Date(e.t).toDateString()));let st=0;
+ for(let i=0;i<400;i++){const d=new Date();d.setDate(d.getDate()-i);if(days.has(d.toDateString()))st++;else if(i>0)break}
+ const LV=[[0,"Гараж"],[30,"Клуб"],[120,"Сцена фестиваля"],[300,"Хедлайнер"]];
+ let li=0;LV.forEach((x,i)=>{if(mins>=x[0])li=i});const nx=LV[li+1];
+ const pr=nx?Math.min(100,Math.round(100*(mins-LV[li][0])/(nx[0]-LV[li][0]))):100;
+ const rec=l.slice(0,12).reverse(),mx=Math.max(...rec.map(e=>e.mp),1);
+ const warn=l.length>=2&&l[0].c<=2&&l[1].c<=2?'<div class="safe">Две сессии подряд с дискомфортом. Возьми 1–2 дня полного отдыха голоса.</div>':"";
+ $("#ll").innerHTML=warn+`<div class="st"><div><b>${l.length}</b>сессий</div><div><b>${tot<10?tot.toFixed(1):mins}</b>минут</div><div><b>${best}</b>лучшая фраза, с</div><div><b>${st}</b>дней подряд</div></div>
+ <p><b>Уровень: ${LV[li][1]}</b>${nx?` <span class="mut">до «${nx[1]}» ещё ${nx[0]-mins} мин</span>`:""}</p><div class="pb"><i style="width:${pr}%"></i></div>
+ <p class="mut">Длина фраз по последним сессиям. Золотые: горло в порядке.</p>
+ <div class="sp">${rec.map(e=>`<i class="${e.c>=4?"g":""}" style="height:${Math.round(100*e.mp/mx)}%"></i>`).join("")}</div>
+ <ul class="h">`+l.map(e=>`<li class="${e.c>=4?"good":""}">${e.d}: ${Math.floor(e.dur/60)} мин, фраза до ${e.mp} с, горло ${e.c}/5</li>`).join("")+"</ul>";
+}
+/* студия */
+let tc;const AX=()=>tc||(tc=new (window.AudioContext||window.webkitAudioContext)());
+let mi=null,beat=0;
+function click(acc){const c=AX(),o=c.createOscillator(),gn=c.createGain();o.frequency.value=acc?1500:1000;gn.gain.setValueAtTime(.3,c.currentTime);gn.gain.exponentialRampToValueAtTime(.001,c.currentTime+.06);o.connect(gn).connect(c.destination);o.start();o.stop(c.currentTime+.07)}
+function tick(){document.querySelectorAll("#dots i").forEach((d,i)=>d.classList.toggle("on",i===beat));click(beat===0);beat=(beat+1)%4}
+$("#bpm").oninput=()=>{$("#bv").textContent=$("#bpm").value;if(mi){clearInterval(mi);mi=setInterval(tick,60000/$("#bpm").value)}};
+$("#mt").onclick=()=>{
+ if(mi){clearInterval(mi);mi=null;document.querySelectorAll("#dots i").forEach(d=>d.classList.remove("on"))}
+ else{beat=0;tick();mi=setInterval(tick,60000/$("#bpm").value)}
+ $("#mt").textContent=mi?"Стоп":"Старт";$("#mt").classList.toggle("on",!!mi);
+};
+let osc=null;
+$("#nt").innerHTML=[2,3].flatMap(o=>NN.map((n,i)=>`<option value="${440*Math.pow(2,((o+1)*12+i-69)/12)}">${n}${o}</option>`)).join("");
+$("#nt").value=$("#nt").options[9].value;
+$("#tn").onclick=()=>{
+ if(osc){osc.stop();osc=null}
+ else{const c=AX(),o=c.createOscillator(),f=c.createBiquadFilter(),gn=c.createGain();o.type="sawtooth";o.frequency.value=+$("#nt").value;f.type="lowpass";f.frequency.value=900;gn.gain.value=.12;o.connect(f).connect(gn).connect(c.destination);o.start();osc=o}
+ $("#tn").textContent=osc?"Стоп":"Звук";$("#tn").classList.toggle("on",!!osc);
+};
+$("#nt").onchange=()=>{if(osc)osc.frequency.value=+$("#nt").value};
+let bt=null,bc=0;
+function breathe(){
+ const c=$("#br");c.style.transitionDuration="4s";c.style.transform="scale(1.35)";c.textContent="Вдох";
+ bt=setTimeout(()=>{c.style.transitionDuration="6s";c.style.transform="scale(.75)";c.textContent="Выдох";
+  bt=setTimeout(()=>{bc++;$("#bn").textContent="Циклов: "+bc;breathe()},6000)},4000);
+}
+$("#bs").onclick=()=>{
+ if(bt){clearTimeout(bt);bt=null;$("#br").style.transform="";$("#br").textContent="Готов"}
+ else{bc=0;$("#bn").textContent="";breathe()}
+ $("#bs").textContent=bt?"Стоп":"Старт";$("#bs").classList.toggle("on",!!bt);
+};
+/* настройки ИИ */
+const CK="rev_ai";let fileCfg=null;
+const DEF={gemini:{model:"gemini-2.5-flash",endpoint:""},openai:{model:"",endpoint:"https://openrouter.ai/api/v1/chat/completions"},anthropic:{model:"claude-sonnet-5-5",endpoint:""},proxy:{model:"",endpoint:"/api/coach"}};
+function norm(c){
+ if(!c||typeof c!=="object")return null;
+ const p=c.provider||"gemini";if(!DEF[p])return null;
+ const o={provider:p,key:String(c.key||c.apiKey||"").trim(),model:String(c.model||DEF[p].model).trim(),endpoint:String(c.endpoint||DEF[p].endpoint).trim()};
+ if(p!=="proxy"&&(!o.key||!o.model))return null;
+ if((p==="openai"||p==="proxy")&&!o.endpoint)return null;
+ return o;
+}
+function loadCfg(){let c=null;try{c=norm(JSON.parse(localStorage.getItem(CK)))}catch(e){}return c||fileCfg}
+function cfgStatus(){
+ const c=loadCfg(),has=window.claude&&claude.use;
+ $("#cfgSt").textContent=c?"ИИ подключён: "+c.provider:has?"ИИ: встроенный Claude":"ИИ не подключён";
+}
+async function callApi(c,h){
+ const ac=new AbortController(),to=setTimeout(()=>ac.abort(),60000);
+ try{
+  let url,body,pick;const hd={"Content-Type":"application/json"};
+  if(c.provider==="gemini"){
+   url="https://generativelanguage.googleapis.com/v1beta/models/"+encodeURIComponent(c.model)+":generateContent";hd["x-goog-api-key"]=c.key;
+   body={contents:h.map(m=>({role:m.role==="assistant"?"model":"user",parts:[{text:m.content}]}))};
+   pick=j=>j.candidates&&j.candidates[0]&&j.candidates[0].content.parts.map(x=>x.text||"").join("");
+  }else if(c.provider==="anthropic"){
+   url="https://api.anthropic.com/v1/messages";hd["x-api-key"]=c.key;hd["anthropic-version"]="2023-06-01";hd["anthropic-dangerous-direct-browser-access"]="true";
+   body={model:c.model,max_tokens:1000,messages:h};pick=j=>j.content&&j.content.map(x=>x.text||"").join("");
+  }else if(c.provider==="openai"){
+   url=c.endpoint;if(c.key)hd.Authorization="Bearer "+c.key;
+   body={model:c.model,messages:h};pick=j=>j.choices&&j.choices[0]&&j.choices[0].message.content;
+  }else{
+   url=c.endpoint;if(c.key)hd.Authorization="Bearer "+c.key;
+   body={messages:h};pick=j=>j.text;
+  }
+  const r=await fetch(url,{method:"POST",headers:hd,body:JSON.stringify(body),signal:ac.signal});
+  if(!r.ok){let t="";try{t=(await r.text()).slice(0,160)}catch(e){}throw new Error("HTTP "+r.status+" "+t)}
+  const txt=pick(await r.json());if(!txt)throw new Error("пустой ответ");return txt;
+ }finally{clearTimeout(to)}
+}
+function fillCfg(c){
+ c=c||{provider:"gemini"};const p=c.provider,d=DEF[p];
+ $("#cp").value=p;$("#ce").value=c.endpoint||d.endpoint;$("#cm").value=c.model||d.model;$("#ck").value=c.key||"";
+ $("#fe").classList.toggle("hide",p==="gemini"||p==="anthropic");
+ $("#fm").classList.toggle("hide",p==="proxy");
+ $("#ck").previousElementSibling.textContent=p==="proxy"?"Ключ для твоего сервера (необязательно)":"Ключ API";
+}
+function openCfg(){fillCfg(loadCfg()||{provider:"gemini"});$("#cfgMsg").textContent="";if(!$("#dlg").open)$("#dlg").showModal()}
+function readCfg(){return norm({provider:$("#cp").value,endpoint:$("#ce").value,model:$("#cm").value,key:$("#ck").value})}
+$("#cfg").onclick=openCfg;
+$("#cx").onclick=()=>$("#dlg").close();
+$("#cp").onchange=()=>fillCfg({provider:$("#cp").value,key:$("#ck").value});
+$("#cs").onclick=()=>{
+ const c=readCfg();if(!c){$("#cfgMsg").textContent="Заполни ключ и модель (для своего сервера нужен адрес).";return}
+ try{localStorage.setItem(CK,JSON.stringify(c));$("#cfgMsg").textContent="Сохранено."}catch(e){$("#cfgMsg").textContent="Браузер не дал сохранить. Настройки действуют до закрытия страницы.";fileCfg=c}
+ cfgStatus();
+};
+$("#cc").onclick=()=>{try{localStorage.removeItem(CK)}catch(e){}fileCfg=null;fillCfg({provider:"gemini"});$("#cfgMsg").textContent="Настройки удалены.";cfgStatus()};
+$("#ct").onclick=async()=>{
+ const c=readCfg();if(!c){$("#cfgMsg").textContent="Сначала заполни поля.";return}
+ $("#cfgMsg").textContent="Проверяю…";
+ try{const t=await callApi(c,[{role:"user",content:"Ответь одним словом: готов"}]);$("#cfgMsg").textContent="Работает. Ответ: "+t.slice(0,80)}
+ catch(e){$("#cfgMsg").textContent="Не получилось: "+(e.name==="AbortError"?"время ожидания истекло":e.message)}
+};
+$("#cf").onchange=async e=>{
+ const f=e.target.files[0];if(!f)return;
+ try{const c=norm(JSON.parse(await f.text()));if(!c)throw 0;fillCfg(c);try{localStorage.setItem(CK,JSON.stringify(c))}catch(x){fileCfg=c}$("#cfgMsg").textContent="Файл загружен и сохранён. Нажми «Проверить».";cfgStatus()}
+ catch(x){$("#cfgMsg").textContent="Файл не подошёл. Нужен JSON с полями provider, key, model (см. api-config.example.json)."}
+ e.target.value="";
+};
+fetch("api-config.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{fileCfg=norm(j);cfgStatus()}).catch(()=>{});
+cfgStatus();
+/* заставка */
+const sp=$("#spl"),eq=sp.querySelector(".eq");
+for(let i=0;i<22;i++){const b=document.createElement("i");b.style.setProperty("--i",i);b.style.animationDuration=(.45+Math.random()*.7)+"s";eq.append(b)}
+const off=()=>sp.classList.add("off");
+sp.onclick=off;setTimeout(off,matchMedia("(prefers-reduced-motion:reduce)").matches?500:3300);
+</script>
+</body>
+</html>

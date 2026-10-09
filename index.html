@@ -1115,6 +1115,15 @@ nav[aria-label="Основная навигация"] a,nav[aria-label="Осно
 .screen-home .v4-score strong{display:inline-flex!important;align-items:baseline!important;gap:4px!important}
 .screen-home .v4-score strong small{margin-left:2px!important;font-size:.42em!important;line-height:1!important}
 </style>
+
+<style id="mbh-bottom-nav-center-v40">
+/* Center each bottom navigation icon and label inside its own equal-width button. */
+nav[aria-label="Основная навигация"]{display:flex!important;align-items:stretch!important;justify-content:space-around!important}
+nav[aria-label="Основная навигация"] a{display:flex!important;flex:1 1 0!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;box-sizing:border-box!important;min-width:0!important;gap:4px!important;line-height:1!important}
+nav[aria-label="Основная навигация"] a svg{display:block!important;flex:0 0 17px!important;margin:0 auto!important}
+nav[aria-label="Основная навигация"] a span{display:block!important;align-self:center!important;width:100%!important;margin:0!important;padding:0!important;text-align:center!important;line-height:1.15!important;white-space:nowrap!important}
+@media(max-width:430px){nav[aria-label="Основная навигация"] a{gap:4px!important;padding:3px 1px!important}nav[aria-label="Основная навигация"] a span{font-size:8px!important;letter-spacing:-.15px!important}}
+</style>
 </head><body>
 <div id="splash"><div class="sp-mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="spg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c6ff1a"/><stop offset=".55" stop-color="#34e0a1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M6 46 L18 14 L32 40 L46 14 L58 46" fill="none" stroke="url(#spg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g stroke="url(#spg)" stroke-width="3" stroke-linecap="round"><path d="M2 32v6M10 26v16M54 26v16M62 32v6"/></g></svg></div><div class="sp-t">MUSICBAND<br>HUB</div><div class="sp-d">• • •</div><div class="sp-b">LOADING YOUR BAND</div></div>
 <div id="app"></div>

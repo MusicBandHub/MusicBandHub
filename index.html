@@ -2099,15 +2099,27 @@ document.addEventListener('play',syncPlay);document.addEventListener('pause',syn
 ['input','change'].forEach(ev=>document.addEventListener(ev,e=>{if(e.target.dataset&&e.target.dataset.g){const b=document.getElementById('sg');if(b)b.style.display='block'}}));
 document.addEventListener('input',e=>{if(e.target.dataset.in==='q'){S.q=e.target.value;const p=e.target.selectionStart;draw(true);const n=document.getElementById('sq');n.focus();n.setSelectionRange(p,p)}});
 document.addEventListener('change',async e=>{const el=e.target;
- if(el.id==='mu'&&el.files.length){const L=[...el.files];S.busy=true;S.ma=null;draw(true);let n=0;
+ if(el.id==='mu'&&el.files&&el.files.length){
+  /* Snapshot upload context before redraw removes the file input/modal from the DOM. */
+  const L=[...el.files],uploadKind=CAT().k,uploadCategory=S.mc,uploadBand=S.bid,uploadUser=S.user?.id;
+  S.busy=true;S.ma=null;draw(true);let n=0;const failures=[];
   for(const f of L){const ext=f.name.split('.').pop().toLowerCase();
-   if(!(IMGX.includes(ext)||VIDX.includes(ext))){toast('Неподдерживаемый формат: '+f.name);continue}
-   if((VIDX.includes(ext)?'video':'image')!==CAT().k){toast('В этот раздел можно добавлять только '+(CAT().k==='image'?'фото':'видео')+': '+f.name);continue}
-   if(f.size>MMAX){toast('Файл больше 50 МБ: '+f.name);continue}
-   try{const path=`bands/${S.bid}/media/${Date.now()}-${Math.random().toString(36).slice(2,7)}-${f.name.replace(/[^A-Za-z0-9._-]/g,'_')}`;toast(`Загрузка ${n+1}/${L.length}…`);
+   if(!(IMGX.includes(ext)||VIDX.includes(ext))){failures.push('Неподдерживаемый формат: '+f.name);continue}
+   if((VIDX.includes(ext)?'video':'image')!==uploadKind){failures.push('Неверный тип файла: '+f.name);continue}
+   if(f.size>50*1048576){failures.push('Файл больше 50 МБ: '+f.name);continue}
+   try{
+    const path=`bands/${uploadBand}/media/${Date.now()}-${Math.random().toString(36).slice(2,7)}-${f.name.replace(/[^A-Za-z0-9._-]/g,'_')}`;
+    toast(`Загрузка ${n+1}/${L.length}…`);
     const u=await sb.storage.from('band-files').upload(path,f,{contentType:f.type||undefined});if(u.error)throw u.error;
-    const i=await sb.from('media').insert({band_id:S.bid,file_name:f.name,storage_path:path,kind:CAT().k,category:S.mc,file_size:f.size,uploaded_by:S.user.id});if(i.error)throw i.error;n++}catch(x){toast(err(x))}}
-  S.busy=false;if(n){toast('Загружено: '+n);S.mt=grp(S.mc);S.mk='all'}await load();draw(true);return}
+    const i=await sb.from('media').insert({band_id:uploadBand,file_name:f.name,storage_path:path,kind:uploadKind,category:uploadCategory,file_size:f.size,uploaded_by:uploadUser});if(i.error)throw i.error;n++;
+   }catch(x){console.error('MusicBandHub media upload failed:',x);failures.push(f.name+': '+err(x))}
+  }
+  S.busy=false;
+  if(n){S.mt=grp(uploadCategory);S.mk='all'}
+  await load();draw(true);
+  if(failures.length)toast(n?'Загружено: '+n+'. Ошибок: '+failures.length:failures[0].slice(0,115));
+  else if(n)toast('Загружено: '+n);
+  return}
  if(el.dataset.ch==='band'&&el.value==='__new'){S.gate=true;S.created=null;S.msg='';draw(true);return}
  if(el.dataset.ch==='band'){S.bid=el.value;localStorage.mbh_band=S.bid;S.song=null;S.D={songs:[],drafts:[],rehs:[],att:[],log:[],mem:[],files:[]};sub();draw(true);load()}
  if(el.id==='fi'&&el.files[0]){const f=el.files[0],ext=f.name.split('.').pop().toLowerCase();

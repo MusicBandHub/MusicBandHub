@@ -2113,6 +2113,7 @@ async function uploadMediaObject(path,file,onProgress){
  if(!token)throw new Error('Сессия истекла — войдите в группу заново');
  const projectRef=new URL(S.cfg.url).hostname.split('.')[0];
  await new Promise((resolve,reject)=>{
+  let lastPercent=-5;
   const upload=new window.tus.Upload(file,{
    endpoint:`https://${projectRef}.storage.supabase.co/storage/v1/upload/resumable`,
    retryDelays:[0,3000,5000,10000,20000],
@@ -2122,7 +2123,7 @@ async function uploadMediaObject(path,file,onProgress){
    metadata:{bucketName:'band-files',objectName:path,contentType:file.type||'application/octet-stream',cacheControl:'3600'},
    chunkSize:6*1024*1024,
    onError:error=>reject(error),
-   onProgress:(uploaded,total)=>{if(total>0&&onProgress)onProgress(Math.min(100,Math.floor(uploaded/total*100)))},
+   onProgress:(uploaded,total)=>{if(total>0&&onProgress){const pct=Math.min(100,Math.floor(uploaded/total*100));if(pct===100||pct>=lastPercent+5){lastPercent=pct;onProgress(pct)}}},
    onSuccess:()=>resolve()
   });
   upload.findPreviousUploads().then(previous=>{

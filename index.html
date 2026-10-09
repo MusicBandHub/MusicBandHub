@@ -1786,20 +1786,27 @@ const BAND_AI_PROMPTS=['Что нам делать дальше? Проанал�
   if(!S.user||!S.bid||!sb){toast('Сначала войдите в группу');return}
   S.busy=true;
   const btn=document.querySelector('[data-a="addreh"]');
+  const originalText=btn?btn.textContent:'Создать репетицию';
   if(btn){btn.disabled=true;btn.textContent='Создаём…'}
   try{
-   const row={band_id:S.bid,title,date,start_time:start,end_time:end||null,location:v('rl').trim()||null,notes:v('rn').trim()||null,created_by:S.user.id};
-   const result=await sb.from('rehearsals').insert(row);
+   const row={band_id:S.bid,title,date,start_time:start,end_time:end||null,location:v('rl').trim(),notes:v('rn').trim(),created_by:S.user.id};
+   const request=sb.from('rehearsals').insert(row).select('id,title,date').single();
+   const result=await Promise.race([request,new Promise((_,reject)=>setTimeout(()=>reject(new Error('Истекло время ожидания ответа Supabase. Проверьте соединение и доступ к базе.')),20000))]);
    if(result.error)throw result.error;
+   if(!result.data||!result.data.id)throw new Error('База не подтвердила создание репетиции.');
    S.sd=date;S.rm=date.slice(0,7);S.rdate=null;S.open=null;
    toast('Репетиция создана');
    await load();
    draw(true);
   }catch(e){
    console.error('Create rehearsal failed:',e);
-   const msg=(e&&e.message)||'Неизвестная ошибка';
-   toast(msg.includes('permission')||msg.includes('policy')?'Нет прав на создание репетиции. Проверьте роль и доступы группы.':'Не удалось создать репетицию: '+msg);
-  }finally{S.busy=false}
+   const msg=String((e&&e.message)||'Неизвестная ошибка');
+   toast(msg.toLowerCase().includes('permission')||msg.toLowerCase().includes('policy')||msg.includes('42501')?'Нет прав на создание репетиции. Проверьте роль и доступы группы.':'Не удалось создать репетицию: '+msg);
+  }finally{
+   S.busy=false;
+   const currentBtn=document.querySelector('[data-a="addreh"]');
+   if(currentBtn){currentBtn.disabled=false;currentBtn.textContent=originalText}
+  }
  },
  async delreh(d){if(confirm('Удалить репетицию?'))await ok(sb.from('rehearsals').delete().eq('id',d.id),load)},
  async att(d){await ok(sb.from('rehearsal_attendees').upsert({rehearsal_id:d.id,user_id:S.user.id,status:d.s},{onConflict:'rehearsal_id,user_id'}),load)},

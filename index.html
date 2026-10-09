@@ -1500,6 +1500,89 @@ nav[aria-label="Основная навигация"]>a>span{display:block!impor
  .ov .sh .gi{min-height:58px!important;padding:12px!important;gap:9px!important}
 }
 </style>
+<style id="mbh-responsive-layout-v1">
+/* Responsive foundation: desktop, tablet and phone */
+*,*::before,*::after{box-sizing:border-box}
+html{width:100%;min-width:0;overflow-x:clip;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{width:100%;min-width:0;min-height:100vh;overflow-x:clip}
+img,video,canvas,svg,iframe{max-width:100%}
+button,input,select,textarea{font:inherit;max-width:100%}
+#app{width:100%!important;max-width:1440px!important;min-width:0!important;margin:0 auto!important;padding:clamp(18px,2.5vw,36px) clamp(14px,3vw,42px) 150px!important}
+#app>*{min-width:0;max-width:100%}
+.card,.hero,.panel,.sh,.modal,.sheet{min-width:0;max-width:100%}
+.card{overflow-wrap:anywhere}
+h1{font-size:clamp(27px,3vw,40px);line-height:1.1;overflow-wrap:anywhere}
+h2{font-size:clamp(21px,2vw,28px);line-height:1.2;overflow-wrap:anywhere}
+h3{line-height:1.3;overflow-wrap:anywhere}
+p,small,.mu,label{overflow-wrap:anywhere}
+input,select,textarea{min-width:0}
+button,.btn{touch-action:manipulation;overflow-wrap:anywhere}
+.v4-grid,.v4-columns{min-width:0}
+.v4-grid>* ,.v4-columns>* ,.v4-side>*{min-width:0;max-width:100%}
+.v4-grid{grid-template-columns:minmax(0,1.55fr) minmax(280px,1fr)}
+.v4-columns{grid-template-columns:minmax(0,1.55fr) minmax(280px,.8fr)}
+.v4-stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+.song-filters{grid-template-columns:repeat(3,minmax(0,1fr))}
+.song-list{grid-template-columns:minmax(0,1fr)}
+.mbh-file-visual-grid,.mbh-file-category-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.mbh-player,.mbh-audio-player,.mbh-global-player{max-width:100vw;min-width:0}
+.mbh-p-top,.mbh-p-seek,.mbh-p-controls,.mbh-p-tools{min-width:0;max-width:100%}
+pre,code{max-width:100%;overflow-wrap:anywhere;white-space:pre-wrap}
+@media(min-width:1100px){
+ #app{padding-left:clamp(32px,4vw,64px)!important;padding-right:clamp(32px,4vw,64px)!important}
+ .v4-grid{gap:20px}
+ .v4-columns{gap:24px}
+ .card{padding:clamp(18px,1.6vw,26px)}
+ .song-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:900px){
+ #app{padding:18px 18px 150px!important}
+ .v4-grid,.v4-columns{grid-template-columns:minmax(0,1fr)!important;gap:14px!important}
+ .v4-side{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .song-filters{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ .song-list{grid-template-columns:minmax(0,1fr)!important}
+ .mbh-file-visual-grid,.mbh-file-category-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}
+}
+@media(max-width:600px){
+ #app{padding:14px 12px calc(170px + env(safe-area-inset-bottom,0px))!important}
+ h1{font-size:clamp(26px,7vw,34px);letter-spacing:-.7px!important}
+ h2{font-size:clamp(20px,5.5vw,25px);letter-spacing:-.35px!important}
+ .card{padding:14px!important;border-radius:16px!important}
+ .v4-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+ .v4-side{grid-template-columns:minmax(0,1fr)!important;gap:10px!important}
+ .song-filters{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+ .song-list{grid-template-columns:minmax(0,1fr)!important;gap:9px!important}
+ .song-filters>*{min-width:0!important;width:100%!important}
+ .home-actions{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .dash{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ .mbh-file-visual-grid,.mbh-file-category-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}
+ .mbh-file-visual-grid>* ,.mbh-file-category-grid>*{min-width:0!important}
+ .premium-song-card{grid-template-columns:44px minmax(0,1fr) 34px!important;gap:9px!important}
+ .mbh-p-tools{grid-template-columns:auto auto minmax(0,1fr) auto!important;gap:5px!important}
+ .mbh-p-tools button,.mbh-p-tools .btn{padding:8px 9px!important}
+ .ov{padding:12px!important}
+ .ov>.sh{width:min(100%,520px)!important;max-width:100%!important;max-height:calc(100dvh - 24px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))!important;overflow-y:auto!important}
+ input,select,textarea{font-size:16px}
+}
+@media(max-width:380px){
+ #app{padding-left:9px!important;padding-right:9px!important}
+ .card{padding:12px!important}
+ .dash{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .v4-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .mbh-file-visual-grid,.mbh-file-category-grid{grid-template-columns:minmax(0,1fr)!important}
+ .premium-song-card{grid-template-columns:38px minmax(0,1fr) 30px!important;gap:7px!important}
+ .mbh-p-top{grid-template-columns:34px minmax(0,1fr) 30px!important;gap:7px!important}
+ .mbh-p-seek{grid-template-columns:29px minmax(0,1fr) 29px!important;gap:5px!important}
+ button,.btn{padding:9px 10px}
+}
+@media(hover:hover) and (pointer:fine){
+ button,.btn,a{transition:filter .16s ease,transform .16s ease}
+ button:hover,.btn:hover{filter:brightness(1.08)}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
 </head><body>
 <div id="splash"><div class="sp-mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="spg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c6ff1a"/><stop offset=".55" stop-color="#34e0a1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M6 46 L18 14 L32 40 L46 14 L58 46" fill="none" stroke="url(#spg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g stroke="url(#spg)" stroke-width="3" stroke-linecap="round"><path d="M2 32v6M10 26v16M54 26v16M62 32v6"/></g></svg></div><div class="sp-t">MUSICBAND<br>HUB</div><div class="sp-d">• • •</div><div class="sp-b">LOADING YOUR BAND</div></div>
 <div id="app"></div>

@@ -2111,11 +2111,13 @@ document.addEventListener('change',async e=>{const el=e.target;
     const path=`bands/${uploadBand}/media/${Date.now()}-${Math.random().toString(36).slice(2,7)}-${f.name.replace(/[^A-Za-z0-9._-]/g,'_')}`;
     toast(`Загрузка ${n+1}/${L.length}…`);
     const u=await sb.storage.from('band-files').upload(path,f,{contentType:f.type||undefined});if(u.error)throw u.error;
-    const i=await sb.from('media').insert({band_id:uploadBand,file_name:f.name,storage_path:path,kind:uploadKind,category:uploadCategory,file_size:f.size,uploaded_by:uploadUser});if(i.error)throw i.error;n++;
+    const i=await sb.from('media').insert({band_id:uploadBand,file_name:f.name,storage_path:path,kind:uploadKind,category:uploadCategory,file_size:f.size,uploaded_by:uploadUser}).select().single();
+    if(i.error){await sb.storage.from('band-files').remove([path]);throw i.error}
+    n++;
    }catch(x){console.error('MusicBandHub media upload failed:',x);failures.push(f.name+': '+err(x))}
   }
   S.busy=false;
-  if(n){S.mt=grp(uploadCategory);S.mk='all'}
+  if(n){S.tab='media';S.mt='all';S.mk='all';S.mq='';}
   await load();draw(true);
   if(failures.length)toast(n?'Загружено: '+n+'. Ошибок: '+failures.length:failures[0].slice(0,115));
   else if(n)toast('Загружено: '+n);

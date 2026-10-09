@@ -1394,6 +1394,23 @@ nav[aria-label="Основная навигация"]>a>span{display:block!impor
 .screen-rehs .cm>b{font-size:13px!important;letter-spacing:1px!important}
 @media(max-width:360px){.screen-rehs .cal{gap:4px!important}.screen-rehs .cal>.cd{min-height:34px!important;border-radius:8px!important;font-size:12px!important}.screen-rehs .cal>.wd{font-size:9px!important}}
 </style>
+<style id="mbh-files-functional-v51">
+.mbh-media-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0}
+.mbh-media-stats>div{display:flex;flex-direction:column;gap:3px;padding:11px 12px;border:1px solid rgba(255,255,255,.07);border-radius:13px;background:rgba(255,255,255,.025);min-width:0}
+.mbh-media-stats b{font-size:20px;line-height:1.1;color:#b7ff32}.mbh-media-stats span{font-size:10px;color:var(--muted)}
+.mbh-media-tools{display:grid;grid-template-columns:minmax(0,1fr) 140px;gap:8px;margin:12px 0 6px}
+.mbh-media-tools input,.mbh-media-tools select{min-width:0;width:100%;box-sizing:border-box;font-size:12px!important;padding:10px!important}
+.mbh-file-tile{position:relative!important;overflow:hidden!important;background:#11151a!important;border:1px solid rgba(255,255,255,.08)!important;border-radius:13px!important;isolation:isolate}
+.mbh-file-tile>img,.mbh-file-tile>video{width:100%!important;height:100%!important;object-fit:cover!important}
+.mbh-file-placeholder{display:grid;place-items:center;height:100%;font-size:28px;color:#b7ff32}
+.mbh-file-caption{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:23px 8px 7px;background:linear-gradient(transparent,rgba(0,0,0,.88));display:flex;flex-direction:column;gap:3px;pointer-events:none}
+.mbh-file-caption b{font-size:10px;color:#fff;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mbh-file-caption small{font-size:9px;color:rgba(255,255,255,.72);line-height:1.2}
+.mbh-files-empty{display:flex;flex-direction:column;align-items:center;text-align:center;padding:28px 18px;margin-top:14px;border:1px dashed rgba(255,255,255,.13);border-radius:16px;background:rgba(255,255,255,.02)}
+.mbh-files-empty>span{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:rgba(183,255,50,.1);color:#b7ff32;font-size:25px;margin-bottom:10px}
+.mbh-files-empty>b{font-size:14px}.mbh-files-empty p{max-width:270px;font-size:11px;color:var(--muted);line-height:1.5}
+@media(max-width:380px){.mbh-media-tools{grid-template-columns:minmax(0,1fr) 112px;gap:6px}.mbh-media-stats>div{padding:9px}.mbh-media-stats b{font-size:18px}}
+</style>
 </head><body>
 <div id="splash"><div class="sp-mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="spg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c6ff1a"/><stop offset=".55" stop-color="#34e0a1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M6 46 L18 14 L32 40 L46 14 L58 46" fill="none" stroke="url(#spg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g stroke="url(#spg)" stroke-width="3" stroke-linecap="round"><path d="M2 32v6M10 26v16M54 26v16M62 32v6"/></g></svg></div><div class="sp-t">MUSICBAND<br>HUB</div><div class="sp-d">• • •</div><div class="sp-b">LOADING YOUR BAND</div></div>
 <div id="app"></div>
@@ -1515,16 +1532,20 @@ async function fillUrls(list){const need=list.filter(m=>!(m.id in S.urls));if(!n
  try{const r=await sb.storage.from('band-files').createSignedUrls(need.map(m=>m.storage_path),43200);if(r.error)throw r.error;r.data.forEach((x,i)=>{S.urls[need[i].id]=x.signedUrl||null})}catch(e){S.fu=false;return}
  S.fu=false;if((S.tab==='media'||S.tab==='files')&&!(S.ma&&S.ma.s===3))draw(true)}
 const grp=id=>id==='clips'?'clip':String(id).split('_')[0],MT=[['all','Все'],['concert','Концерты'],['rehearsal','Репетиции'],['clip','Клипы']];
-function mediaV(){const all=S.D.media||[],T=S.mt||'all',K=T==='clip'?'video':(S.mk||'all');
+function mediaV(){const all=S.D.media||[],T=S.mt||'all',K=T==='clip'?'video':(S.mk||'all'),q=(S.mq||'').trim().toLowerCase(),sort=S.ms||'new';
  const byT=all.filter(m=>T==='all'||grp(m.category)===T),nI=byT.filter(m=>m.kind==='image').length,nV=byT.length-nI;
- const l=byT.filter(m=>K==='all'||m.kind===K),top=l.slice(0,4),rest=l.slice(4),vis=rest.slice(0,S.mn);fillUrls([...top,...vis]);
- const tile=(m,x)=>{const u=S.urls[m.id];return`<div class=mt data-a=lb data-id=${m.id}>${u?(m.kind==='video'?`<video src="${u}#t=0.1" preload=metadata muted playsinline></video><span class=pb>▶</span>`:`<img src="${u}" loading=lazy alt="">`):''}${x||''}</div>`};
- return`<h2>Медиа</h2><div class=mu>Все фото, видео и материалы группы в одном месте.</div>
+ let l=byT.filter(m=>(K==='all'||m.kind===K)&&(!q||(m.file_name||'').toLowerCase().includes(q)||(m.category||'').toLowerCase().includes(q)||(nm(m.uploaded_by)||'').toLowerCase().includes(q)));
+ l.sort((a,b)=>sort==='old'?(new Date(a.created_at)-new Date(b.created_at)):sort==='name'?(a.file_name||'').localeCompare(b.file_name||'','ru',{sensitivity:'base'}):sort==='size'?(Number(b.file_size||0)-Number(a.file_size||0)):(new Date(b.created_at)-new Date(a.created_at)));
+ const top=l.slice(0,4),rest=l.slice(4),vis=rest.slice(0,S.mn||12);fillUrls([...top,...vis]);
+ const fmtSize=n=>!n?'Размер неизвестен':n>=1048576?(n/1048576).toFixed(1)+' МБ':Math.max(1,Math.round(n/1024))+' КБ';
+ const tile=(m,x)=>{const u=S.urls[m.id];return`<div class="mt mbh-file-tile" data-a=lb data-id=${m.id} title="${esc(m.file_name)}">${u?(m.kind==='video'?`<video src="${u}#t=0.1" preload=metadata muted playsinline></video><span class=pb>▶</span>`:`<img src="${u}" loading=lazy alt="${esc(m.file_name)}">`):'<span class="mbh-file-placeholder">'+(m.kind==='video'?'▶':'▧')+'</span>'}${x||''}<div class="mbh-file-caption"><b>${esc(m.file_name||'Без названия')}</b><small>${fmtSize(m.file_size)} · ${m.kind==='video'?'Видео':'Фото'}</small></div></div>`};
+ return`<h2>Медиа</h2><div class=mu>Фото и видео группы — поиск, сортировка, просмотр и скачивание.</div>
+ <div class="mbh-media-stats"><div><b>${all.length}</b><span>Всего файлов</span></div><div><b>${nI}</b><span>Фото</span></div><div><b>${nV}</b><span>Видео</span></div></div>
+ <div class="mbh-media-tools"><input id="msq" data-in="msq" value="${esc(S.mq||'')}" placeholder="⌕ Найти файл по названию…" aria-label="Поиск файлов"><select id="msort" aria-label="Сортировка файлов"><option value="new" ${sort==='new'?'selected':''}>Сначала новые</option><option value="old" ${sort==='old'?'selected':''}>Сначала старые</option><option value="name" ${sort==='name'?'selected':''}>По названию</option><option value="size" ${sort==='size'?'selected':''}>По размеру</option></select></div>
  <div style="overflow-x:auto;white-space:nowrap;padding:8px 0 2px">${MT.map(([k,t])=>`<span class="chip ${T===k?'on':''}" data-a=mt data-k=${k}>${t}</span>`).join('')}</div>
  ${T==='clip'?'':`<div>${[['all','Фото и видео ('+byT.length+')'],['image','Фото ('+nI+')'],['video','Видео ('+nV+')']].map(([k,t])=>`<span class="chip ${K===k?'on':''}" data-a=mkf data-k=${k}>${t}</span>`).join('')}</div>`}
  <button data-a=mopen ${S.busy?'disabled':''}>${S.busy?'Загрузка…':'＋ Добавить медиа'}</button>
- ${l.length?`<div class=sec>ПОСЛЕДНИЕ МАТЕРИАЛЫ</div><div class=mg2>${top.map((m,i)=>tile(m,i===3&&rest.length?`<div class=mx>+ Ещё ${rest.length}</div>`:'')).join('')}</div>`:`<p class=mu>Здесь пока пусто. Нажмите «＋ Добавить медиа».</p>`}
- ${rest.length?`<div class=sec>ЕЩЁ</div><div class=mg>${vis.map(m=>tile(m)).join('')}</div>${rest.length>vis.length?'<button class=g data-a=more>Показать ещё</button>':''}`:''}`}
+ ${l.length?`<div class=sec>ФАЙЛЫ · ${l.length}</div><div class=mg2>${top.map((m,i)=>tile(m,i===3&&rest.length?`<div class=mx>+ Ещё ${rest.length}</div>`:'')).join('')}</div>${rest.length?`<div class=mg>${vis.map(m=>tile(m)).join('')}</div>${rest.length>vis.length?'<button class=g data-a=more>Показать ещё</button>':''}`:''}`:`<div class="mbh-files-empty"><span>⌕</span><b>${q?'Ничего не найдено':'Пока нет файлов'}</b><p>${q?'Попробуй изменить запрос или выбрать другую категорию.':'Добавь фото или видео, чтобы вся группа могла открыть их здесь.'}</p>${q?'<button class="g" data-a="clearMediaSearch">Сбросить поиск</button>':'<button data-a="mopen">＋ Добавить первый файл</button>'}</div>`}`}
 function maV(){const o=S.ma;if(!o)return'';let c='';
  if(o.s===1)c=`<h3>Что добавить?</h3><div class=pk><div data-a=mk1 data-k=image><span>📷</span>Фото</div><div data-a=mk1 data-k=video><span>🎬</span>Видео</div></div>`;
  else if(o.s===2){const L=CATS.filter(x=>x[2]===o.k).map(x=>[x[0],grp(x[0])==='concert'?['🎤','Концерт']:grp(x[0])==='rehearsal'?['🥁','Репетиция']:['🎬','Клипы']]);
@@ -1909,7 +1930,7 @@ const BAND_AI_PROMPTS=['Что нам делать дальше? Проанал�
  editdraft(d){S.ed=d.id;draw(true)},editreh(d){S.er=d.id;draw(true)},
  async savedraft(d){if(!v('xt').trim())return toast('Введите название');await ok(sb.from('drafts').update({title:v('xt').trim(),description:v('xd'),type:v('xy'),song_id:v('xs')||null}).eq('id',d.id),async()=>{S.ed=null;await load();draw(true)})},
  async savereh(d){if(!v('et').trim()||!v('ed')||!v('es'))return toast('Заполните название, дату и время');await ok(sb.from('rehearsals').update({title:v('et').trim(),date:v('ed'),start_time:v('es'),end_time:v('ee')||null,location:v('el'),notes:v('en')}).eq('id',d.id),async()=>{S.er=null;await load();draw(true)})},
- lb(d){S.lb=d.id;draw(true)},lbx(){S.lb=null;draw(true)},mf(d){S.mc=d.k;S.mn=12;draw(true)},more(){S.mn+=12;draw(true)},mmo(d){S.mm=d.id;draw(true)},mmx(){S.mm=null;draw(true)},copylink(){navigator.clipboard?.writeText(location.href.split('#')[0]).then(()=>toast('Ссылка скопирована'),()=>toast('Не удалось скопировать'))},rv(d){S.rv=d.k;draw(true)},rmo(d){const[y,m]=(S.rm||tdy().slice(0,7)).split('-').map(Number),x=new Date(y,m-1+Number(d.n),1);S.rm=x.getFullYear()+'-'+p2(x.getMonth()+1);draw(true)},day(d){S.sd=d.d;S.rm=d.d.slice(0,7);S.rv='cal';S.open=null;draw(true)},plan(d){S.rdate=d.d;S.open='reh';draw(true);scrollTo(0,0)},mt(d){S.mt=d.k;S.mk='all';S.mn=12;draw(true)},mkf(d){S.mk=d.k;S.mn=12;draw(true)},mopen(){S.ma={s:1};draw(true)},mclose(){S.ma=null;draw(true)},mk1(d){S.ma={s:2,k:d.k};draw(true)},mk2(d){S.mc=d.c;S.ma={s:3};draw(true)},mback(){S.ma=S.ma.s===3?{s:2,k:CAT().k}:{s:1};draw(true)},
+ lb(d){S.lb=d.id;draw(true)},lbx(){S.lb=null;draw(true)},clearMediaSearch(){S.mq='';draw(true)},mf(d){S.mc=d.k;S.mn=12;draw(true)},more(){S.mn+=12;draw(true)},mmo(d){S.mm=d.id;draw(true)},mmx(){S.mm=null;draw(true)},copylink(){navigator.clipboard?.writeText(location.href.split('#')[0]).then(()=>toast('Ссылка скопирована'),()=>toast('Не удалось скопировать'))},rv(d){S.rv=d.k;draw(true)},rmo(d){const[y,m]=(S.rm||tdy().slice(0,7)).split('-').map(Number),x=new Date(y,m-1+Number(d.n),1);S.rm=x.getFullYear()+'-'+p2(x.getMonth()+1);draw(true)},day(d){S.sd=d.d;S.rm=d.d.slice(0,7);S.rv='cal';S.open=null;draw(true)},plan(d){S.rdate=d.d;S.open='reh';draw(true);scrollTo(0,0)},mt(d){S.mt=d.k;S.mk='all';S.mn=12;draw(true)},mkf(d){S.mk=d.k;S.mn=12;draw(true)},mopen(){S.ma={s:1};draw(true)},mclose(){S.ma=null;draw(true)},mk1(d){S.ma={s:2,k:d.k};draw(true)},mk2(d){S.mc=d.c;S.ma={s:3};draw(true)},mback(){S.ma=S.ma.s===3?{s:2,k:CAT().k}:{s:1};draw(true)},
  async mediadl(d){const m=S.D.media.find(x=>x.id===d.id);await ok(sb.storage.from('band-files').createSignedUrl(m.storage_path,120,{download:m.file_name}),r=>{const a=document.createElement('a');a.href=r.data.signedUrl;a.click()})},
  async mediadel(d){if(!confirm('Удалить файл?'))return;const m=S.D.media.find(x=>x.id===d.id);S.lb=null;await ok(sb.from('media').delete().eq('id',d.id),async()=>{sb.storage.from('band-files').remove([m.storage_path]);await load();draw(true)})},
  noop(){},groupmenu(){S.sheet=true;draw(true)},sheet(){S.sheet=true;draw(true)},sheetx(){S.sheet=false;draw(true)},prof(){S.prof=false;S.tab='settings';draw(true);scrollTo(0,0)},profx(){S.prof=false;draw(true)},
@@ -2006,9 +2027,11 @@ Object.assign(A,{
  hstep(d){const k=d.k;if(k==='group'){S.sheet=true}else if(k==='song'){S.tab='songs';S.song=null;S.sh2={t:'new'}}else if(k==='idea'){rOpen(null,false);return}else if(k==='metro'){mOpen(null);return}else if(k==='reh'){S.tab='rehs';S.open='reh'}draw(true);scrollTo(0,0)}
 });
 document.addEventListener('input',e=>{const el=e.target;
+ if(el.dataset.in==='msq'){S.mq=el.value;const p=el.selectionStart;draw(true);const n=document.getElementById('msq');if(n){n.focus();n.setSelectionRange(p,p)}}
  if(el.dataset.in==='hq'){S.hq=el.value;const p=el.selectionStart;draw(true);const n=document.getElementById('hq');n.focus();n.setSelectionRange(p,p)}
  if(el.dataset.sk){const a=document.getElementById('au');if(PLAY.id===el.dataset.id&&a.duration)a.currentTime=a.duration*el.value/1000}});
 document.addEventListener('change',async e=>{const el=e.target;
+ if(el.id==='msort'){S.ms=el.value;draw(true);return}
  if(el.id==='au2'&&el.files.length){S.busy=true;draw(true);let n=0;for(const f of el.files){try{await addAudio(f,{song:S.song,name:f.name,ext:f.name.split('.').pop().toLowerCase(),dur:await audioDur(f)});n++}catch(x){toast(em(x))}}S.busy=false;await load();if(n)toast('Загружено: '+n);draw(true)}
  if(el.id==='imp2'&&el.files.length){const L=[...el.files];S.sh2=null;S.busy=true;draw(true);let n=0,last=null;
   for(const f of L){try{const ext=f.name.split('.').pop().toLowerCase();if(!AUD.includes(ext))throw new Error('Неподдерживаемый формат: '+f.name);
